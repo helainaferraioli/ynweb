@@ -48,7 +48,7 @@ export default function VideoSection() {
     >
       <video
         ref={videoRef}
-        src="/home-video.mov"
+        src="/home-page-video.mp4"
         loop
         muted
         playsInline

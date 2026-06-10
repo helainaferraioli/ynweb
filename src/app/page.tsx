@@ -14,7 +14,7 @@ export default function Home() {
       {/* ── Hero ── */}
       <div className="relative w-full h-screen">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="/home-video.mov" type="video/mp4" />
+          <source src="/home-page-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/15" />
         <div
