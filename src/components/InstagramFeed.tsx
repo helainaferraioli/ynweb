@@ -158,8 +158,7 @@ export default function InstagramFeed() {
             <div
               key={i}
               className="flex-none animate-pulse"
-              style={{ width: "288px", aspectRatio: "4/5" }}
-              style={{ backgroundColor: TILE_COLORS[i % TILE_COLORS.length] }}
+              style={{ width: "288px", aspectRatio: "4/5", backgroundColor: TILE_COLORS[i % TILE_COLORS.length] }}
             >
               {error && i === 0 && (
                 <div className="flex items-center justify-center h-full p-4">
