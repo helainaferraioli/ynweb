@@ -23,7 +23,7 @@ export default function WeBuyQualify() {
       {/* Photo LEFT */}
       <div className="relative md:w-1/2 min-h-[520px]">
         <Image
-          src="/images/we%20buy/Checklist%20photo"
+          src="/images/we%20buy/Checklist%20photo.jpg"
           alt="JP Ferraioli at work"
           fill
           className="object-cover"
