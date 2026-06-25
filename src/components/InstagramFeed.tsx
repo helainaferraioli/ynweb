@@ -18,7 +18,7 @@ const TILE_COLORS = [
   "#1A1A2C","#2C2210","#101C2C","#1C2C1A",
 ];
 
-function VideoTile({ post }: { post: Post }) {
+function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hovering, setHovering] = useState(false);
 
@@ -38,7 +38,7 @@ function VideoTile({ post }: { post: Post }) {
       target="_blank"
       rel="noopener noreferrer"
       className="flex-none relative overflow-hidden"
-      style={{ width: "288px", aspectRatio: "9/16" }}
+      style={{ width: "288px", aspectRatio: "9/16", ...(dark && { border: "2px solid #FFB81C" }) }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -66,14 +66,14 @@ function VideoTile({ post }: { post: Post }) {
   );
 }
 
-function ImageTile({ post }: { post: Post }) {
+function ImageTile({ post, dark }: { post: Post; dark?: boolean }) {
   return (
     <a
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
       className="flex-none relative group overflow-hidden"
-      style={{ width: "410px", aspectRatio: "4/5" }}
+      style={{ width: "410px", aspectRatio: "4/5", ...(dark && { border: "2px solid #FFB81C" }) }}
     >
       <Image
         src={post.media_url}
@@ -87,7 +87,7 @@ function ImageTile({ post }: { post: Post }) {
   );
 }
 
-export default function InstagramFeed() {
+export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boolean; dark?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [error, setError] = useState(false);
@@ -108,10 +108,10 @@ export default function InstagramFeed() {
   };
 
   return (
-    <section style={{ backgroundColor: "#971B2E" }} className="py-16 overflow-hidden">
+    <section style={{ backgroundColor: dark ? "#000000" : "#971B2E" }} className={`overflow-hidden ${dark ? "pt-4 pb-16" : "py-16"}`}>
 
       {/* Header row */}
-      <div className="flex items-start justify-between px-14 mb-10">
+      {!hideHeader && <div className="flex items-start justify-between px-14 mb-10">
         <h2
           className="font-serif italic text-5xl md:text-6xl leading-none max-w-xs"
           style={{ color: "#f6e6c9" }}
@@ -133,7 +133,7 @@ export default function InstagramFeed() {
             Follow @yesterdaysnewsbk
           </a>
         </div>
-      </div>
+      </div>}
 
       {/* Scrollable feed */}
       <div className="relative">
@@ -151,8 +151,8 @@ export default function InstagramFeed() {
         >
           {posts?.map((post) =>
             post.media_type === "VIDEO"
-              ? <VideoTile key={post.id} post={post} />
-              : <ImageTile key={post.id} post={post} />
+              ? <VideoTile key={post.id} post={post} dark={dark} />
+              : <ImageTile key={post.id} post={post} dark={dark} />
           )}
           {!posts && PLACEHOLDERS.map((i) => (
             <div
