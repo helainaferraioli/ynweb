@@ -46,11 +46,10 @@ export default function About() {
             className="font-serif text-lg md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
             style={{ color: "#3a2010" }}
           >
-            Yesterday&apos;s News is a family-owned and operated vintage shop. Today, the shop is
-            one of the longest standing vintage institutions in New York City, entering its 25th year
-            and ushering in a second-generation. It all started with a third generation
-            Italian-American family in the heart of Carroll Gardens, Brooklyn, where my dad, JP
-            Ferraioli, found his footing and developed a love for days past.
+            Yesterday&apos;s News is a family-owned and operated vintage shop, now entering our
+            25th year as one of New York City&apos;s longest-standing vintage institutions. Our story
+            begins in the heart of Italian-American Brooklyn, right here in Carroll Gardens, where
+            my dad began collecting vintage at just ten years old.
           </p>
         </section>
       </FadeIn>
@@ -65,7 +64,7 @@ export default function About() {
             style={{ backgroundColor: "#971B2E" }}
           >
             <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
-              Where It Began
+              It Started in Brooklyn
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
               Meet my Dad, JP
@@ -75,19 +74,18 @@ export default function About() {
               style={{ color: "#FFCCCC" }}
             >
               <p>
-                JP Ferraioli grew up on President Street in Carroll Gardens, Brooklyn — siblings,
-                parents, aunts, uncles, grandparents, friends, and playground rivals all living
-                harmoniously within the grid of a humming working-class neighborhood.
+                JP Ferraioli grew up on President Street in Carroll Gardens, Brooklyn — here,
+                siblings, parents, aunts, uncles, grandparents, friends, and playground rivals
+                all lived harmoniously within the grid of a humming working-class neighborhood.
               </p>
               <p>
-                At ten, his great grandmother gave him his first taste of vintage: a 1940s
-                Coca-Cola tray, passed down from her brother Tony, who had worked for the company
-                during its commercial heyday.
+                At ten, his grandmother gave him his first taste of vintage: a 1940s Coca-Cola tray.
               </p>
               <p>
-                From that day forward, a voracious appetite for collecting and a deep nostalgia
-                for well-made, heart-led craftsmanship drove JP to leave a career with the city
-                and open a shop in the neighborhood where it all began.
+                From that day forward, a voracious appetite for collecting developed alongside a
+                deep nostalgia for well-made, heart-led craftsmanship. After a career with the
+                city, this passion eventually drove my dad to open a shop in the neighborhood
+                where it all began.
               </p>
             </div>
           </div>
@@ -130,15 +128,15 @@ export default function About() {
               style={{ color: "#3a2010" }}
             >
               <p>
-                Today, the shop is entirely family and friend operated by husband-wife duo,
-                Colleen and JP Ferraioli, their daughter (me!), Helaina, and our long-time
-                President Street friend and employee, Craig Scotti.
+                Today, the shop is still entirely family-owned and operated — same neighborhood,
+                same faces, just a new generation behind the counter.
               </p>
               <p>
-                What keeps a business like ours alive is our collective commitment to providing
-                every customer, visitor, and passerby with an experience that passion alone cannot
-                produce – it&apos;s a decision that our family makes every day to continue to be a
-                place where people can enjoy, escape, unwind, and explore.
+                Just like in days of old, what keeps a place like ours alive isn&apos;t just
+                passion, though we have plenty of that. It&apos;s a daily commitment to show up
+                the way mom and pop shops across the city once did, making sure everyone who
+                walks through the door — whether they&apos;re buying, browsing, or just passing
+                time — leaves feeling like they found something special.
               </p>
             </div>
           </div>
@@ -168,20 +166,19 @@ export default function About() {
               style={{ color: "#FFCCCC" }}
             >
               <p>
-                When you step into Yesterday&apos;s News, you are not just entering a vintage shop
-                – you&apos;re looking to connect, to explore, and to uncover your next unique,
-                one-of-a-kind find that speaks to you.
+                Yesterday&apos;s News is not your average vintage shop. Step inside and
+                you&apos;ll find yourself somewhere between a treasure hunt and a time capsule
+                — where the past is always turning up something new.
               </p>
               <p>
-                Whether it be a pair of 1980s costume jewelry earrings that you wear to your
-                anniversary dinner, an ottoman that becomes your cat&apos;s new favorite resting
-                spot, a plantstand where you nurture your first basil plant in a narrow strip of
-                sunlight in your Brooklyn apartment, or a dresser that comes to hold your upgraded
-                work wardrobe – we have a piece for any and every occasion.
+                Whether it&apos;s a pair of 1980s costume jewelry earrings for your anniversary
+                dinner, a plant stand where you nurture your first basil plant in a narrow strip
+                of Brooklyn sunlight, or a midcentury dresser meant to hold your growing wardrobe
+                — there&apos;s a piece here for you.
               </p>
               <p>
-                We source every authentically vintage item in our shop by hand locally from homes
-                in Brooklyn, Queens, and Long Island.
+                Every item in our shop is authentically vintage, sourced by hand from homes
+                across Brooklyn, Queens, and Long Island.
               </p>
             </div>
           </div>

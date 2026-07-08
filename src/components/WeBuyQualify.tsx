@@ -39,13 +39,13 @@ export default function WeBuyQualify() {
       >
         <div className="flex flex-col gap-3">
           <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
-            Is This a Good Fit?
+            Do You Qualify?
           </span>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
-            Here&apos;s who we can help.
+            We&apos;d love to buy from you.
           </h2>
           <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#FFCCCC" }}>
-            We&apos;re not the right call for everyone — tick the boxes that apply to you:
+            Here&apos;s how to know if we&apos;re the right fit.
           </p>
         </div>
 

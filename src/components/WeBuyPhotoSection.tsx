@@ -19,13 +19,13 @@ export default function WeBuyPhotoSection() {
   return (
     <section id="what-we-buy" className="py-20" style={{ backgroundColor: "#f6e6c9" }}>
 
-      {/* Label + intro */}
+      {/* Header + intro */}
       <div className="flex flex-col gap-4 px-10 md:px-16 max-w-5xl mx-auto mb-12">
-        <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
+        <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
           What We Buy
-        </span>
+        </h2>
         <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: "#3a2010" }}>
-          Furniture is our anchor — we need at least 8–10 qualifying pieces to make a visit worthwhile. Beyond that, we&apos;re interested in everything that came with the house.
+          We buy furniture first and foremost — at least 8–10 qualifying pieces to make a visit worthwhile. Beyond that, we&apos;re interested in everything that came with the house, including:
         </p>
       </div>
 

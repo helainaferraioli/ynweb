@@ -27,7 +27,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#3a2010" }}>
-            Have a question about a piece you walked by while we were closed? Looking for something specific? Have any other general questions? Give us a call during business hours, shoot us a message on IG, or shoot us a message right here and we&apos;ll get back to you within 24 hours.
+            We&apos;re easy to reach. Whether you spotted something in the window, have a question about the shop, or just want to say hi — we&apos;re here. Reach us by phone, Instagram, or the form below.
           </p>
         </div>
 
@@ -94,6 +94,17 @@ export default function Contact() {
                 >
                   428 Court Street<br />Brooklyn, NY
                 </a>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
+                  Hours
+                </span>
+                <div className="font-serif text-base leading-relaxed" style={{ color: "#1a0a0e" }}>
+                  <p>Monday: Closed</p>
+                  <p>Tuesday–Friday: 10am–5:45pm</p>
+                  <p>Saturday–Sunday: 9:30am–5:30pm</p>
+                </div>
               </div>
 
               <div className="flex items-center gap-5">

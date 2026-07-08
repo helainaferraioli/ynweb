@@ -60,6 +60,9 @@ export default function PressSection() {
 
   return (
     <section style={{ backgroundColor: "#FFB81C" }} className="py-12 px-10 overflow-hidden">
+      <p className="text-xs font-bold tracking-[0.2em] uppercase mb-8 max-w-6xl mx-auto" style={{ color: "#3a2010" }}>
+        In The Press
+      </p>
       <div ref={ref} className="flex items-end gap-8 max-w-6xl mx-auto">
 
         {/* Press grid */}

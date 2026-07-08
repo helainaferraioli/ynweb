@@ -75,7 +75,7 @@ export default function AboutTeamSection() {
           The People Behind It
         </span>
         <h2 className="font-serif text-3xl md:text-4xl font-bold" style={{ color: "#1a0a0e" }}>
-          Meet the Team
+          Meet Our Family
         </h2>
       </div>
       <div className="flex gap-4 w-full max-w-6xl">

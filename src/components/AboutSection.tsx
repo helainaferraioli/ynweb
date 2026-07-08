@@ -60,9 +60,10 @@ export default function AboutSection() {
         </h2>
         <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
           <p>
-            In 2001, we opened our doors on Court Street with a truck, a good eye, and a love
-            for the objects that carry people&apos;s lives. Twenty-five years later, not much has
-            changed — except now there&apos;s a second generation at the counter.
+            In 2001, we opened our doors on Court Street with a van, a life-long passion for
+            collecting, and a love of objects that carry the story of people&apos;s lives.
+            Twenty-five years later, not much has changed — except now we&apos;ve got a truck,
+            and a second generation behind the counter.
           </p>
         </div>
         <div>

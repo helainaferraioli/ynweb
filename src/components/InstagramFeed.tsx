@@ -113,26 +113,14 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
       {/* Header row */}
       {!hideHeader && <div className="flex items-start justify-between px-14 mb-10">
         <h2
-          className="font-serif italic text-5xl md:text-6xl leading-none max-w-xs"
+          className="font-serif italic text-5xl md:text-6xl leading-none whitespace-nowrap"
           style={{ color: "#f6e6c9" }}
         >
-          Every visit<br />is different.
+          Shop our feed.
         </h2>
-        <div className="flex flex-col gap-4 items-end max-w-xs text-right">
-          <p className="font-serif text-base leading-relaxed" style={{ color: "#f6e6c9" }}>
-            We never carry the same thing twice.<br />
-            Come in and see what turned up this week.
-          </p>
-          <a
-            href="https://instagram.com/yesterdaysnewsbk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-bold tracking-widest uppercase pb-1 border-b-2 hover:opacity-70 transition-opacity"
-            style={{ color: "#f6e6c9", borderColor: "#f6e6c9" }}
-          >
-            Follow @yesterdaysnewsbk
-          </a>
-        </div>
+        <p className="font-serif text-base leading-relaxed max-w-xs text-right" style={{ color: "#f6e6c9" }}>
+          Can&apos;t make it in person? Here&apos;s a peek at what&apos;s new at the shop this week.
+        </p>
       </div>}
 
       {/* Scrollable feed */}
@@ -175,6 +163,19 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
           style={{ color: "#f6e6c9" }}
           aria-label="Scroll right"
         >›</button>
+      </div>
+
+      {/* Follow link below gallery */}
+      <div className="px-14 mt-6">
+        <a
+          href="https://instagram.com/yesterdaysnewsbk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-bold tracking-widest uppercase pb-1 border-b-2 hover:opacity-70 transition-opacity"
+          style={{ color: "#f6e6c9", borderColor: "#f6e6c9" }}
+        >
+          Follow @yesterdaysnewsbk
+        </a>
       </div>
 
     </section>

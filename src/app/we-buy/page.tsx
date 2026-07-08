@@ -30,7 +30,7 @@ export default function WeBuy() {
           </h1>
           <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
             <p>
-              For over 25 years, we&apos;ve been buying pre-1980s vintage items directly from homes across Brooklyn, Queens, and Long Island.
+              For over 25 years, JP has been buying pre-1980s vintage items directly from homes across Brooklyn, Queens, and Long Island. We come to you, buy on the spot, and take everything the same day.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 mt-1">
