@@ -5,7 +5,7 @@ export default function AnnouncementBanner() {
       style={{ backgroundColor: "#F5F0E1" }}
     >
       <p className="text-black text-xs font-medium tracking-wide text-center">
-        Visit us Tues–Fri 10am–5:45pm &nbsp;//&nbsp; Sat &amp; Sun 9:30am–5:30pm
+        Visit us Tues–Fri 10am–5:30pm &nbsp;//&nbsp; Sat &amp; Sun 9:45am–5:15pm
       </p>
     </div>
   );

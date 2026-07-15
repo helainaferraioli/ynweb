@@ -29,6 +29,8 @@ export default function SiteHeader() {
 
   const hidden = scrolled;
 
+  if (pathname.startsWith("/studio")) return null;
+
   return (
     <>
     {/* YN monogram — appears in corner while scrolled */}
@@ -55,7 +57,7 @@ export default function SiteHeader() {
       {/* Announcement stripe */}
       <div className="flex items-center justify-center py-3 px-4" style={{ backgroundColor: "#f6e6c9" }}>
         <p className="text-black text-xs font-medium tracking-wide text-center">
-          Visit us Tues–Fri 10am–5:45pm &nbsp;//&nbsp; Sat &amp; Sun 9:30am–5:30pm
+          Visit us Tues–Fri 10am–5:30pm &nbsp;//&nbsp; Sat &amp; Sun 9:45am–5:15pm
         </p>
       </div>
 

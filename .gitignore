@@ -21,3 +21,9 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Sanity generated files
+.sanity/
+
+# Build output
+dist/

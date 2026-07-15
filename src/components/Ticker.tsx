@@ -3,8 +3,8 @@
 const INFO = [
   "Yesterday's News",
   "441 Court Street, Brooklyn, NY 11231",
-  "Tues–Fri 10am–5:45pm",
-  "Sat & Sun 9:30am–5:30pm",
+  "Tues–Fri 10am–5:30pm",
+  "Sat & Sun 9:45am–5:15pm",
   "yesterdaysnews1@gmail.com",
   "(718) 875-0900",
 ];
