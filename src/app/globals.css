@@ -10,10 +10,17 @@
   --color-foreground: var(--foreground);
 }
 
-html, body {
+html {
+  background: #f6e6c9;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+body {
   background: #f6e6c9;
   color: var(--foreground);
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 .about-image-wrapper {
