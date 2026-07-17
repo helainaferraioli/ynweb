@@ -117,8 +117,9 @@ export default function SiteHeader() {
       >
         {/* Announcement stripe */}
         <div className="flex items-center justify-center py-3 px-4" style={{ backgroundColor: "#f6e6c9" }}>
-          <p className="text-black text-xs font-medium tracking-wide text-center">
-            Visit us Tues–Fri 10am–5:45pm &nbsp;//&nbsp; Sat &amp; Sun 9:30am–5:30pm
+          <p className="text-black text-xs font-medium tracking-normal md:tracking-wide text-center">
+            <span className="md:hidden">Tues–Fri 10am–5:45pm &nbsp;//&nbsp; Weekend 9:30am–5:30pm</span>
+            <span className="hidden md:inline">Visit us Tues–Fri 10am–5:45pm &nbsp;//&nbsp; Sat &amp; Sun 9:30am–5:30pm</span>
           </p>
         </div>
 
