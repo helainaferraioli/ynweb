@@ -27,6 +27,9 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
     const container = containerRef.current;
     if (!video || !container) return;
 
+    // Pause immediately so autoPlay doesn't fire all videos at once
+    video.pause();
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -66,7 +69,7 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
         ref={videoRef}
         src={post.media_url}
         poster={post.thumbnail_url}
-        muted loop playsInline
+        autoPlay muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
       />
     </a>
