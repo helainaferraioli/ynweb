@@ -27,9 +27,6 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
     const container = containerRef.current;
     if (!video || !container) return;
 
-    // Pause immediately so autoPlay doesn't fire all videos at once
-    video.pause();
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -60,7 +57,7 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-none relative overflow-hidden w-[220px] md:w-[288px] aspect-[9/13] md:aspect-[9/16]"
+      className="flex-none relative overflow-hidden w-[220px] md:w-[288px] aspect-[9/13] md:aspect-[9/16] bg-[#1a0a0e]"
       style={{ ...(dark && { border: "2px solid #FFB81C" }) }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -69,7 +66,7 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
         ref={videoRef}
         src={post.media_url}
         poster={post.thumbnail_url}
-        autoPlay muted loop playsInline
+        muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
       />
     </a>
