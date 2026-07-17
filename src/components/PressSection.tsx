@@ -59,7 +59,7 @@ export default function PressSection() {
   }, []);
 
   return (
-    <section style={{ backgroundColor: "#FFB81C" }} className="py-12 px-10 overflow-hidden">
+    <section style={{ backgroundColor: "#FFB81C" }} className="pt-16 pb-12 md:py-12 px-10 overflow-hidden">
       <p className="text-xs font-bold tracking-[0.2em] uppercase mb-8 max-w-6xl mx-auto" style={{ color: "#3a2010" }}>
         In The Press
       </p>
@@ -73,7 +73,7 @@ export default function PressSection() {
               href={f.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center text-center gap-4 group bg-white px-8 py-7"
+              className="flex flex-col items-center justify-center text-center gap-4 group bg-white px-8 py-4 md:py-7"
               style={{
                 opacity: fired ? 1 : 0,
                 transform: fired ? "translate(0,0) scale(1)" : startTransforms[i],

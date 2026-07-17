@@ -239,7 +239,7 @@ export default function ProductDetail({
             </p>
             <p className="font-serif text-sm leading-relaxed" style={{ color: "#3a2010" }}>
               This item is available for pickup at our Carroll Gardens shop.
-              Tue–Fri 10am–5:30pm · Sat–Sun 9:45am–5:15pm · Mon closed.
+              Tue–Fri 10am–5:45pm · Sat–Sun 9:30am–5:30pm · Mon closed.
             </p>
           </div>
 

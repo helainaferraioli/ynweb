@@ -19,8 +19,8 @@ type Schedule = { startH: number; startM: number; lastH: number; lastM: number }
 
 function getDaySchedule(dow: number): Schedule | null {
   if (dow === 1) return null; // Monday closed
-  if (dow >= 2 && dow <= 5) return { startH: 10, startM: 0,  lastH: 17, lastM: 0  }; // Tue–Fri
-  return                           { startH: 9,  startM: 45, lastH: 16, lastM: 45 }; // Sat–Sun
+  if (dow >= 2 && dow <= 5) return { startH: 10, startM: 0,  lastH: 17, lastM: 15 }; // Tue–Fri
+  return                           { startH: 9,  startM: 30, lastH: 17, lastM: 0  }; // Sat–Sun
 }
 
 function generateSlots(s: Schedule): string[] {
@@ -173,7 +173,7 @@ export default function ScheduleClient({ productId, productTitle, price, qty, pa
         >
           <p className="font-serif text-base leading-relaxed" style={{ color: "#1a0a0e" }}>
             We&apos;ll hold your item through the end of this week. You can come in any time we&apos;re open —
-            Tue–Fri 10am–5:30pm or Sat–Sun 9:45am–5:15pm.
+            Tue–Fri 10am–5:45pm or Sat–Sun 9:30am–5:30pm.
           </p>
         </div>
       )}

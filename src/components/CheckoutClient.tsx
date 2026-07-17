@@ -144,7 +144,7 @@ function CheckoutForm({ product, qty }: { product: Product; qty: number }) {
         className="font-serif text-xs leading-relaxed text-center"
         style={{ color: "#3a2010" }}
       >
-        Pickup only · Carroll Gardens · Tue–Fri 10am–5:30pm · Sat–Sun 9:45am–5:15pm
+        Pickup only · Carroll Gardens · Tue–Fri 10am–5:45pm · Sat–Sun 9:30am–5:30pm
       </p>
 
     </form>
@@ -336,9 +336,9 @@ export default function CheckoutClient({
               >
                 Carroll Gardens, Brooklyn
                 <br />
-                Tue–Fri 10am–5:30pm
+                Tue–Fri 10am–5:45pm
                 <br />
-                Sat–Sun 9:45am–5:15pm
+                Sat–Sun 9:30am–5:30pm
               </p>
             </div>
           </div>

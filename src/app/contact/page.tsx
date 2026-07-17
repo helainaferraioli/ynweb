@@ -102,8 +102,8 @@ export default function Contact() {
                 </span>
                 <div className="font-serif text-base leading-relaxed" style={{ color: "#1a0a0e" }}>
                   <p>Monday: Closed</p>
-                  <p>Tuesday–Friday: 10am–5:30pm</p>
-                  <p>Saturday–Sunday: 9:45am–5:15pm</p>
+                  <p>Tuesday–Friday: 10am–5:45pm</p>
+                  <p>Saturday–Sunday: 9:30am–5:30pm</p>
                 </div>
               </div>
 

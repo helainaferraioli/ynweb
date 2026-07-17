@@ -11,8 +11,19 @@
 }
 
 body {
-  background: var(--background);
+  background: #1a0a0e;
   color: var(--foreground);
+}
+
+.about-image-wrapper {
+  height: 320px;
+}
+
+@media (min-width: 768px) {
+  .about-image-wrapper {
+    height: auto !important;
+    min-height: 420px;
+  }
 }
 
 @keyframes fadeIn {

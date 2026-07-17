@@ -137,7 +137,7 @@ export default async function ConfirmationPage({
                 {formatDate(order.pickup_date)} at {formatSlot(order.pickup_slot)}
               </p>
               <p className="font-serif text-sm mt-1" style={{ color: "#3a2010" }}>
-                441 Court Street, Brooklyn, NY 11231
+                428 Court Street, Brooklyn, NY 11231
               </p>
             </>
           ) : order?.pickup_type === "flexible" ? (
@@ -146,14 +146,14 @@ export default async function ConfirmationPage({
                 Anytime through {formatDeadline(order.pickup_deadline)}
               </p>
               <p className="font-serif text-sm mt-1" style={{ color: "#3a2010" }}>
-                441 Court Street · Mon closed · Tue–Fri 10am–5:30pm · Sat–Sun 9:45am–5:15pm
+                428 Court Street · Mon closed · Tue–Fri 10am–5:45pm · Sat–Sun 9:30am–5:30pm
               </p>
             </>
           ) : (
             <p className="font-serif text-sm" style={{ color: "#3a2010" }}>
-              441 Court Street, Brooklyn, NY 11231
+              428 Court Street, Brooklyn, NY 11231
               <br />
-              Mon closed · Tue–Fri 10am–5:30pm · Sat–Sun 9:45am–5:15pm
+              Mon closed · Tue–Fri 10am–5:45pm · Sat–Sun 9:30am–5:30pm
             </p>
           )}
         </div>

@@ -5,27 +5,43 @@ import Image from "next/image";
 
 export default function AboutSection() {
   const ref = useRef<HTMLElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
   const [fired, setFired] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setFired(true); },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    let observer: IntersectionObserver;
+    const raf = requestAnimationFrame(() => {
+      observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setFired(true); },
+        { threshold: 0 }
+      );
+      if (buttonRef.current) observer.observe(buttonRef.current);
+    });
+    return () => {
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
   }, []);
 
   return (
-    <section ref={ref} className="flex flex-col md:flex-row min-h-[580px] overflow-visible">
-      <div className="relative md:w-1/2 min-h-[420px]">
+    <section ref={ref} className="flex flex-col md:flex-row md:min-h-[580px] overflow-visible">
+      <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px" }}>
         <Image
           src="/family-photo-1.jpg"
           alt="The Ferraioli family outside Yesterday's News"
           fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
-          style={{ objectPosition: "center 68%" }}
+          style={{ objectPosition: "center 80%" }}
         />
+        <a
+          href="/about"
+          className="md:hidden absolute bottom-6 left-1/2 -translate-x-1/2 inline-block text-sm font-bold tracking-widest uppercase px-8 py-3 text-white z-10 whitespace-nowrap"
+          style={{ backgroundColor: "#971B2E" }}
+        >
+          Dive Deeper
+        </a>
       </div>
 
       <div
@@ -37,24 +53,22 @@ export default function AboutSection() {
           src="/illustration-corner.svg"
           alt=""
           aria-hidden="true"
+          className="w-[88px] md:w-[170px]"
           style={{
             position: "absolute",
             bottom: 0,
             right: "2rem",
-            width: 170,
             zIndex: 10,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,
-            transition: fired
-              ? "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s"
-              : "none",
+            transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
           }}
         />
 
         <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
           Our Story
         </span>
-        <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
+        <h2 className="font-serif text-[1.6rem] md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
           A family business.<br />
           <em style={{ color: "#971B2E" }}>A Brooklyn institution.</em>
         </h2>
@@ -66,10 +80,10 @@ export default function AboutSection() {
             and a second generation behind the counter.
           </p>
         </div>
-        <div>
+        <div ref={buttonRef}>
           <a
             href="/about"
-            className="inline-block text-sm font-bold tracking-widest uppercase px-8 py-3 text-white transition-opacity hover:opacity-80"
+            className="hidden md:inline-block text-sm font-bold tracking-widest uppercase px-8 py-3 text-white transition-opacity hover:opacity-80"
             style={{ backgroundColor: "#971B2E" }}
           >
             Dive Deeper

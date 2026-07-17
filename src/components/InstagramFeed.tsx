@@ -20,25 +20,49 @@ const TILE_COLORS = [
 
 function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [hovering, setHovering] = useState(false);
+  const containerRef = useRef<HTMLAnchorElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.playbackRate = 1;
+          video.play().catch(() => {});
+          setPlaying(true);
+        } else {
+          video.pause();
+          video.currentTime = 0;
+          setPlaying(false);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   const handleMouseEnter = () => {
-    setHovering(true);
-    videoRef.current?.play();
+    if (videoRef.current) { videoRef.current.playbackRate = 1; videoRef.current.play().catch(() => {}); }
+    setPlaying(true);
   };
 
   const handleMouseLeave = () => {
-    setHovering(false);
     if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
+    setPlaying(false);
   };
 
   return (
     <a
+      ref={containerRef}
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-none relative overflow-hidden"
-      style={{ width: "288px", aspectRatio: "9/16", ...(dark && { border: "2px solid #FFB81C" }) }}
+      className="flex-none relative overflow-hidden w-[220px] md:w-[288px] aspect-[9/13] md:aspect-[9/16]"
+      style={{ ...(dark && { border: "2px solid #FFB81C" }) }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -48,19 +72,18 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
         muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* Thumbnail overlay — fades out on hover to reveal playing video */}
       {post.thumbnail_url && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={post.thumbnail_url}
           alt="Reel thumbnail"
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-          style={{ opacity: hovering ? 0 : 1 }}
+          style={{ opacity: playing ? 0 : 1 }}
         />
       )}
       <div
-        className="absolute inset-0 bg-black/0 transition-colors duration-300"
-        style={{ backgroundColor: hovering ? "rgba(0,0,0,0.2)" : "transparent" }}
+        className="absolute inset-0 transition-colors duration-300"
+        style={{ backgroundColor: playing ? "rgba(0,0,0,0.2)" : "transparent" }}
       />
     </a>
   );
@@ -72,8 +95,8 @@ function ImageTile({ post, dark }: { post: Post; dark?: boolean }) {
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-none relative group overflow-hidden"
-      style={{ width: "410px", aspectRatio: "4/5", ...(dark && { border: "2px solid #FFB81C" }) }}
+      className="flex-none relative group overflow-hidden w-[220px] md:w-[410px]"
+      style={{ aspectRatio: "4/5", ...(dark && { border: "2px solid #FFB81C" }) }}
     >
       <Image
         src={post.media_url}
@@ -111,15 +134,15 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
     <section style={{ backgroundColor: dark ? "#000000" : "#971B2E" }} className={`overflow-hidden ${dark ? "pt-4 pb-16" : "py-16"}`}>
 
       {/* Header row */}
-      {!hideHeader && <div className="flex items-start justify-between px-14 mb-10">
+      {!hideHeader && <div className="flex flex-col md:flex-row md:items-start md:justify-between px-4 md:px-14 mb-6 md:mb-10 gap-2 md:gap-0">
         <h2
-          className="font-serif italic text-5xl md:text-6xl leading-none whitespace-nowrap"
+          className="font-serif italic text-4xl md:text-6xl leading-none"
           style={{ color: "#f6e6c9" }}
         >
           Shop our feed.
         </h2>
-        <p className="font-serif text-base leading-relaxed max-w-xs text-right" style={{ color: "#f6e6c9" }}>
-          Can&apos;t make it in person? Here&apos;s a peek at what&apos;s new at the shop this week.
+        <p className="font-serif text-sm md:text-base leading-relaxed md:max-w-xs md:text-right" style={{ color: "#f6e6c9" }}>
+          Can&apos;t make it in person? Here&apos;s a peek at<br />what&apos;s new at the shop this week.
         </p>
       </div>}
 
@@ -134,7 +157,7 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
 
         <div
           ref={scrollRef}
-          className="flex items-start gap-3 overflow-x-scroll px-14"
+          className="flex items-center gap-3 overflow-x-scroll px-4 md:px-14"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
         >
           {posts?.map((post) =>
@@ -166,7 +189,7 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
       </div>
 
       {/* Follow link below gallery */}
-      <div className="px-14 mt-6">
+      <div className="px-4 md:px-14 mt-6">
         <a
           href="https://instagram.com/yesterdaysnewsbk"
           target="_blank"

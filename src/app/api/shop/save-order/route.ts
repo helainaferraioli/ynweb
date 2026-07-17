@@ -9,7 +9,7 @@ function getWeekendDeadline(): string {
   const d = new Date();
   const daysUntilSunday = d.getDay() === 0 ? 7 : 7 - d.getDay();
   d.setDate(d.getDate() + daysUntilSunday);
-  d.setHours(17, 15, 0, 0);
+  d.setHours(17, 30, 0, 0);
   return d.toISOString();
 }
 
@@ -101,10 +101,10 @@ function buyerEmailHtml({
             <tr><td style="padding:20px 20px 4px;">
               <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#971B2E;">${pickupType === "scheduled" ? "Your pickup time" : "Your pickup window"}</p>
               <p style="margin:0 0 4px;font-size:15px;font-weight:700;color:#1a0a0e;">${pickupLine}</p>
-              <p style="margin:0;font-size:13px;color:#3a2010;">441 Court Street, Brooklyn, NY 11231</p>
+              <p style="margin:0;font-size:13px;color:#3a2010;">428 Court Street, Brooklyn, NY 11231</p>
             </td></tr>
             <tr><td style="padding:0 20px 20px;">
-              <p style="margin:8px 0 0;font-size:12px;color:#3a2010;line-height:1.6;">Mon closed &nbsp;·&nbsp; Tue–Fri 10am–5:30pm &nbsp;·&nbsp; Sat–Sun 9:45am–5:15pm</p>
+              <p style="margin:8px 0 0;font-size:12px;color:#3a2010;line-height:1.6;">Mon closed &nbsp;·&nbsp; Tue–Fri 10am–5:45pm &nbsp;·&nbsp; Sat–Sun 9:30am–5:30pm</p>
             </td></tr>
           </table>
         </td></tr>
