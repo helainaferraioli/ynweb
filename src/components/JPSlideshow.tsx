@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const photos = [
-  { src: "/images/about/1970s%20Prospect%20Park.png",    position: "center 65%" },
-  { src: "/images/about/1983%20President%20Street.png",  position: "center top" },
-  { src: "/images/about/1990s%20Collection%20Room.png",   position: "center 10%" },
-  { src: "/images/about/Dad%20Collection%20Room%202.png", position: "center top" },
+  { src: "/images/about/1970s%20Prospect%20Park.png",    position: "center 80%" },
+  { src: "/images/about/1983%20President%20Street.png",  position: "center 40%" },
+  { src: "/images/about/1990s%20Collection%20Room.png",   position: "center 65%" },
+  { src: "/images/about/Dad%20Collection%20Room%202.png", position: "center 65%" },
 ];
 
 export default function JPSlideshow() {

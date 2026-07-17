@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.vercel/
+.git/
+dist/
+docs/
+*.tsbuildinfo
+package-lock.json
+.DS_Store
+dad&craigwhite.png
+Untitled
+public/

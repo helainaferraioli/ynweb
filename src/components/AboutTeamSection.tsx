@@ -31,7 +31,7 @@ function TeamCard({
   return (
     <div
       ref={ref}
-      className="flex flex-col flex-1 min-w-0"
+      className="flex flex-col"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(36px)",
@@ -67,18 +67,10 @@ function TeamCard({
 export default function AboutTeamSection() {
   return (
     <section
-      className="flex flex-col items-center py-20 px-8 gap-14"
+      className="flex flex-col items-center pt-2 pb-8 px-8 gap-14"
       style={{ backgroundColor: "#f6e6c9" }}
     >
-      <div className="flex flex-col items-center gap-3 text-center">
-        <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
-          The People Behind It
-        </span>
-        <h2 className="font-serif text-3xl md:text-4xl font-bold" style={{ color: "#1a0a0e" }}>
-          Meet Our Family
-        </h2>
-      </div>
-      <div className="flex gap-4 w-full max-w-6xl">
+      <div className="grid grid-cols-2 gap-4 w-full max-w-6xl">
         {team.map((m, i) => (
           <TeamCard key={m.src} {...m} delay={i * 150} />
         ))}

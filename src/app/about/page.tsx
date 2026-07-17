@@ -11,22 +11,19 @@ export default function About() {
     <main className="flex flex-col">
 
       {/* ── Hero ── */}
-      <section id="brooklyn-story" className="relative w-full" style={{ height: "72vh" }}>
+      <section id="brooklyn-story" className="relative w-full aspect-[16/9] mt-[100px] md:mt-0 md:h-[72vh] md:aspect-auto overflow-hidden">
         <Image
           src="/images/Hero%20Image.webp"
           alt="Yesterday's News"
           fill
-          className="object-cover"
+          className="object-cover scale-125"
           style={{ objectPosition: "center 10%" }}
           priority
         />
         <div className="absolute inset-0 bg-black/40" />
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ paddingTop: "120px" }}
-        >
+        <div className="absolute inset-0 flex items-center justify-center md:pt-[120px]">
           <h1
-            className="font-serif text-5xl md:text-7xl text-white"
+            className="font-serif text-2xl md:text-7xl text-white text-center"
             style={{
               animation: "fadeIn 1.4s ease forwards",
               opacity: 0,
@@ -41,57 +38,61 @@ export default function About() {
 
       {/* ── Intro ── */}
       <FadeIn>
-        <section className="py-20 px-10" style={{ backgroundColor: "#f6e6c9" }}>
+        <section className="py-10 md:py-20 px-10" style={{ backgroundColor: "#f6e6c9" }}>
           <p
-            className="font-serif text-lg md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
+            className="font-serif text-sm md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
             style={{ color: "#3a2010" }}
           >
             Yesterday&apos;s News is a family-owned and operated vintage shop, now entering our
-            25th year as one of New York City&apos;s longest-standing vintage institutions. Our story
-            begins in the heart of Italian-American Brooklyn, right here in Carroll Gardens, where
-            my dad began collecting vintage at just ten years old.
+            25th year as one of NYC&apos;s longest-standing vintage institutions. Our story
+            begins right here in Carroll Gardens, where my dad began collecting vintage at just ten years old.
           </p>
         </section>
       </FadeIn>
 
       {/* ── JP Story ── */}
       <FadeIn>
-        <section className="flex flex-col md:flex-row">
+        <section className="flex flex-col lg:flex-row">
 
           {/* Text LEFT on red */}
           <div
-            className="flex flex-col justify-center gap-5 px-10 py-20 md:w-[55%]"
+            className="flex flex-col lg:justify-center lg:gap-5 lg:px-10 lg:py-20 lg:w-[55%]"
             style={{ backgroundColor: "#971B2E" }}
           >
-            <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
-              It Started in Brooklyn
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
-              Meet my Dad, JP
-            </h2>
+            {/* Label + heading */}
+            <div className="flex flex-col gap-5 px-10 pt-10 pb-4 lg:p-0">
+              <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
+                It Started in Brooklyn
+              </span>
+              <h2 className="font-serif text-4xl lg:text-5xl leading-tight text-white">
+                Meet my Dad, JP
+              </h2>
+            </div>
+            {/* Slideshow — full width below heading on mobile/tablet */}
+            <div className="relative lg:hidden" style={{ height: "260px" }}>
+              <JPSlideshow />
+            </div>
+            {/* Paragraphs */}
             <div
-              className="flex flex-col gap-5 font-serif text-base md:text-lg leading-relaxed max-w-lg"
+              className="flex flex-col gap-5 font-serif text-base lg:text-lg leading-relaxed max-w-lg px-10 py-8 lg:p-0"
               style={{ color: "#FFCCCC" }}
             >
               <p>
                 JP Ferraioli grew up on President Street in Carroll Gardens, Brooklyn — here,
-                siblings, parents, aunts, uncles, grandparents, friends, and playground rivals
-                all lived harmoniously within the grid of a humming working-class neighborhood.
+                friends, family, and neighbors all lived harmoniously within the grid of a humming working-class neighborhood.
               </p>
               <p>
                 At ten, his grandmother gave him his first taste of vintage: a 1940s Coca-Cola tray.
               </p>
               <p>
-                From that day forward, a voracious appetite for collecting developed alongside a
-                deep nostalgia for well-made, heart-led craftsmanship. After a career with the
-                city, this passion eventually drove my dad to open a shop in the neighborhood
+                From that day forward, he developed a voracious appetite for collecting. After a decades-long career with the city of New York, this passion eventually drove my dad to open a shop in the neighborhood
                 where it all began.
               </p>
             </div>
           </div>
 
-          {/* Photo slideshow RIGHT */}
-          <div className="relative md:w-[45%]" style={{ minHeight: "500px" }}>
+          {/* Photo slideshow RIGHT — desktop only */}
+          <div className="relative hidden lg:block lg:w-[45%]" style={{ minHeight: "333px" }}>
             <JPSlideshow />
           </div>
         </section>
@@ -121,7 +122,7 @@ export default function About() {
               The Ferraioli Family
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
-              Our Family
+              Meet our Family
             </h2>
             <div
               className="flex flex-col gap-5 font-serif text-base md:text-lg leading-relaxed max-w-sm"
@@ -132,11 +133,7 @@ export default function About() {
                 same faces, just a new generation behind the counter.
               </p>
               <p>
-                Just like in days of old, what keeps a place like ours alive isn&apos;t just
-                passion, though we have plenty of that. It&apos;s a daily commitment to show up
-                the way mom and pop shops across the city once did, making sure everyone who
-                walks through the door — whether they&apos;re buying, browsing, or just passing
-                time — leaves feeling like they found something special.
+                Just like in days of old, what keeps a place like ours alive isn&apos;t just passion (though we&apos;ve got plenty of that). It&apos;s a commitment to making sure that everyone who walks through the door – whether they&apos;re buying, browsing, or just passing time – leaves feeling like they found something special.
               </p>
             </div>
           </div>
@@ -156,7 +153,7 @@ export default function About() {
             style={{ backgroundColor: "#971B2E" }}
           >
             <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
-              Court Street, Brooklyn
+              Brooklyn&apos;s Vintage Destination
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
               The Shop
@@ -166,14 +163,13 @@ export default function About() {
               style={{ color: "#FFCCCC" }}
             >
               <p>
-                Yesterday&apos;s News is not your average vintage shop. Step inside and
-                you&apos;ll find yourself somewhere between a treasure hunt and a time capsule
+                Step inside Yesterday&apos;s News and you&apos;ll find yourself somewhere between a treasure hunt and a time capsule
                 — where the past is always turning up something new.
               </p>
               <p>
                 Whether it&apos;s a pair of 1980s costume jewelry earrings for your anniversary
-                dinner, a plant stand where you nurture your first basil plant in a narrow strip
-                of Brooklyn sunlight, or a midcentury dresser meant to hold your growing wardrobe
+                dinner, a plant stand where you nurture your first herb garden in a narrow strip
+                of Brooklyn sunlight, or a mid-century dresser meant to hold your growing wardrobe
                 — there&apos;s a piece here for you.
               </p>
               <p>
@@ -194,7 +190,7 @@ export default function About() {
       <FadeIn>
         <section className="pt-10 pb-4 px-10 text-center" style={{ backgroundColor: "#000000" }}>
           <h2
-            className="font-serif text-5xl md:text-7xl text-white"
+            className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap"
           >
             See What&apos;s New
           </h2>
