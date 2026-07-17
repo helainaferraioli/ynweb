@@ -10,9 +10,10 @@
   --color-foreground: var(--foreground);
 }
 
-body {
-  background: #1a0a0e;
+html, body {
+  background: #f6e6c9;
   color: var(--foreground);
+  overflow-x: hidden;
 }
 
 .about-image-wrapper {
