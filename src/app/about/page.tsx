@@ -16,7 +16,7 @@ export default function About() {
           src="/images/Hero%20Image.webp"
           alt="Yesterday's News"
           fill
-          className="object-cover scale-125"
+          className="object-cover scale-125 md:scale-100"
           style={{ objectPosition: "center 10%" }}
           priority
         />

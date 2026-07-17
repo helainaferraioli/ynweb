@@ -70,7 +70,7 @@ export default function AboutTeamSection() {
       className="flex flex-col items-center pt-2 pb-8 px-8 gap-14"
       style={{ backgroundColor: "#f6e6c9" }}
     >
-      <div className="grid grid-cols-2 gap-4 w-full max-w-6xl">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl">
         {team.map((m, i) => (
           <TeamCard key={m.src} {...m} delay={i * 150} />
         ))}
