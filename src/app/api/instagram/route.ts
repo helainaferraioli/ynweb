@@ -9,7 +9,7 @@ export async function GET() {
 
   const res = await fetch(
     `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&limit=24&access_token=${token}`,
-    { next: { revalidate: 3600 } }
+    { next: { revalidate: 300 } }
   );
 
   if (!res.ok) {

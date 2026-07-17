@@ -21,7 +21,6 @@ const TILE_COLORS = [
 function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLAnchorElement>(null);
-  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -58,30 +57,27 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-none relative overflow-hidden w-[220px] md:w-[288px] aspect-[9/13] md:aspect-[9/16] bg-[#1a0a0e]"
+      className="flex-none relative overflow-hidden w-[220px] md:w-[288px] aspect-[9/13] md:aspect-[9/16] bg-[#111]"
       style={{ ...(dark && { border: "2px solid #FFB81C" }) }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {videoFailed ? (
-        post.thumbnail_url && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={post.thumbnail_url}
-            alt="Instagram Reel"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )
-      ) : (
-        <video
-          ref={videoRef}
-          src={post.media_url}
-          poster={post.thumbnail_url}
-          muted loop playsInline
-          onError={() => setVideoFailed(true)}
+      {/* Persistent thumbnail underneath — always visible if video fails or hasn't loaded */}
+      {post.thumbnail_url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={post.thumbnail_url}
+          alt="Instagram Reel"
           className="absolute inset-0 w-full h-full object-cover"
         />
       )}
+      {/* Video on top — transparent until playing, covers thumbnail when it has frames */}
+      <video
+        ref={videoRef}
+        src={post.media_url}
+        muted loop playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
     </a>
   );
 }
