@@ -21,17 +21,11 @@ const TILE_COLORS = [
 function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLAnchorElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     const container = containerRef.current;
     if (!video || !container) return;
-
-    const handlePlaying = () => setPlaying(true);
-    const handlePause = () => setPlaying(false);
-    video.addEventListener("playing", handlePlaying);
-    video.addEventListener("pause", handlePause);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,12 +40,7 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       { threshold: 0.5 }
     );
     observer.observe(container);
-
-    return () => {
-      observer.disconnect();
-      video.removeEventListener("playing", handlePlaying);
-      video.removeEventListener("pause", handlePause);
-    };
+    return () => observer.disconnect();
   }, []);
 
   const handleMouseEnter = () => {
@@ -76,21 +65,9 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       <video
         ref={videoRef}
         src={post.media_url}
+        poster={post.thumbnail_url}
         muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
-      />
-      {post.thumbnail_url && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={post.thumbnail_url}
-          alt="Reel thumbnail"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-          style={{ opacity: playing ? 0 : 1 }}
-        />
-      )}
-      <div
-        className="absolute inset-0 transition-colors duration-300"
-        style={{ backgroundColor: playing ? "rgba(0,0,0,0.2)" : "transparent" }}
       />
     </a>
   );
