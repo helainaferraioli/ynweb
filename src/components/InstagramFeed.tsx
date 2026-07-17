@@ -21,6 +21,7 @@ const TILE_COLORS = [
 function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLAnchorElement>(null);
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -62,13 +63,25 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <video
-        ref={videoRef}
-        src={post.media_url}
-        poster={post.thumbnail_url}
-        muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {videoFailed ? (
+        post.thumbnail_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.thumbnail_url}
+            alt="Instagram Reel"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )
+      ) : (
+        <video
+          ref={videoRef}
+          src={post.media_url}
+          poster={post.thumbnail_url}
+          muted loop playsInline
+          onError={() => setVideoFailed(true)}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
     </a>
   );
 }
