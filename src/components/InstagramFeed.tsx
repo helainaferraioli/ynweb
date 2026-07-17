@@ -27,32 +27,39 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
     const video = videoRef.current;
     const container = containerRef.current;
     if (!video || !container) return;
+
+    const handlePlaying = () => setPlaying(true);
+    const handlePause = () => setPlaying(false);
+    video.addEventListener("playing", handlePlaying);
+    video.addEventListener("pause", handlePause);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           video.playbackRate = 1;
           video.play().catch(() => {});
-          setPlaying(true);
         } else {
           video.pause();
           video.currentTime = 0;
-          setPlaying(false);
         }
       },
       { threshold: 0.5 }
     );
     observer.observe(container);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("pause", handlePause);
+    };
   }, []);
 
   const handleMouseEnter = () => {
     if (videoRef.current) { videoRef.current.playbackRate = 1; videoRef.current.play().catch(() => {}); }
-    setPlaying(true);
   };
 
   const handleMouseLeave = () => {
     if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
-    setPlaying(false);
   };
 
   return (
