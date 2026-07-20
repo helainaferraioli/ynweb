@@ -12,34 +12,44 @@ export default function Contact() {
 
       {/* ── Hero ── */}
       <section
-        className="flex flex-col md:flex-row"
-        style={{ backgroundColor: "#f6e6c9", marginTop: "130px" }}
+        className="flex flex-col md:flex-row mt-[100px] md:mt-[130px]"
+        style={{ backgroundColor: "#f6e6c9" }}
       >
-        {/* Copy LEFT */}
-        <div
-          className="flex flex-col justify-center px-14 py-24 md:w-1/2"
-          style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s" }}
-        >
-          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
-            Get in Touch
-          </span>
-          <h1 className="font-serif text-4xl md:text-5xl leading-tight mt-4 mb-4" style={{ color: "#1a0a0e" }}>
-            Contact Us
-          </h1>
-          <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#3a2010" }}>
-            We&apos;re easy to reach. Whether you spotted something in the window, have a question about the shop, or just want to say hi — we&apos;re here. Reach us by phone, Instagram, or the form below.
-          </p>
-        </div>
-
-        {/* Map texture RIGHT */}
-        <div className="relative md:w-1/2 min-h-[320px]">
+        {/* Photo — first on mobile, right on desktop */}
+        <div className="relative order-first md:order-last md:w-1/2 min-h-[65vw] md:min-h-[320px]">
           <Image
             src="/images/contact/Map%20texture%20copy.jpeg"
             alt=""
             fill
             className="object-cover"
-            sizes="50vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
           />
+          {/* Bottom vignette — mobile only */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/2 md:hidden pointer-events-none"
+            style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%)" }}
+          />
+          {/* H1 overlaid at bottom — mobile only */}
+          <div className="absolute inset-x-0 bottom-0 px-6 pb-6 z-10 md:hidden">
+            <h1 className="font-serif text-3xl text-white leading-tight">Contact Us</h1>
+          </div>
+        </div>
+
+        {/* Copy — below photo on mobile, left on desktop */}
+        <div
+          className="order-last md:order-first flex flex-col justify-center gap-4 px-6 py-8 md:px-14 md:py-24 md:w-1/2"
+          style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s" }}
+        >
+          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
+            Get in Touch
+          </span>
+          <h1 className="hidden md:block font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
+            Contact Us
+          </h1>
+          <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#3a2010" }}>
+            We&apos;re easy to reach. Whether you spotted something in the window, have a question about the shop, or just want to say hi — we&apos;re here. Reach us by phone, Instagram, or the form below.
+          </p>
         </div>
       </section>
 
@@ -51,12 +61,12 @@ export default function Contact() {
           <div className="flex flex-col md:w-1/2" style={{ backgroundColor: "#971B2E" }}>
 
             {/* Form */}
-            <div className="flex flex-col gap-8 px-14 py-16">
+            <div className="flex flex-col gap-8 px-6 py-10 md:px-14 md:py-16">
               <div className="flex flex-col gap-3">
                 <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                   Send a Message
                 </span>
-                <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
+                <h2 className="font-serif text-3xl md:text-5xl leading-tight text-white">
                   We&apos;d love to hear from you.
                 </h2>
               </div>
@@ -65,7 +75,7 @@ export default function Contact() {
 
             {/* Store info */}
             <div
-              className="flex flex-col gap-8 px-14 py-12"
+              className="flex flex-col gap-8 px-6 py-10 md:px-14 md:py-12"
               style={{ backgroundColor: "#f6e6c9", borderTop: "1px solid #c4a882" }}
             >
               <div className="flex flex-col gap-2">
@@ -135,7 +145,7 @@ export default function Contact() {
           </div>
 
           {/* Right — map, full height */}
-          <div className="relative md:w-1/2" style={{ minHeight: "500px" }}>
+          <div className="relative md:w-1/2" style={{ minHeight: "320px" }}>
             <iframe
               src={MAP_SRC}
               width="100%"
