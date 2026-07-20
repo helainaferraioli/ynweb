@@ -36,34 +36,43 @@ export default async function Shop() {
   return (
     <main className="flex flex-col">
 
-      {/* Hero */}
-      <section
-        className="px-14 py-20"
-        style={{ backgroundColor: "#f6e6c9", marginTop: "130px" }}
-      >
-        <div style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s" }}>
-          <span
-            className="text-xs font-bold tracking-[0.2em] uppercase"
-            style={{ color: "#971B2E" }}
-          >
-            The Shop
-          </span>
-          <h1
-            className="font-serif text-4xl md:text-5xl leading-tight mt-4"
-            style={{ color: "#1a0a0e" }}
-          >
-            What&apos;s in the shop this week.
-          </h1>
-        </div>
-      </section>
-
-      {/* Product grid */}
+      {/* Hero / Product grid */}
       <FadeIn>
-        <section className="px-10 md:px-14 py-16" style={{ backgroundColor: "#f6e6c9" }}>
+        <section
+          className="px-10 md:px-14"
+          style={{ backgroundColor: "#f6e6c9", marginTop: "130px", paddingTop: products.length > 0 ? "3rem" : "0", paddingBottom: "4rem" }}
+        >
+          {products.length > 0 && (
+            <div className="mb-8" style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s" }}>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
+                The Shop
+              </span>
+              <h1 className="font-serif text-4xl md:text-5xl leading-tight mt-4" style={{ color: "#1a0a0e" }}>
+                What&apos;s in the shop this week.
+              </h1>
+            </div>
+          )}
           {products.length === 0 ? (
-            <p className="font-serif text-lg" style={{ color: "#3a2010" }}>
-              New items dropping soon — check back shortly.
-            </p>
+            <div className="flex flex-col items-center text-center gap-8 py-16 md:py-24">
+              <Image src="/dice.png" alt="" width={140} height={140} />
+              <div className="flex flex-col gap-3 max-w-sm">
+                <h2 className="font-serif text-2xl md:text-4xl leading-tight whitespace-nowrap" style={{ color: "#1a0a0e" }}>
+                  New items dropping soon.
+                </h2>
+                <p className="font-serif text-base leading-relaxed" style={{ color: "#3a2010" }}>
+                  We&apos;re curating our first online drop. Follow us on Instagram to be the first to know when it goes live.
+                </p>
+              </div>
+              <a
+                href="https://instagram.com/yesterdaysnewsbk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-bold tracking-widest uppercase px-8 py-3 text-white transition-opacity hover:opacity-85"
+                style={{ backgroundColor: "#971B2E" }}
+              >
+                Follow @yesterdaysnewsbk
+              </a>
+            </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product) => {

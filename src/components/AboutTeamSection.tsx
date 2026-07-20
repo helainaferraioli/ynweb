@@ -67,10 +67,13 @@ function TeamCard({
 export default function AboutTeamSection() {
   return (
     <section
-      className="flex flex-col items-center pt-2 pb-8 px-8 gap-14"
+      className="flex flex-col items-center pt-2 pb-8 px-8 md:px-14 gap-14"
       style={{ backgroundColor: "#f6e6c9" }}
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-6xl">
+      <h2 className="hidden md:block font-serif text-4xl w-full mt-8 -mb-8" style={{ color: "#1a0a0e" }}>
+        The faces behind the magic
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
         {team.map((m, i) => (
           <TeamCard key={m.src} {...m} delay={i * 150} />
         ))}

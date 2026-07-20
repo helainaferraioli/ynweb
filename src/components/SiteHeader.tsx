@@ -84,7 +84,35 @@ export default function SiteHeader() {
 
         {/* Links */}
         <nav className="flex flex-col gap-8 px-6 pt-12">
-          {mobileLinks.map((l) => (
+          {/* About — expandable */}
+          <div className="flex flex-col gap-4">
+            <button
+              onClick={() => setAboutOpen((o) => !o)}
+              className="font-serif text-4xl leading-none text-left flex items-center gap-3 hover:opacity-70 transition-opacity"
+              style={{ color: "#FFB81C" }}
+            >
+              About
+              <span className="text-2xl" style={{ transform: aboutOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s ease", display: "inline-block" }}>‹</span>
+            </button>
+            {aboutOpen && (
+              <div className="flex flex-col gap-3 pl-4">
+                {aboutLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-serif text-xl leading-none hover:opacity-70 transition-opacity"
+                    style={{ color: "#FFCCCC" }}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Other links */}
+          {mobileLinks.filter((l) => l.label !== "About").map((l) => (
             <Link
               key={l.href}
               href={l.href}
