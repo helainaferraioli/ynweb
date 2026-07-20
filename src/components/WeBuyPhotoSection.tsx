@@ -74,22 +74,23 @@ export default function WeBuyPhotoSection() {
 
     observer.observe(el);
 
-    const onTouchStart = () => {
-      clearTimeout(resumeTimer);
-      stopAutoScroll();
-    };
-    const onTouchEnd = () => {
-      resumeTimer = setTimeout(startAutoScroll, 1500);
+    // Detect manual scroll (mouse wheel, trackpad, or touch) by comparing
+    // the element's actual scrollLeft against where auto-scroll put it
+    const onScroll = () => {
+      if (Math.abs(el.scrollLeft - autoPos) > 10) {
+        clearTimeout(resumeTimer);
+        stopAutoScroll();
+        resumeTimer = setTimeout(startAutoScroll, 1500);
+      }
     };
 
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    el.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       observer.disconnect();
       stopAutoScroll();
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchend", onTouchEnd);
+      clearTimeout(resumeTimer);
+      el.removeEventListener("scroll", onScroll);
     };
   }, []);
 
