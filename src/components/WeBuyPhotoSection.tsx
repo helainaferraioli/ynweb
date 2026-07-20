@@ -21,57 +21,63 @@ const WE_BUY_CATEGORIES = [
 export default function WeBuyPhotoSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number | null>(null);
-  const touchingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Step 1: detect mobile
   useEffect(() => {
-    const mobile = window.innerWidth < 768;
-    setIsMobile(mobile);
-    if (!mobile) return;
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Step 2: set up auto-scroll AFTER re-render with 36 items in DOM
+  useEffect(() => {
+    if (!isMobile) return;
 
     const el = scrollRef.current;
     if (!el) return;
 
-    // Start in the middle set so the user can also swipe backward
-    requestAnimationFrame(() => {
-      const setWidth = el.scrollWidth / 3;
-      el.scrollLeft = setWidth;
+    let autoPosRef = 0;
+    let resumeTimer: ReturnType<typeof setTimeout>;
 
-      let resumeTimer: ReturnType<typeof setTimeout>;
+    const startAutoScroll = () => {
+      const sw = el.scrollWidth / 3;
+      autoPosRef = el.scrollLeft;
 
-      const startAutoScroll = () => {
-        const sw = el.scrollWidth / 3;
-        const step = () => {
-          el.scrollLeft += 0.5;
-          if (el.scrollLeft >= sw * 2) el.scrollLeft -= sw;
-          if (el.scrollLeft < sw * 0.05) el.scrollLeft += sw;
-          animRef.current = requestAnimationFrame(step);
-        };
+      const step = () => {
+        autoPosRef += 0.5;
+        if (autoPosRef >= sw * 2) autoPosRef -= sw;
+        if (autoPosRef < sw * 0.05) autoPosRef += sw;
+        el.scrollTo(autoPosRef, 0);
         animRef.current = requestAnimationFrame(step);
       };
+      animRef.current = requestAnimationFrame(step);
+    };
 
-      startAutoScroll();
+    // Place scroll in the middle set so user can swipe backward too
+    const sw = el.scrollWidth / 3;
+    el.scrollTo(sw, 0);
 
-      // Fully cancel the loop on touch so iOS native scroll is unimpeded
-      const onTouchStart = () => {
-        clearTimeout(resumeTimer);
-        if (animRef.current) {
-          cancelAnimationFrame(animRef.current);
-          animRef.current = null;
-        }
-      };
-      const onTouchEnd = () => {
-        resumeTimer = setTimeout(startAutoScroll, 1500);
-      };
+    startAutoScroll();
 
-      el.addEventListener("touchstart", onTouchStart, { passive: true });
-      el.addEventListener("touchend", onTouchEnd, { passive: true });
-    });
+    const onTouchStart = () => {
+      clearTimeout(resumeTimer);
+      if (animRef.current) {
+        cancelAnimationFrame(animRef.current);
+        animRef.current = null;
+      }
+    };
+    const onTouchEnd = () => {
+      resumeTimer = setTimeout(startAutoScroll, 1500);
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
 
     return () => {
       if (animRef.current) cancelAnimationFrame(animRef.current);
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchend", onTouchEnd);
     };
-  }, []);
+  }, [isMobile]);
 
   // 3 sets on mobile for seamless loop; 1 set on desktop
   const items = isMobile
