@@ -33,9 +33,11 @@ export default function WeBuyPhotoSection() {
 
     let autoPos = 0;
     let resumeTimer: ReturnType<typeof setTimeout>;
+    let hasStarted = false;
 
     const startAutoScroll = () => {
       if (animRef.current) cancelAnimationFrame(animRef.current);
+      autoPos = el.scrollLeft; // always resume from wherever the scroll currently is
       const setWidth = el.scrollWidth / 2;
 
       const step = () => {
@@ -58,9 +60,12 @@ export default function WeBuyPhotoSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Reset to Furniture every time the section comes into view
-          autoPos = 0;
-          el.scrollTo(0, 0);
+          if (!hasStarted) {
+            // First time into view: reset to Furniture
+            hasStarted = true;
+            autoPos = 0;
+            el.scrollTo(0, 0);
+          }
           startAutoScroll();
         } else {
           stopAutoScroll();
