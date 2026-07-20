@@ -26,8 +26,6 @@ export default function WeBuyPhotoSection() {
   const animRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (window.innerWidth >= 768) return;
-
     const el = scrollRef.current;
     if (!el) return;
 
