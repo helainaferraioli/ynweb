@@ -150,9 +150,6 @@ export default function WeBuyContactForm() {
               <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
                 Tell us what you have.
               </h2>
-              <p className="font-serif text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-                Prefer to talk? Call or text us at 917-375-1361 — you can send photos right to that number.
-              </p>
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
