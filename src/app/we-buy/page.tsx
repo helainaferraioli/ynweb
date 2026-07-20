@@ -102,6 +102,48 @@ export default function WeBuy() {
           style={{ objectPosition: "center 20%" }}
           sizes="100vw"
         />
+        {/* Bottom vignette */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)" }}
+        />
+        {/* Overlay text + buttons */}
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-8 z-10 flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">Prefer to Talk?</span>
+            <p className="font-serif text-xl text-white leading-snug">Call or text us directly.</p>
+          </div>
+          <div className="flex gap-4">
+            <a
+              href="tel:9173751361"
+              aria-label="Call us"
+              className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </a>
+            <a
+              href="sms:9173751361"
+              aria-label="Text us"
+              className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+              </svg>
+            </a>
+            <a
+              href="mailto:yesterdaysnews1@gmail.com"
+              aria-label="Email us"
+              className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* ── Footer ── */}
