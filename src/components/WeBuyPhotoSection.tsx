@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const WE_BUY_CATEGORIES = [
   { label: "Furniture",                      src: "/images/we%20buy/categories/Furniture.jpeg"  },
@@ -18,50 +18,29 @@ const WE_BUY_CATEGORIES = [
   { label: "Costume Jewelry",                src: "/images/we%20buy/categories/jewelry.jpg"     },
 ];
 
+function PhotoTile({ label, src }: { label: string; src: string }) {
+  return (
+    <div
+      className="flex-none relative group overflow-hidden"
+      style={{ width: "280px", aspectRatio: "3/4" }}
+    >
+      <Image src={src} alt={label} fill className="object-cover" sizes="280px" />
+      <div className="absolute inset-x-0 bottom-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+        <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
+          {label}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function WeBuyPhotoSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<number | null>(null);
-  const touchingRef = useRef(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile) return;
-
-    const speed = 0.6; // px per frame
-
-    const step = () => {
-      if (!touchingRef.current && el) {
-        el.scrollLeft += speed;
-        // Loop back to start when reaching end
-        if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) {
-          el.scrollLeft = 0;
-        }
-      }
-      animRef.current = requestAnimationFrame(step);
-    };
-
-    animRef.current = requestAnimationFrame(step);
-
-    let resumeTimer: ReturnType<typeof setTimeout>;
-    const onTouchStart = () => {
-      touchingRef.current = true;
-      clearTimeout(resumeTimer);
-    };
-    const onTouchEnd = () => {
-      resumeTimer = setTimeout(() => { touchingRef.current = false; }, 2000);
-    };
-
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchend", onTouchEnd, { passive: true });
-
-    return () => {
-      if (animRef.current) cancelAnimationFrame(animRef.current);
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchend", onTouchEnd);
-    };
+    setIsMobile(window.innerWidth < 768);
   }, []);
 
   return (
@@ -77,36 +56,49 @@ export default function WeBuyPhotoSection() {
         </p>
       </div>
 
-      {/* Horizontal scroll strip */}
-      <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-x-scroll px-10 md:px-16 pb-2"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
-      >
-        {WE_BUY_CATEGORIES.map(({ label, src }) => (
+      {isMobile ? (
+        /* CSS marquee — reliable on iOS Safari */
+        <div
+          className="overflow-hidden"
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setTimeout(() => setPaused(false), 2000)}
+        >
           <div
-            key={label}
-            className="flex-none relative group overflow-hidden"
-            style={{ width: "280px", aspectRatio: "3/4" }}
+            className="flex gap-3"
+            style={{
+              width: "max-content",
+              animation: "marquee-scroll 50s linear infinite",
+              animationPlayState: paused ? "paused" : "running",
+            }}
           >
-            <Image
-              src={src}
-              alt={label}
-              fill
-              className="object-cover"
-              sizes="280px"
-            />
-
-            {/* Caption overlay — always visible on mobile, hover on desktop */}
-            <div className="absolute inset-x-0 bottom-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-              <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
-                {label}
-              </p>
-            </div>
+            {[...WE_BUY_CATEGORIES, ...WE_BUY_CATEGORIES].map(({ label, src }, i) => (
+              <PhotoTile key={`${label}-${i}`} label={label} src={src} />
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        /* Normal horizontal scroll for desktop */
+        <div
+          className="flex gap-3 overflow-x-scroll px-10 md:px-16 pb-2"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+        >
+          {WE_BUY_CATEGORIES.map(({ label, src }) => (
+            <div
+              key={label}
+              className="flex-none relative group overflow-hidden"
+              style={{ width: "280px", aspectRatio: "3/4" }}
+            >
+              <Image src={src} alt={label} fill className="object-cover" sizes="280px" />
+              <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+                <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
+                  {label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
     </section>
   );
