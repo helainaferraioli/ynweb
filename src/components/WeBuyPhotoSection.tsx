@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const WE_BUY_CATEGORIES = [
   { label: "Furniture",                      src: "/images/we%20buy/categories/Furniture.jpeg"  },
@@ -18,30 +18,62 @@ const WE_BUY_CATEGORIES = [
   { label: "Costume Jewelry",                src: "/images/we%20buy/categories/jewelry.jpg"     },
 ];
 
-function PhotoTile({ label, src }: { label: string; src: string }) {
-  return (
-    <div
-      className="flex-none relative group overflow-hidden"
-      style={{ width: "280px", aspectRatio: "3/4" }}
-    >
-      <Image src={src} alt={label} fill className="object-cover" sizes="280px" />
-      <div className="absolute inset-x-0 bottom-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-        <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
-          {label}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export default function WeBuyPhotoSection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const animRef = useRef<number | null>(null);
+  const touchingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    const mobile = window.innerWidth < 768;
+    setIsMobile(mobile);
+    if (!mobile) return;
+
+    const el = scrollRef.current;
+    if (!el) return;
+
+    // Start in the middle set so the user can also swipe backward
+    requestAnimationFrame(() => {
+      const setWidth = el.scrollWidth / 3;
+      el.scrollLeft = setWidth;
+
+      let resumeTimer: ReturnType<typeof setTimeout>;
+
+      const step = () => {
+        if (!touchingRef.current) {
+          el.scrollLeft += 0.5;
+        }
+        // Jump between sets for seamless infinite loop
+        const sw = el.scrollWidth / 3;
+        if (el.scrollLeft >= sw * 2) el.scrollLeft -= sw;
+        if (el.scrollLeft < sw * 0.05) el.scrollLeft += sw;
+
+        animRef.current = requestAnimationFrame(step);
+      };
+
+      animRef.current = requestAnimationFrame(step);
+
+      const onTouchStart = () => {
+        touchingRef.current = true;
+        clearTimeout(resumeTimer);
+      };
+      const onTouchEnd = () => {
+        resumeTimer = setTimeout(() => { touchingRef.current = false; }, 1500);
+      };
+
+      el.addEventListener("touchstart", onTouchStart, { passive: true });
+      el.addEventListener("touchend", onTouchEnd, { passive: true });
+    });
+
+    return () => {
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
   }, []);
+
+  // 3 sets on mobile for seamless loop; 1 set on desktop
+  const items = isMobile
+    ? [...WE_BUY_CATEGORIES, ...WE_BUY_CATEGORIES, ...WE_BUY_CATEGORIES]
+    : WE_BUY_CATEGORIES;
 
   return (
     <section id="what-we-buy" className="py-10 md:py-20" style={{ backgroundColor: "#f6e6c9" }}>
@@ -56,49 +88,42 @@ export default function WeBuyPhotoSection() {
         </p>
       </div>
 
-      {isMobile ? (
-        /* CSS marquee — reliable on iOS Safari */
-        <div
-          className="overflow-hidden"
-          onTouchStart={() => setPaused(true)}
-          onTouchEnd={() => setTimeout(() => setPaused(false), 2000)}
-        >
+      {/* Scroll strip */}
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-scroll px-4 md:px-16 pb-2"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+      >
+        {items.map(({ label, src }, i) => (
           <div
-            className="flex gap-3"
+            key={`${label}-${i}`}
+            className="flex-none relative group overflow-hidden select-none"
             style={{
-              width: "max-content",
-              animation: "marquee-scroll 50s linear infinite",
-              animationPlayState: paused ? "paused" : "running",
-            }}
+              width: "280px",
+              aspectRatio: "3/4",
+              WebkitTouchCallout: "none",
+            } as React.CSSProperties}
+            onContextMenu={(e) => e.preventDefault()}
           >
-            {[...WE_BUY_CATEGORIES, ...WE_BUY_CATEGORIES].map(({ label, src }, i) => (
-              <PhotoTile key={`${label}-${i}`} label={label} src={src} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        /* Normal horizontal scroll for desktop */
-        <div
-          className="flex gap-3 overflow-x-scroll px-10 md:px-16 pb-2"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
-        >
-          {WE_BUY_CATEGORIES.map(({ label, src }) => (
-            <div
-              key={label}
-              className="flex-none relative group overflow-hidden"
-              style={{ width: "280px", aspectRatio: "3/4" }}
-            >
-              <Image src={src} alt={label} fill className="object-cover" sizes="280px" />
-              <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-                <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
-                  {label}
-                </p>
-              </div>
+            <Image
+              src={src}
+              alt={label}
+              fill
+              className="object-cover pointer-events-none"
+              sizes="280px"
+              draggable={false}
+            />
+
+            {/* Caption — always visible on mobile, hover-reveal on desktop */}
+            <div className="absolute inset-x-0 bottom-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+              <p className="relative font-serif text-white text-base leading-snug px-5 pb-5 pt-16">
+                {label}
+              </p>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
 
     </section>
   );
