@@ -54,7 +54,8 @@ export default async function Shop() {
           )}
           {products.length === 0 ? (
             <div className="flex flex-col items-center text-center gap-8 py-16 md:py-24">
-              <Image src="/Dice.png" alt="" width={140} height={140} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/Dice.png" alt="" style={{ width: 140, height: "auto" }} />
               <div className="flex flex-col gap-3 max-w-sm">
                 <h2 className="font-serif text-2xl md:text-4xl leading-tight whitespace-nowrap" style={{ color: "#1a0a0e" }}>
                   New items dropping soon.
