@@ -39,26 +39,29 @@ export default function WeBuyPhotoSection() {
 
       let resumeTimer: ReturnType<typeof setTimeout>;
 
-      const step = () => {
-        if (!touchingRef.current) {
-          el.scrollLeft += 0.5;
-        }
-        // Jump between sets for seamless infinite loop
+      const startAutoScroll = () => {
         const sw = el.scrollWidth / 3;
-        if (el.scrollLeft >= sw * 2) el.scrollLeft -= sw;
-        if (el.scrollLeft < sw * 0.05) el.scrollLeft += sw;
-
+        const step = () => {
+          el.scrollLeft += 0.5;
+          if (el.scrollLeft >= sw * 2) el.scrollLeft -= sw;
+          if (el.scrollLeft < sw * 0.05) el.scrollLeft += sw;
+          animRef.current = requestAnimationFrame(step);
+        };
         animRef.current = requestAnimationFrame(step);
       };
 
-      animRef.current = requestAnimationFrame(step);
+      startAutoScroll();
 
+      // Fully cancel the loop on touch so iOS native scroll is unimpeded
       const onTouchStart = () => {
-        touchingRef.current = true;
         clearTimeout(resumeTimer);
+        if (animRef.current) {
+          cancelAnimationFrame(animRef.current);
+          animRef.current = null;
+        }
       };
       const onTouchEnd = () => {
-        resumeTimer = setTimeout(() => { touchingRef.current = false; }, 1500);
+        resumeTimer = setTimeout(startAutoScroll, 1500);
       };
 
       el.addEventListener("touchstart", onTouchStart, { passive: true });
