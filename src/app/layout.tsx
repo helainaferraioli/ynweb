@@ -16,6 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        {/* Runs synchronously during HTML parse — before browser restores scroll */}
+        <script dangerouslySetInnerHTML={{ __html: `history.scrollRestoration = 'manual'; window.scrollTo(0, 0);` }} />
         <ScrollReset />
         <SiteHeader />
         {children}
