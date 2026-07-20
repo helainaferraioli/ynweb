@@ -129,9 +129,9 @@ export default function WeBuyContactForm() {
       {/* Form LEFT — slides in from left */}
       <div
         ref={overlayRef}
-        className="relative flex flex-col justify-center gap-8 px-14 py-16 md:w-1/2"
+        className="relative flex flex-col justify-center gap-8 px-6 md:px-14 py-10 md:py-16 md:w-1/2"
         style={{
-          backgroundColor: "rgba(0,0,0,0.78)",
+          backgroundColor: "rgba(0,0,0,0.68)",
           opacity: visible ? 1 : 0,
           transform: visible ? "translateX(0)" : "translateX(-40px)",
           transition: "opacity 0.8s ease, transform 0.8s ease",
@@ -248,7 +248,7 @@ export default function WeBuyContactForm() {
       </div>
 
       {/* Right half — photo shows through */}
-      <div className="relative md:w-1/2 min-h-[500px]" />
+      <div className="relative hidden md:block md:w-1/2 md:min-h-[500px]" />
 
     </section>
   );

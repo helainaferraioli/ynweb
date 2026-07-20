@@ -20,8 +20,8 @@ export default function WeBuyQualify() {
   return (
     <section id="qualify" className="flex flex-col md:flex-row">
 
-      {/* Photo LEFT */}
-      <div className="relative md:w-1/2 min-h-[520px]">
+      {/* Photo LEFT — desktop only */}
+      <div className="relative hidden md:block md:w-1/2 md:min-h-[520px]">
         <Image
           src="/images/we%20buy/Checklist%20photo.jpg"
           alt="JP Ferraioli at work"
@@ -34,7 +34,7 @@ export default function WeBuyQualify() {
 
       {/* Checklist RIGHT */}
       <div
-        className="flex flex-col justify-center gap-8 px-14 py-16 md:w-1/2"
+        className="flex flex-col justify-center gap-8 px-6 md:px-14 py-10 md:py-16 md:w-1/2"
         style={{ backgroundColor: "#971B2E" }}
       >
         <div className="flex flex-col gap-3">

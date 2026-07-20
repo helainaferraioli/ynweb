@@ -17,7 +17,7 @@ const WE_BUY_CATEGORIES = [
 
 export default function WeBuyPhotoSection() {
   return (
-    <section id="what-we-buy" className="py-20" style={{ backgroundColor: "#f6e6c9" }}>
+    <section id="what-we-buy" className="py-10 md:py-20" style={{ backgroundColor: "#f6e6c9" }}>
 
       {/* Header + intro */}
       <div className="flex flex-col gap-4 px-10 md:px-16 max-w-5xl mx-auto mb-12">
