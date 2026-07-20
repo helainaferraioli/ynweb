@@ -43,3 +43,8 @@ body {
   from { opacity: 0; transform: translateX(-40px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+
+@keyframes nudge-right {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(5px); }
+}
