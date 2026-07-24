@@ -69,7 +69,14 @@ export default function WeBuyContactForm() {
     const files = Array.from(e.target.files ?? []);
     if (!files.length) return;
     const remaining = 6 - photos.length;
-    const toAdd = files.slice(0, remaining);
+    const toAdd = files.slice(0, remaining).filter((f) => {
+      if (f.size > 20 * 1024 * 1024) {
+        alert(`"${f.name}" is too large (${Math.round(f.size / 1024 / 1024)}MB). Please use a standard JPEG or HEIC photo instead of ProRAW.`);
+        return false;
+      }
+      return true;
+    });
+    if (!toAdd.length) { e.target.value = ""; return; }
 
     // Show local previews immediately
     const entries: PhotoEntry[] = toAdd.map((file) => ({
