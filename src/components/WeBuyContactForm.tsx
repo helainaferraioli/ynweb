@@ -31,6 +31,7 @@ type PhotoEntry = {
 export default function WeBuyContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [photos, setPhotos] = useState<PhotoEntry[]>([]);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -69,13 +70,12 @@ export default function WeBuyContactForm() {
     const files = Array.from(e.target.files ?? []);
     if (!files.length) return;
     const remaining = 6 - photos.length;
-    const toAdd = files.slice(0, remaining).filter((f) => {
-      if (f.size > 20 * 1024 * 1024) {
-        alert(`"${f.name}" is too large (${Math.round(f.size / 1024 / 1024)}MB). Please use a standard JPEG or HEIC photo instead of ProRAW.`);
-        return false;
-      }
-      return true;
-    });
+    setUploadError(null);
+    const oversized = files.slice(0, remaining).filter((f) => f.size > 20 * 1024 * 1024);
+    const toAdd = files.slice(0, remaining).filter((f) => f.size <= 20 * 1024 * 1024);
+    if (oversized.length) {
+      setUploadError("One or more photos are too large to upload. Please use standard JPEG or HEIC photos instead of ProRAW.");
+    }
     if (!toAdd.length) { e.target.value = ""; return; }
 
     // Show local previews immediately
@@ -231,6 +231,12 @@ export default function WeBuyContactForm() {
                   </div>
                 )}
               </div>
+
+              {uploadError && (
+                <p className="font-serif text-sm" style={{ color: "#FFB81C" }}>
+                  {uploadError}
+                </p>
+              )}
 
               {status === "error" && (
                 <p className="font-serif text-sm" style={{ color: "#FFB81C" }}>
