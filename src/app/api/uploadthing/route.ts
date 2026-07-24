@@ -9,10 +9,12 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const body = await req.clone().json().catch(() => null);
+  console.log("[uploadthing] POST body", JSON.stringify(body));
   const res = await handlers.POST(req);
   if (!res.ok) {
-    const body = await res.clone().text();
-    console.error("[uploadthing] POST error", res.status, body);
+    const resBody = await res.clone().text();
+    console.error("[uploadthing] POST error", res.status, resBody);
   }
   return res;
 }
