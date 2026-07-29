@@ -173,12 +173,6 @@ export default function About() {
                 — where the past is always turning up something new.
               </p>
               <p>
-                Whether it&apos;s a pair of 1980s costume jewelry earrings for your anniversary
-                dinner, a plant stand where you nurture your first herb garden in a narrow strip
-                of Brooklyn sunlight, or a mid-century dresser meant to hold your growing wardrobe
-                — there&apos;s a piece here for you.
-              </p>
-              <p>
                 Every item in our shop is authentically vintage, sourced by hand from homes
                 across Brooklyn, Queens, and Long Island.
               </p>
@@ -194,12 +188,13 @@ export default function About() {
 
       {/* ── See What's New + Instagram ── */}
       <FadeIn>
-        <section className="pt-10 pb-4 px-10 text-center" style={{ backgroundColor: "#000000" }}>
-          <h2
-            className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap"
-          >
+        <section className="pt-10 pb-4 px-10 text-center flex flex-col gap-3" style={{ backgroundColor: "#000000" }}>
+          <h2 className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap">
             See What&apos;s New
           </h2>
+          <p className="font-serif text-base md:text-lg text-white/60">
+            Keep up with us on Instagram, posting stories daily!
+          </p>
         </section>
         <InstagramFeed hideHeader dark />
       </FadeIn>

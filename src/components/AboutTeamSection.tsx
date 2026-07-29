@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"; // useState kept for fade-in visibility
 
 const team = [
   { src: "/images/Dad%20Team%20Photo.webp",     name: "JP Ferraioli",      role: "Owner" },
@@ -17,7 +17,6 @@ function TeamCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,24 +37,10 @@ function TeamCard({
         transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
       }}
     >
-      {/* Photo */}
-      <div
-        className="relative overflow-hidden cursor-default"
-        style={{ aspectRatio: "2/3" }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
+      <div className="relative overflow-hidden" style={{ aspectRatio: "2/3" }}>
         <Image src={src} alt={name} fill className="object-cover object-top" sizes="25vw" />
-
-        {/* Hover lower-third gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
-          style={{ opacity: hovered ? 1 : 0, transition: "opacity 0.35s ease" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 right-0 pb-6 flex flex-col items-center gap-1 px-4"
-          style={{ opacity: hovered ? 1 : 0, transition: "opacity 0.35s ease" }}
-        >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 pb-6 flex flex-col items-center gap-1 px-4">
           <span className="text-white text-base font-bold tracking-wide text-center drop-shadow">{name}</span>
           <span className="text-white/75 text-xs tracking-widest uppercase text-center drop-shadow">{role}</span>
         </div>
