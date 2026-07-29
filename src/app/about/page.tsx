@@ -192,7 +192,7 @@ export default function About() {
           <h2 className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap">
             See What&apos;s New
           </h2>
-          <p className="font-serif text-base md:text-lg text-white/60">
+          <p className="font-serif text-xs md:text-lg text-white/60 whitespace-nowrap -mx-10 md:mx-0">
             Keep up with us on Instagram, posting stories daily!
           </p>
         </section>
