@@ -187,17 +187,19 @@ export default function About() {
       </FadeIn>
 
       {/* ── See What's New + Instagram ── */}
-      <FadeIn>
-        <section className="pt-10 pb-4 px-10 text-center flex flex-col gap-3" style={{ backgroundColor: "#000000" }}>
-          <h2 className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap">
-            See What&apos;s New
-          </h2>
-          <p className="font-serif text-xs md:text-lg text-white/60 whitespace-nowrap -mx-10 md:mx-0">
-            Keep up with us on Instagram, posting stories daily!
-          </p>
-        </section>
-        <InstagramFeed hideHeader dark />
-      </FadeIn>
+      <div style={{ backgroundColor: "#000000" }}>
+        <FadeIn>
+          <section className="pt-10 pb-1 px-10 text-center flex flex-col gap-3" style={{ backgroundColor: "#000000" }}>
+            <h2 className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap">
+              See what&apos;s new
+            </h2>
+            <p className="font-serif text-[13px] md:text-lg text-white/60 whitespace-nowrap -mx-10 md:mx-0">
+              Keep up with us on Instagram, posting stories daily!
+            </p>
+          </section>
+          <InstagramFeed hideHeader dark />
+        </FadeIn>
+      </div>
 
       {/* ── Footer ── */}
       <FadeIn>
