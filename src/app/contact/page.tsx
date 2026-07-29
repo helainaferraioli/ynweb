@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Yesterday's News. Visit us at 428 Court Street, Carroll Gardens, Brooklyn, or reach us by phone, email, or Instagram.",
+};
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "@/components/ContactForm";

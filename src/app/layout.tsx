@@ -3,9 +3,30 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollReset from "@/components/ScrollReset";
 
+const SITE_URL = "https://www.yesterdaysnewsbk.com";
+const SITE_NAME = "Yesterday's News";
+const DESCRIPTION = "Vintage and antique shop in Carroll Gardens, Brooklyn. Open 25 years at 428 Court Street.";
+const OG_IMAGE = `${SITE_URL}/shopfront1.jpeg`;
+
 export const metadata: Metadata = {
-  title: "Yesterday's News",
-  description: "Yesterday's News",
+  title: { default: SITE_NAME, template: `%s — ${SITE_NAME}` },
+  description: DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    siteName: SITE_NAME,
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    title: SITE_NAME,
+    description: DESCRIPTION,
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Yesterday's News storefront, 428 Court Street, Carroll Gardens, Brooklyn" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
 };
 
 export default function RootLayout({

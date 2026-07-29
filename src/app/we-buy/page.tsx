@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "We Buy",
+  description: "Selling vintage furniture or household items? Yesterday's News buys estates, collections, and more. Tell us what you have and we'll come to you.",
+};
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import CallTextButton from "@/components/CallTextButton";

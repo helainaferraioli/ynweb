@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Yesterday's News — Vintage & Antique Shop, Brooklyn",
+  description: "Brooklyn's beloved vintage and antique shop, open for 25 years at 428 Court Street in Carroll Gardens. Furniture, housewares, jewelry, clothing, and more.",
+};
 import WeBuySection from "@/components/WeBuySection";
 import AboutSection from "@/components/AboutSection";
 import PressSection from "@/components/PressSection";

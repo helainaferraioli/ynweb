@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "The story of Yesterday's News — founded by JP Ferraioli in Carroll Gardens, Brooklyn, and family-run for over 25 years.",
+};
 import FadeIn from "@/components/FadeIn";
 import Footer from "@/components/Footer";
 import AboutTeamSection from "@/components/AboutTeamSection";

@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Shop",
+  description: "Shop vintage furniture, housewares, jewelry, and more from Yesterday's News in Carroll Gardens, Brooklyn.",
+};
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
