@@ -180,7 +180,7 @@ export default function About() {
           </div>
 
           {/* Slideshow RIGHT */}
-          <div className="relative md:w-1/2" style={{ minHeight: "680px" }}>
+          <div className="relative md:w-1/2" style={{ minHeight: "680px", backgroundColor: "#000000" }}>
             <AboutSlideshow />
           </div>
         </section>

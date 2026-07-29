@@ -124,7 +124,7 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
   };
 
   return (
-    <section style={{ backgroundColor: dark ? "#000000" : "#971B2E" }} className={`overflow-hidden ${dark ? "pt-4 pb-16" : "py-16"}`}>
+    <section style={{ backgroundColor: dark ? "#000000" : "#971B2E" }} className={`overflow-hidden ${dark ? "pt-1 pb-16" : "py-16"}`}>
 
       {/* Header row */}
       {!hideHeader && <div className="flex flex-col md:flex-row md:items-start md:justify-between px-4 md:px-14 mb-6 md:mb-10 gap-2 md:gap-0">
