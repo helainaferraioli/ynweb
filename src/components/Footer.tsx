@@ -118,6 +118,9 @@ export default function Footer() {
           <p className="text-xs tracking-widest uppercase text-center" style={{ color: "#FFCCCC" }}>
             © Yesterday&apos;s News 2026. All Rights Reserved.
           </p>
+          <Link href="/policies" className="text-xs tracking-widest uppercase hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
+            Returns &amp; Privacy
+          </Link>
         </div>
 
       </div>
