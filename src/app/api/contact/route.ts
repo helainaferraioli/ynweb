@@ -27,7 +27,7 @@ ${photoLines}
 
   const { error } = await resend.emails.send({
     from: "onboarding@resend.dev",
-    to: "yesterdaysnews1@gmail.com",
+    to: "helaina.ferraioli@gmail.com",
     subject: `New We Buy Inquiry — ${name}`,
     text: body,
   });
