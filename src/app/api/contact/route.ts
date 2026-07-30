@@ -32,6 +32,9 @@ ${photoLines}
     text: body,
   });
 
-  if (error) return NextResponse.json({ error }, { status: 500 });
+  if (error) {
+    console.error("[contact] Resend error:", JSON.stringify(error));
+    return NextResponse.json({ error }, { status: 500 });
+  }
   return NextResponse.json({ ok: true });
 }
