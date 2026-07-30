@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"; // useState kept for fade-i
 
 const team = [
   { src: "/images/Dad%20Team%20Photo.webp",     name: "JP Ferraioli",      role: "Owner" },
-  { src: "/images/Mom%20Team%20Photo.webp",     name: "Colleen Ferraioli", role: "Owner" },
+  { src: "/images/Colleen%202.jpg",             name: "Colleen Ferraioli", role: "Owner" },
   { src: "/images/Helaina%20Team%20Photo.webp", name: "Helaina Ferraioli", role: "Manager" },
   { src: "/images/Craig%20Team%20Photo.webp",   name: "Craig Scotti",      role: "Employee" },
 ];
