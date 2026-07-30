@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollReset from "@/components/ScrollReset";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const SITE_URL = "https://www.yesterdaysnewsbk.com";
 const SITE_NAME = "Yesterday's News";
@@ -47,6 +48,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-QSM2WLS8NS" />
     </html>
   );
 }
