@@ -19,7 +19,7 @@ export default function Shop() {
         >
           <Image src="/Dice.png" alt="" width={140} height={140} style={{ height: "auto" }} />
           <div className="flex flex-col gap-3 max-w-sm">
-            <h1 className="font-serif text-3xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
+            <h1 className="font-serif text-3xl md:text-5xl leading-tight md:whitespace-nowrap" style={{ color: "#1a0a0e" }}>
               New items dropping soon.
             </h1>
             <p className="font-serif text-base leading-relaxed" style={{ color: "#3a2010" }}>
