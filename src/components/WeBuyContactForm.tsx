@@ -34,11 +34,18 @@ export default function WeBuyContactForm() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [form, setForm] = useState({
     name: "", phone: "", zip: "", furnitureCount: "", message: "",
   });
+
+  useEffect(() => {
+    if (status === "success") {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -120,7 +127,7 @@ export default function WeBuyContactForm() {
   };
 
   return (
-    <section id="contact-form" className="relative flex flex-col md:flex-row" style={{ minHeight: status === "success" ? "420px" : undefined }}>
+    <section ref={sectionRef} id="contact-form" className="relative flex flex-col md:flex-row" style={{ minHeight: status === "success" ? "420px" : undefined }}>
 
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
