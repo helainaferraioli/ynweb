@@ -9,24 +9,49 @@ const photos = Array.from({ length: 12 }, (_, i) =>
 
 export default function AboutSlideshow() {
   const [active, setActive] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const startTimer = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setActive((a) => (a + 1) % photos.length);
-    }, 5500);
+      setActive((a) => {
+        setPrev(a);
+        return (a + 1) % photos.length;
+      });
+    }, 4500);
+  };
+
+  const stopTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
   };
 
   useEffect(() => {
-    startTimer();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startTimer();
+        else stopTimer();
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); stopTimer(); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const go = (dir: 1 | -1) => {
-    setActive((a) => (a + dir + photos.length) % photos.length);
+    setActive((a) => {
+      const next = (a + dir + photos.length) % photos.length;
+      setPrev(a);
+      return next;
+    });
     startTimer();
   };
 
@@ -43,6 +68,7 @@ export default function AboutSlideshow() {
 
   return (
     <div
+      ref={containerRef}
       className="absolute inset-0"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
@@ -51,7 +77,12 @@ export default function AboutSlideshow() {
         <div
           key={src}
           className="absolute inset-0"
-          style={{ opacity: i === active ? 1 : 0, transition: "opacity 0.5s ease" }}
+          style={{
+            // Keep outgoing photo visible underneath so there's no black flash
+            opacity: i === active || i === prev ? 1 : 0,
+            zIndex: i === active ? 2 : i === prev ? 1 : 0,
+            transition: i === active ? "opacity 0.8s ease" : "none",
+          }}
         >
           <Image
             src={src}
@@ -64,7 +95,6 @@ export default function AboutSlideshow() {
         </div>
       ))}
 
-      {/* Prev arrow */}
       <button
         onClick={() => go(-1)}
         className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/35 text-white text-xl hover:bg-black/55 transition-colors z-10"
@@ -72,8 +102,6 @@ export default function AboutSlideshow() {
       >
         ‹
       </button>
-
-      {/* Next arrow */}
       <button
         onClick={() => go(1)}
         className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/35 text-white text-xl hover:bg-black/55 transition-colors z-10"
