@@ -17,8 +17,8 @@ ${message}
   `.trim();
 
   const { error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "helaina.ferraioli@gmail.com",
+    from: "Yesterday's News <noreply@yesterdaysnewsbk.com>",
+    to: "yesterdaysnews1@gmail.com",
     subject: `New Contact Form Submission — ${name}`,
     text: body,
   });

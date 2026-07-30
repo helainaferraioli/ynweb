@@ -26,15 +26,12 @@ ${photoLines}
   `.trim();
 
   const { error } = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "helaina.ferraioli@gmail.com",
+    from: "Yesterday's News <noreply@yesterdaysnewsbk.com>",
+    to: "yesterdaysnews1@gmail.com",
     subject: `New We Buy Inquiry — ${name}`,
     text: body,
   });
 
-  if (error) {
-    console.error("[contact] Resend error:", JSON.stringify(error));
-    return NextResponse.json({ error }, { status: 500 });
-  }
+  if (error) return NextResponse.json({ error }, { status: 500 });
   return NextResponse.json({ ok: true });
 }
