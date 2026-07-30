@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   title: { default: SITE_NAME, template: `%s — ${SITE_NAME}` },
   description: DESCRIPTION,
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/yn-short.png",
+  },
   openGraph: {
     siteName: SITE_NAME,
     type: "website",
