@@ -120,7 +120,7 @@ export default function WeBuyContactForm() {
   };
 
   return (
-    <section id="contact-form" className="relative flex flex-col md:flex-row">
+    <section id="contact-form" className="relative flex flex-col md:flex-row" style={{ minHeight: status === "success" ? "420px" : undefined }}>
 
       {/* Full-bleed background photo */}
       <div className="absolute inset-0">
@@ -133,23 +133,36 @@ export default function WeBuyContactForm() {
         />
       </div>
 
+      {/* Success overlay — spans full section */}
+      {status === "success" && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-6 text-center" style={{ backgroundColor: "rgba(0,0,0,0.65)" }}>
+          <div
+            className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center"
+            style={{ color: "white" }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <p className="font-serif text-2xl md:text-3xl leading-relaxed text-white max-w-sm">
+            Thanks — we&apos;ll be in touch within one business day.
+          </p>
+        </div>
+      )}
+
       {/* Form LEFT — slides in from left */}
       <div
         ref={overlayRef}
         className="relative flex flex-col justify-center gap-8 px-6 md:px-14 py-10 md:py-16 md:w-1/2"
         style={{
-          backgroundColor: "rgba(0,0,0,0.68)",
+          backgroundColor: status === "success" ? "transparent" : "rgba(0,0,0,0.68)",
           opacity: visible ? 1 : 0,
           transform: visible ? "translateX(0)" : "translateX(-40px)",
           transition: "opacity 0.8s ease, transform 0.8s ease",
+          display: status === "success" ? "none" : undefined,
         }}
       >
-        {status === "success" ? (
-          <p className="font-serif text-2xl leading-relaxed text-white">
-            Thanks — we&apos;ll be in touch within one business day.
-          </p>
-        ) : (
-          <>
+        <>
             <div className="flex flex-col gap-3">
               <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                 Get in Touch
@@ -253,8 +266,7 @@ export default function WeBuyContactForm() {
                 {status === "submitting" ? "Sending…" : "Send My Info"}
               </button>
             </form>
-          </>
-        )}
+        </>
       </div>
 
       {/* Right half — photo shows through */}
