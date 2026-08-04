@@ -195,8 +195,7 @@ export default function SiteHeader() {
           <div className="flex-1 flex justify-end">
             <Link
               href="/contact"
-              className="text-sm font-bold tracking-widest uppercase px-6 py-2 border-2 transition-colors hover:bg-[#FFB81C] hover:border-[#FFB81C] hover:text-black"
-              style={{ color: "#FFB81C", borderColor: "#FFB81C" }}
+              className="text-sm font-bold tracking-widest uppercase px-6 py-2 border-2 border-[#FFB81C] text-[#FFB81C] transition-colors hover:bg-[#FFB81C] hover:border-[#FFB81C] hover:text-black"
             >
               Contact
             </Link>
