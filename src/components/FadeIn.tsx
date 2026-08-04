@@ -15,11 +15,19 @@ export default function FadeIn({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
       { threshold: 0.1 }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
+
+    // Safari doesn't always fire for elements already in the viewport on mount
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) setVisible(true);
+
     return () => observer.disconnect();
   }, []);
 
