@@ -186,8 +186,8 @@ export default function SiteHeader() {
                 </nav>
               </div>
             </div>
-            <Link href="/shop" className="text-white text-sm font-bold tracking-widests uppercase hover:opacity-70 transition-opacity">Shop</Link>
-            <Link href="/we-buy" className="text-white text-sm font-bold tracking-widests uppercase hover:opacity-70 transition-opacity">We Buy</Link>
+            <Link href="/shop" className="text-white text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">Shop</Link>
+            <Link href="/we-buy" className="text-white text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">We Buy</Link>
           </div>
           <Link href="/">
             <Image src="/yn-main.png" alt="Yesterday's News" width={180} height={68} priority />
