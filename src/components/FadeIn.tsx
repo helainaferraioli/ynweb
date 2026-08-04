@@ -18,17 +18,22 @@ export default function FadeIn({
     const el = ref.current;
     if (!el) return;
 
+    const show = () => setVisible(true);
+
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
+      ([entry]) => { if (entry.isIntersecting) show(); },
+      { threshold: 0, rootMargin: "0px 0px 100px 0px" }
     );
     observer.observe(el);
 
-    // Safari doesn't always fire for elements already in the viewport on mount
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) setVisible(true);
+    // Safari sometimes hasn't finished layout when the effect first runs —
+    // defer the viewport check by one frame so getBoundingClientRect is accurate
+    const raf = requestAnimationFrame(() => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 100) show();
+    });
 
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); cancelAnimationFrame(raf); };
   }, []);
 
   return (
