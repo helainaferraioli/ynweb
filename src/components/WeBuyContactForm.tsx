@@ -18,6 +18,9 @@ const inputStyle: React.CSSProperties = {
   background: "transparent",
   color: "#fff",
   outline: "none",
+  appearance: "none",
+  WebkitAppearance: "none",
+  borderRadius: 0,
 };
 
 type PhotoEntry = {
