@@ -20,7 +20,14 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <div className="relative w-full h-[75vh] md:h-[calc(100vh-130px)] md:mt-[130px]">
-        <HeroVideo className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center" />
+        {/* Mobile — original video, known to autoplay on iOS */}
+        <video autoPlay muted loop playsInline className="md:hidden absolute inset-0 w-full h-full object-cover object-[65%_90%]">
+          <source src="/home-page-video.mp4" type="video/mp4" />
+        </video>
+        {/* Desktop — shorter higher quality version */}
+        <video autoPlay muted loop playsInline preload="auto" className="hidden md:flex absolute inset-0 w-full h-full object-cover object-center">
+          <source src="/Shortened%20Hero%20Video%202.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/15" />
         <div
           className="absolute bottom-14 left-10"
