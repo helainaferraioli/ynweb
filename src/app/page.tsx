@@ -18,8 +18,8 @@ export default function Home() {
     <main className="flex flex-1 flex-col gap-0">
 
       {/* ── Hero ── */}
-      <div className="relative w-full h-[75vh] md:h-screen">
-        <video autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-[center_30%]">
+      <div className="relative w-full h-[75vh] md:h-[calc(100vh-130px)] md:mt-[130px]">
+        <video autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center">
           <source src="/Shortened%20Hero%20Video%202.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/15" />
