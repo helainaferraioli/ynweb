@@ -20,7 +20,7 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <div className="relative w-full h-[75vh] md:h-[calc(100vh-130px)] md:mt-[130px]">
-        <HeroVideo src="/home-page-video.mp4" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center" />
+        <HeroVideo src="/home-page-video.mp4" poster="/video-poster.jpg" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center" />
         <div className="absolute inset-0 bg-black/15" />
         <div
           className="absolute bottom-14 left-10"

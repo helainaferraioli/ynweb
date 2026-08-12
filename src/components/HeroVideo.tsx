@@ -1,9 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
-export default function HeroVideo({ src, className }: { src: string; className?: string }) {
+interface Props {
+  src: string;
+  poster: string;
+  className?: string;
+}
+
+export default function HeroVideo({ src, poster, className }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const video = ref.current;
@@ -11,26 +19,39 @@ export default function HeroVideo({ src, className }: { src: string; className?:
 
     video.muted = true;
 
-    const tryPlay = () => video.play().catch(() => {});
+    const tryPlay = () => {
+      video.play().then(() => setPlaying(true)).catch(() => {});
+    };
 
     tryPlay();
 
-    // iOS 26+ blocks autoplay even for muted videos — play on first touch
-    const unlock = () => tryPlay();
-    document.addEventListener("touchstart", unlock, { once: true, passive: true });
-
-    return () => document.removeEventListener("touchstart", unlock);
+    // iOS 26+ blocks autoplay for muted videos — play on first touch
+    document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+    return () => document.removeEventListener("touchstart", tryPlay);
   }, []);
 
   return (
-    <video
-      ref={ref}
-      src={src}
-      autoPlay
-      muted
-      loop
-      playsInline
-      className={className}
-    />
+    <>
+      {/* Static poster — visible until video plays, hides iOS play button */}
+      <Image
+        src={poster}
+        alt=""
+        fill
+        priority
+        className={className}
+        style={{ opacity: playing ? 0 : 1, transition: "opacity 0.4s ease" }}
+      />
+      {/* Video — hidden until playing so iOS play button is never visible */}
+      <video
+        ref={ref}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={className}
+        style={{ opacity: playing ? 1 : 0, transition: "opacity 0.4s ease" }}
+      />
+    </>
   );
 }
