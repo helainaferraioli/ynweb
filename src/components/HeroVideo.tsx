@@ -8,6 +8,7 @@ export default function HeroVideo({ src, className }: { src: string; className?:
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+    video.muted = true;
     video.play().catch(() => {});
   }, []);
 
