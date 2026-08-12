@@ -23,8 +23,8 @@ export default function Footer() {
               </div>
             </div>
             <div className="hidden md:flex flex-col gap-1">
-              <a href="tel:7188750900" className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
-                (718) 875-0900
+              <a href="tel:7188750546" className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
+                718-875-0546
               </a>
               <a href="mailto:yesterdaysnews1@gmail.com" className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
                 yesterdaysnews1@gmail.com
@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Mobile contact buttons */}
         <div className="flex md:hidden justify-center gap-6 pt-6 pb-4">
-          <a href="tel:7188750900" style={{ color: "#FFCCCC" }}>
+          <a href="tel:7188750546" style={{ color: "#FFCCCC" }}>
             <div className="w-12 h-12 rounded-full border border-[#FFCCCC]/40 flex items-center justify-center hover:opacity-70 transition-opacity">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -50,8 +51,9 @@ export default function About() {
             style={{ color: "#3a2010" }}
           >
             Yesterday&apos;s News is a family-owned and operated vintage shop, now entering our
-            25th year as one of NYC&apos;s longest-standing vintage institutions. Our story
-            begins right here in Carroll Gardens, where my dad began collecting vintage at just ten years old.
+            25th year as one of NYC&apos;s longest-standing stores of its kind. Our story begins
+            right here in Carroll Gardens. Surrounded by an ever-evolving city and enthralled
+            with the treasures of the past, my dad started collecting at just ten years old.
           </p>
         </section>
       </FadeIn>
@@ -84,15 +86,18 @@ export default function About() {
               style={{ color: "#FFCCCC" }}
             >
               <p>
-                JP Ferraioli grew up on President Street in Carroll Gardens, Brooklyn — here,
-                friends, family, and neighbors all lived harmoniously within the grid of a humming working-class neighborhood.
+                In the 1970s, Carroll Gardens looked a little different. My dad, JP Ferraioli,
+                grew up in a working-class Italian-American neighborhood, on President Street,
+                where the streets were his playground, and a diverse array of family-run mom
+                and pop shops acted as the backdrop to his earliest memories.
               </p>
               <p>
-                At ten, his grandmother gave him his first taste of vintage: a 1940s Coca-Cola tray.
+                Then, at the age of 10, his grandmother gave him his first taste of vintage: a
+                1940s Coca-Cola tray she&apos;d inherited from her brother, Tony.
               </p>
               <p>
-                From that day forward, he developed a voracious appetite for collecting. After a decades-long career with the city of New York, this passion eventually drove my dad to open a shop in the neighborhood
-                where it all began.
+                From that day on, his appetite for collecting never ceased. Eventually, this
+                passion drove him to open a shop of his own in the neighborhood where it all began.
               </p>
             </div>
           </div>
@@ -104,97 +109,96 @@ export default function About() {
         </section>
       </FadeIn>
 
-      {/* ── Our Family ── */}
+      {/* ── The Shop ── */}
       <FadeIn>
-        <section id="our-family" className="flex flex-col md:flex-row">
+        <section id="the-shop" className="flex flex-col md:flex-row" style={{ minHeight: "680px" }}>
 
-          {/* Family collage LEFT — natural 1:1 ratio */}
-          <div className="relative md:w-1/2" style={{ aspectRatio: "1/1" }}>
-            <Image
-              src="/images/about/Family%20collage.png"
-              alt="The Ferraioli Family"
-              fill
-              className="object-cover"
-              sizes="50vw"
-            />
+          {/* Slideshow LEFT */}
+          <div className="relative overflow-hidden md:w-1/2" style={{ minHeight: "680px", backgroundColor: "#f6e6c9" }}>
+            <AboutSlideshow />
           </div>
 
           {/* Text RIGHT on cream */}
           <div
-            className="flex flex-col justify-center gap-6 px-14 py-10 md:w-1/2"
+            className="flex flex-col justify-center gap-6 px-14 py-16 md:w-1/2"
             style={{ backgroundColor: "#f6e6c9" }}
           >
             <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
-              The Ferraioli Family
+              Brooklyn&apos;s Vintage Destination
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
-              Meet our Family
+              The Shop
             </h2>
             <div
               className="flex flex-col gap-5 font-serif text-base md:text-lg leading-relaxed max-w-sm"
               style={{ color: "#3a2010" }}
             >
               <p>
-                Today, the shop is still entirely family-owned and operated — same neighborhood,
-                same faces, just a new generation behind the counter.
+                Step inside Yesterday&apos;s News and you&apos;ll find yourself somewhere between a treasure hunt and a time capsule
+                — where the past is always turning up something new. We&apos;re constantly bringing in new
+                inventory, and we carry vintage and antique furniture, home decor, lighting, art, ephemera,
+                photos, clothing, jewelry, and much more. Stop by and see for yourself.
               </p>
               <p>
-                Just like in days of old, what keeps a place like ours alive isn&apos;t just passion (though we&apos;ve got plenty of that). It&apos;s a commitment to making sure that everyone who walks through the door – whether they&apos;re buying, browsing, or just passing time – leaves feeling like they found something special.
+                Every item in our shop is authentically vintage, sourced by hand from homes
+                across Brooklyn, Queens, and Long Island.
+              </p>
+              <p>
+                Looking to sell?{" "}
+                <Link
+                  href="/we-buy"
+                  className="font-bold underline underline-offset-4 hover:opacity-70 transition-opacity"
+                  style={{ color: "#971B2E" }}
+                >
+                  Contact us here
+                </Link>
               </p>
             </div>
           </div>
         </section>
       </FadeIn>
 
-      {/* ── Meet the Team ── */}
-      <AboutTeamSection />
-
-      {/* ── The Shop ── */}
+      {/* ── Our Family ── */}
       <FadeIn>
-        <section id="the-shop" className="flex flex-col md:flex-row" style={{ minHeight: "680px" }}>
+        <section id="our-family" className="flex flex-col" style={{ backgroundColor: "#971B2E" }}>
 
-          {/* Text LEFT */}
-          <div
-            className="flex flex-col justify-center gap-6 px-14 py-16 md:w-1/2"
-            style={{ backgroundColor: "#971B2E" }}
-          >
+          {/* Intro text */}
+          <div className="flex flex-col gap-6 px-8 md:px-14 pt-16 pb-8 max-w-2xl">
             <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
-              Brooklyn&apos;s Vintage Destination
+              The Ferraioli Family
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
-              The Shop
+              Meet our Family
             </h2>
-            <div
-              className="flex flex-col gap-5 font-serif text-base md:text-lg leading-relaxed max-w-sm"
-              style={{ color: "#FFCCCC" }}
-            >
-              <p>
-                Step inside Yesterday&apos;s News and you&apos;ll find yourself somewhere between a treasure hunt and a time capsule
-                — where the past is always turning up something new.
-              </p>
-              <p>
-                Every item in our shop is authentically vintage, sourced by hand from homes
-                across Brooklyn, Queens, and Long Island.
-              </p>
-            </div>
+            <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#FFCCCC" }}>
+              Today, the shop is still entirely family-owned and operated — same neighborhood,
+              same faces, just a new generation behind the counter.
+            </p>
           </div>
 
-          {/* Slideshow RIGHT */}
-          <div className="relative md:w-1/2" style={{ minHeight: "680px", backgroundColor: "#000000" }}>
-            <AboutSlideshow />
-          </div>
+          {/* Team photos */}
+          <AboutTeamSection backgroundColor="#971B2E" />
         </section>
       </FadeIn>
 
       {/* ── See What's New + Instagram ── */}
       <div style={{ backgroundColor: "#000000" }}>
         <FadeIn>
-          <section className="pt-10 pb-1 px-10 text-center flex flex-col gap-3" style={{ backgroundColor: "#000000" }}>
-            <h2 className="font-serif text-4xl md:text-7xl text-white whitespace-nowrap">
-              See what&apos;s new
+          <section
+            className="flex flex-col md:flex-row md:items-start md:justify-between pt-12 pb-6 px-4 md:px-14 mb-6 md:mb-10 gap-2 md:gap-0"
+            style={{ backgroundColor: "#000000" }}
+          >
+            <h2
+              className="font-serif italic text-4xl md:text-6xl leading-none"
+              style={{ color: "#f6e6c9" }}
+            >
+              See what&apos;s new.
             </h2>
-            <p className="font-serif text-[13px] md:text-lg text-white/60 whitespace-nowrap -mx-10 md:mx-0">
-              Keep up with us on Instagram, posting stories daily!
+            <p
+              className="font-serif text-sm md:text-base leading-relaxed whitespace-nowrap md:text-right"
+              style={{ color: "#f6e6c9" }}
+            >
+              Keep up with our latest finds on Instagram ↓
             </p>
           </section>
           <InstagramFeed hideHeader dark />

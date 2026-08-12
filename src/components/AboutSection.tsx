@@ -74,10 +74,10 @@ export default function AboutSection() {
         </h2>
         <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
           <p>
-            In 2001, we opened our doors on Court Street with a van, a life-long passion for
-            collecting, and a love of objects that carry the story of people&apos;s lives.
-            Twenty-five years later, not much has changed — except now we&apos;ve got a truck,
-            and a second generation behind the counter.
+            In 2001, JP opened our doors with a van and a life-long passion for collecting
+            treasures of the past. 25 years later, a lot has changed, but our mission hasn&apos;t.
+            We&apos;re still supplying Brooklyn with unique vintage pieces — except now we&apos;ve
+            got a truck, and a second generation behind the counter.
           </p>
         </div>
         <div ref={buttonRef}>
