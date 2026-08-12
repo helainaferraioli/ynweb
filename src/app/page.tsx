@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Yesterday's News — Vintage & Antique Shop, Brooklyn",
   description: "Brooklyn's beloved vintage and antique shop, open for 25 years at 428 Court Street in Carroll Gardens. Furniture, housewares, jewelry, clothing, and more.",
 };
-import HeroVideo from "@/components/HeroVideo";
 import WeBuySection from "@/components/WeBuySection";
 import AboutSection from "@/components/AboutSection";
 import PressSection from "@/components/PressSection";
@@ -20,13 +19,8 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <div className="relative w-full h-[75vh] md:h-[calc(100vh-130px)] md:mt-[130px]">
-        {/* Mobile — original video, known to autoplay on iOS */}
-        <video autoPlay muted loop playsInline className="md:hidden absolute inset-0 w-full h-full object-cover object-[65%_90%]">
+        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center">
           <source src="/home-page-video.mp4" type="video/mp4" />
-        </video>
-        {/* Desktop — shorter higher quality version */}
-        <video autoPlay muted loop playsInline preload="auto" className="hidden md:flex absolute inset-0 w-full h-full object-cover object-center">
-          <source src="/Shortened%20Hero%20Video%202.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/15" />
         <div
