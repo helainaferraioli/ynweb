@@ -17,31 +17,28 @@ export default function HeroVideo({ src, poster, className }: Props) {
     const video = ref.current;
     if (!video) return;
 
+    // Set both muted state and default — Safari checks defaultMuted for autoplay policy
     video.muted = true;
+    video.defaultMuted = true;
 
-    const tryPlay = () => {
-      video.play().then(() => setPlaying(true)).catch(() => {});
+    const onPlaying = () => setPlaying(true);
+    video.addEventListener("playing", onPlaying);
+
+    video.play().catch(() => {});
+
+    // iOS 26+ fallback: play on first touch if autoplay still blocked
+    const unlock = () => video.play().catch(() => {});
+    document.addEventListener("touchstart", unlock, { once: true, passive: true });
+
+    return () => {
+      video.removeEventListener("playing", onPlaying);
+      document.removeEventListener("touchstart", unlock);
     };
-
-    tryPlay();
-
-    // iOS 26+ blocks autoplay for muted videos — play on first touch
-    document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
-    return () => document.removeEventListener("touchstart", tryPlay);
   }, []);
 
   return (
     <>
-      {/* Static poster — visible until video plays, hides iOS play button */}
-      <Image
-        src={poster}
-        alt=""
-        fill
-        priority
-        className={className}
-        style={{ opacity: playing ? 0 : 1, transition: "opacity 0.4s ease" }}
-      />
-      {/* Video — hidden until playing so iOS play button is never visible */}
+      {/* Video is always visible so iOS will attempt autoplay */}
       <video
         ref={ref}
         src={src}
@@ -50,7 +47,19 @@ export default function HeroVideo({ src, poster, className }: Props) {
         loop
         playsInline
         className={className}
-        style={{ opacity: playing ? 1 : 0, transition: "opacity 0.4s ease" }}
+      />
+      {/* Poster sits on top of the video, hiding the iOS play button until video plays */}
+      <Image
+        src={poster}
+        alt=""
+        fill
+        priority
+        className={className}
+        style={{
+          opacity: playing ? 0 : 1,
+          transition: "opacity 0.4s ease",
+          pointerEvents: "none",
+        }}
       />
     </>
   );
