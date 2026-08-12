@@ -8,8 +8,18 @@ export default function HeroVideo({ src, className }: { src: string; className?:
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+
     video.muted = true;
-    video.play().catch(() => {});
+
+    const tryPlay = () => video.play().catch(() => {});
+
+    tryPlay();
+
+    // iOS 26+ blocks autoplay even for muted videos — play on first touch
+    const unlock = () => tryPlay();
+    document.addEventListener("touchstart", unlock, { once: true, passive: true });
+
+    return () => document.removeEventListener("touchstart", unlock);
   }, []);
 
   return (

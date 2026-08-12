@@ -12,6 +12,7 @@ import InstagramFeed from "@/components/InstagramFeed";
 import Ticker from "@/components/Ticker";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import HeroVideo from "@/components/HeroVideo";
 
 export default function Home() {
   return (
@@ -19,9 +20,7 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <div className="relative w-full h-[75vh] md:h-[calc(100vh-130px)] md:mt-[130px]">
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center">
-          <source src="/home-page-video.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo src="/home-page-video.mp4" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center" />
         <div className="absolute inset-0 bg-black/15" />
         <div
           className="absolute bottom-14 left-10"
