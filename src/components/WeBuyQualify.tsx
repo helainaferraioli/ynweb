@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 const criteria = [
-  "You have 8–10 or more pieces of vintage furniture, 50 years old or older",
-  "Your pieces are in good, usable condition — some wear is fine, nothing broken or missing parts",
-  "You're located in Brooklyn, Queens, or Long Island",
-  "You're ready to sell now",
+  "You have a home full of vintage items, 50 years or older",
+  "Your pieces are in good, usable condition",
+  "You're located in Brooklyn, Queens, Staten Island, or Long Island",
+  "You're ready to sell SOON!",
 ];
 
 export default function WeBuyQualify() {
@@ -27,7 +27,7 @@ export default function WeBuyQualify() {
           alt="JP Ferraioli at work"
           fill
           className="object-cover"
-          style={{ objectPosition: "center top" }}
+          style={{ objectPosition: "center 28%" }}
           sizes="50vw"
         />
       </div>

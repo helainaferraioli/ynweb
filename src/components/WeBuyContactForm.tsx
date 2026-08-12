@@ -185,7 +185,7 @@ export default function WeBuyContactForm() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <style>{`.we-buy-input::placeholder{color:rgba(255,255,255,0.45);opacity:1}.we-buy-input option{color:#1a0a0e;background:#fff}`}</style>
 
-              <input required type="text" placeholder="First & last name" className="we-buy-input" style={inputStyle} value={form.name} onChange={(e) => set("name", e.target.value)} />
+              <input required type="text" placeholder="Name" className="we-buy-input" style={inputStyle} value={form.name} onChange={(e) => set("name", e.target.value)} />
               <input required type="tel" placeholder="Phone number" className="we-buy-input" style={inputStyle} value={form.phone} onChange={(e) => set("phone", e.target.value)} />
               <input required type="text" placeholder="Zip code" className="we-buy-input" style={inputStyle} value={form.zip} onChange={(e) => set("zip", e.target.value)} />
               <select
@@ -196,7 +196,7 @@ export default function WeBuyContactForm() {
                 onChange={(e) => set("furnitureCount", e.target.value)}
               >
                 <option value="" disabled>Approximate number of furniture pieces</option>
-                <option value="8–10 pieces">8–10 pieces</option>
+                <option value="1–10 pieces">1–10 pieces</option>
                 <option value="11–20 pieces">11–20 pieces</option>
                 <option value="20+ pieces">20+ pieces</option>
               </select>

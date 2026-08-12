@@ -41,7 +41,7 @@ export default function WeBuy() {
           {/* H1 pinned to bottom of photo — mobile only */}
           <div className="absolute inset-x-0 bottom-0 px-6 pb-6 z-10 md:hidden">
             <h1 className="font-serif leading-tight">
-              <span className="block text-3xl text-white">Got a home full of vintage furniture?</span>
+              <span className="block text-3xl text-white">Got a home full of vintage?</span>
               <em className="block text-2xl mt-1" style={{ color: "#FFB81C" }}>We&apos;ll take it off your hands.</em>
             </h1>
           </div>
@@ -57,7 +57,7 @@ export default function WeBuy() {
           </span>
           {/* H1 — desktop only */}
           <h1 className="hidden md:block font-serif leading-tight" style={{ color: "#1a0a0e" }}>
-            <span className="block text-4xl">Got a home full of vintage furniture?</span>
+            <span className="block text-4xl">Got a home full of vintage?</span>
             <em className="block text-3xl mt-1" style={{ color: "#971B2E" }}>We&apos;ll take it off your hands.</em>
           </h1>
           <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>

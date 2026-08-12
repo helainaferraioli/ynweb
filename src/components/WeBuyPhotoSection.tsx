@@ -98,12 +98,13 @@ export default function WeBuyPhotoSection() {
     <section id="what-we-buy" className="py-10 md:py-20" style={{ backgroundColor: "#f6e6c9" }}>
 
       {/* Header + intro */}
-      <div className="flex flex-col gap-4 px-10 md:px-16 max-w-5xl mx-auto mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
+      <div className="flex flex-col gap-4 px-10 md:px-16 max-w-5xl mb-12">
+        <h2 className="font-serif text-4xl md:text-5xl leading-tight text-left" style={{ color: "#1a0a0e" }}>
           What We Buy
         </h2>
-        <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: "#3a2010" }}>
-          We buy furniture first and foremost — at least 8–10 qualifying pieces to make a visit worthwhile. Beyond that, we&apos;re interested in everything that came with the house, including:
+        <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl text-left" style={{ color: "#3a2010" }}>
+          We buy a wide range of vintage — and we buy a lot of it. We&apos;re interested in it
+          all — furniture, decor, and everything in between, including:
         </p>
       </div>
 
