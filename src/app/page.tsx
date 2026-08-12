@@ -20,7 +20,7 @@ export default function Home() {
       {/* ── Hero ── */}
       <div className="relative w-full h-[75vh] md:h-screen">
         <video autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-[65%_90%] md:object-center">
-          <source src="/Shortened%20Hero%20Video%201.mp4" type="video/mp4" />
+          <source src="/Shortened%20Hero%20Video%202.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/15" />
         <div
