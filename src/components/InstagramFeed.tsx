@@ -27,6 +27,10 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
     const container = containerRef.current;
     if (!video || !container) return;
 
+    // Safari checks the muted property, not just the JSX attribute — set it explicitly
+    video.muted = true;
+    video.defaultMuted = true;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
