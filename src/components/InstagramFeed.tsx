@@ -79,6 +79,7 @@ function VideoTile({ post, dark }: { post: Post; dark?: boolean }) {
       <video
         ref={videoRef}
         src={post.media_url}
+        preload="none"
         muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover"
       />
