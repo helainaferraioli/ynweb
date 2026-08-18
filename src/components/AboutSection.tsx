@@ -45,7 +45,7 @@ export default function AboutSection() {
       </div>
 
       <div
-        className="flex flex-col justify-center gap-6 px-14 pt-16 pb-16 md:pb-[240px] md:w-1/2 relative overflow-visible"
+        className="flex flex-col justify-center gap-6 px-14 pt-16 md:pt-10 pb-16 md:pb-[190px] md:w-1/2 relative overflow-visible"
         style={{ backgroundColor: "#f6e6c9" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +53,7 @@ export default function AboutSection() {
           src="/illustration-corner.svg"
           alt=""
           aria-hidden="true"
-          className="w-[88px] md:w-[170px]"
+          className="w-[88px] md:w-[130px]"
           style={{
             position: "absolute",
             bottom: 0,
@@ -74,10 +74,10 @@ export default function AboutSection() {
         </h2>
         <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
           <p>
-            In 2001, JP opened our doors with a van and a life-long passion for collecting
-            treasures of the past. 25 years later, a lot has changed, but our mission hasn&apos;t.
-            We&apos;re still supplying Brooklyn with unique vintage pieces — except now we&apos;ve
-            got a truck, and a second generation behind the counter.
+            JP and Colleen Ferraioli opened our doors in 2001 with a van and a life-long love
+            for collecting treasures of the past. 25 years later, our mission hasn&apos;t changed.
+            We&apos;re still supplying Brooklyn with unique vintage pieces – except now we&apos;ve
+            got a truck and a second generation behind the counter.
           </p>
         </div>
         <div ref={buttonRef}>
