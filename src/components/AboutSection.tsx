@@ -27,13 +27,13 @@ export default function AboutSection() {
     <section ref={ref} className="flex flex-col md:flex-row md:min-h-[580px] overflow-visible">
       <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px" }}>
         <Image
-          src="/family-photo-1.jpg"
+          src="/family-photo-2.jpg"
           alt="The Ferraioli family outside Yesterday's News"
           fill
           priority
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
-          style={{ objectPosition: "center 80%" }}
+          style={{ objectPosition: "center 35%" }}
         />
         <a
           href="/about"
@@ -45,7 +45,7 @@ export default function AboutSection() {
       </div>
 
       <div
-        className="flex flex-col justify-center gap-6 px-14 py-16 md:w-1/2 relative overflow-visible"
+        className="flex flex-col justify-center gap-6 px-14 pt-16 pb-16 md:pb-[240px] md:w-1/2 relative overflow-visible"
         style={{ backgroundColor: "#f6e6c9" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
