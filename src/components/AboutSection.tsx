@@ -45,7 +45,7 @@ export default function AboutSection() {
       </div>
 
       <div
-        className="flex flex-col justify-center gap-6 px-14 pt-10 md:pt-4 pb-[133px] md:pb-[95px] md:w-1/2 relative overflow-visible"
+        className="flex flex-col justify-center gap-6 px-14 pt-10 md:pt-4 pb-4 md:pb-[95px] md:w-1/2 relative overflow-visible"
         style={{ backgroundColor: "#f6e6c9" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,16 +53,14 @@ export default function AboutSection() {
           src="/illustration-corner.svg"
           alt=""
           aria-hidden="true"
-          className="w-[95px] md:w-[158px] bottom-0 md:-bottom-px right-8 md:right-28"
+          className="w-[130px] md:w-[158px] absolute bottom-0 md:-bottom-px right-10 md:right-28"
           style={{
-            position: "absolute",
             zIndex: 10,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,
             transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
           }}
         />
-
         <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
           Our Story
         </span>
@@ -70,11 +68,14 @@ export default function AboutSection() {
           A family business.<br />
           <em style={{ color: "#971B2E" }}>A Brooklyn institution.</em>
         </h2>
-        <div className="flex flex-col gap-4 font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
+        <div className="flex flex-col font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
           <p>
-            In 2001, our family opened Yesterday&apos;s News with a small van and a love for
-            vintage treasures. Twenty-five years later, we&apos;re still here, now with a
-            truck, a larger space, and a second generation behind the counter.
+            In 2001, our family opened Yesterday&apos;s News with a small van and a love
+            for vintage treasures. Twenty-five years
+          </p>
+          <p className="max-w-[175px] md:max-w-none">
+            later, we&apos;re still here, now with a truck, a larger space, and a second
+            generation behind the counter.
           </p>
         </div>
         <div ref={buttonRef}>

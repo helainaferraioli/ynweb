@@ -79,6 +79,15 @@ export default function Footer() {
               >
                 Instagram
               </a>
+              <a
+                href="https://tiktok.com/@yesterdaysnewsbklyn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm hover:opacity-70 transition-opacity"
+                style={{ color: "#FFCCCC" }}
+              >
+                TikTok
+              </a>
             </div>
           </div>
 
@@ -107,6 +116,13 @@ export default function Footer() {
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+              </svg>
+            </div>
+          </a>
+          <a href="https://tiktok.com/@yesterdaysnewsbklyn" target="_blank" rel="noopener noreferrer" style={{ color: "#FFCCCC" }}>
+            <div className="w-12 h-12 rounded-full border border-[#FFCCCC]/40 flex items-center justify-center hover:opacity-70 transition-opacity">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
               </svg>
             </div>
           </a>
