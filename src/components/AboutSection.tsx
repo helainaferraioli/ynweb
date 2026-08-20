@@ -63,7 +63,7 @@ export default function AboutSection() {
       </div>
 
       <div
-        className="flex flex-col justify-center gap-6 px-14 pt-10 md:pt-4 pb-4 md:pb-[95px] md:w-1/2 relative overflow-visible"
+        className="flex flex-col justify-center gap-6 px-14 pt-10 md:pt-4 pb-4 md:pb-[66px] md:w-1/2 relative overflow-visible"
         style={{ backgroundColor: "#f6e6c9" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -73,7 +73,7 @@ export default function AboutSection() {
           aria-hidden="true"
           className="w-[130px] md:w-[158px] absolute bottom-0 md:-bottom-px right-10 md:right-28"
           style={{
-            zIndex: 1,
+            zIndex: 10,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,
             transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
@@ -94,18 +94,27 @@ export default function AboutSection() {
             A family business.<br />
             <em style={{ color: "#971B2E" }}>A Brooklyn institution.</em>
           </h2>
-          <div className="flex flex-col font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
+          {/* Mobile — wraps around the corner illustration */}
+          <div className="flex flex-col font-serif text-base leading-relaxed max-w-sm md:hidden" style={{ color: "#3a2010" }}>
             <p>
               In 2001, our family opened Yesterday&apos;s&nbsp;News with a small van<br />
               and a love for vintage treasures.
             </p>
-            <p className="max-w-[175px] md:max-w-none">
+            <p className="max-w-[175px]">
               Twenty-five years later, we&apos;re still here, now
             </p>
             <p>
               with a truck, a larger<br />
               space, and the next gen<br />
               behind the counter.
+            </p>
+          </div>
+          {/* Desktop — single paragraph */}
+          <div className="hidden md:flex flex-col font-serif text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
+            <p>
+              In 2001, our family opened Yesterday&apos;s News with a small van and a love for
+              vintage treasures. Twenty-five years later, we&apos;re still here, now with a
+              truck, a larger space, and the next gen behind the counter.
             </p>
           </div>
         </div>
