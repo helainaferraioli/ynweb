@@ -45,7 +45,7 @@ export default function AboutSection() {
       </div>
 
       <div
-        className="flex flex-col justify-center gap-6 px-14 pt-16 md:pt-10 pb-16 md:pb-[190px] md:w-1/2 relative overflow-visible"
+        className="flex flex-col justify-center gap-6 px-14 pt-16 md:pt-4 pb-[155px] md:pb-[66px] md:w-1/2 relative overflow-visible"
         style={{ backgroundColor: "#f6e6c9" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,11 +53,9 @@ export default function AboutSection() {
           src="/illustration-corner.svg"
           alt=""
           aria-hidden="true"
-          className="w-[88px] md:w-[130px]"
+          className="w-[88px] md:w-[158px] bottom-6 md:-bottom-px right-8 md:right-28"
           style={{
             position: "absolute",
-            bottom: 0,
-            right: "2rem",
             zIndex: 10,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,

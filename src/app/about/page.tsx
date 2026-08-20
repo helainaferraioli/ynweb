@@ -50,10 +50,11 @@ export default function About() {
             className="font-serif text-sm md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
             style={{ color: "#3a2010" }}
           >
-            Yesterday&apos;s News is a family-owned and operated vintage shop, now entering our
-            25th year as one of NYC&apos;s longest-standing stores of its kind. Our story begins
-            right here in Carroll Gardens. Surrounded by an ever-evolving city and enthralled
-            with the treasures of the past, my dad started collecting at just ten years old.
+            Yesterday&apos;s News is a family-owned vintage shop, now entering our 25th year as
+            one of NYC&apos;s longest-standing stores of its kind. Our story begins right here
+            in the heart of Carroll Gardens, Brooklyn. Surrounded by an ever-evolving city and
+            enthralled with the treasures of the past, my dad began collecting at just ten
+            years old.
           </p>
         </section>
       </FadeIn>

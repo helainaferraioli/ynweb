@@ -29,7 +29,7 @@ body {
 
 @media (min-width: 768px) {
   .about-image-wrapper {
-    height: 647px !important;
+    height: 523px !important;
     align-self: flex-end;
   }
 }
