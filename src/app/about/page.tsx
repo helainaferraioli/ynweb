@@ -188,17 +188,17 @@ export default function About() {
       <div style={{ backgroundColor: "#000000" }}>
         <FadeIn>
           <section
-            className="flex flex-col md:flex-row md:items-start md:justify-between pt-12 pb-6 px-4 md:px-14 mb-6 md:mb-10 gap-2 md:gap-0"
+            className="flex flex-col md:flex-row md:items-start md:justify-between pt-12 pb-6 px-4 md:px-14 mb-2 md:mb-4 gap-2 md:gap-0"
             style={{ backgroundColor: "#000000" }}
           >
             <h2
               className="font-serif italic text-4xl md:text-6xl leading-none"
               style={{ color: "#f6e6c9" }}
             >
-              See what&apos;s new.
+              See what&apos;s new
             </h2>
             <p
-              className="font-serif text-sm md:text-base leading-relaxed whitespace-nowrap md:text-right"
+              className="font-serif text-sm md:text-base leading-relaxed whitespace-nowrap md:text-right md:self-end"
               style={{ color: "#f6e6c9" }}
             >
               Keep up with our latest finds on Instagram ↓
