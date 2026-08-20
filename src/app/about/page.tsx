@@ -88,17 +88,19 @@ export default function About() {
             >
               <p>
                 In the 1970s, Carroll Gardens looked a little different. My dad, JP Ferraioli,
-                grew up in a working-class Italian-American neighborhood, on President Street,
-                where the streets were his playground, and a diverse array of family-run mom
-                and pop shops acted as the backdrop to his earliest memories.
+                grew up on President Street in what was then a working-class Italian-American
+                neighborhood where the streets were his playground and family-run mom-and-pop
+                shops acted as the backdrop to his earliest memories.
               </p>
               <p>
-                Then, at the age of 10, his grandmother gave him his first taste of vintage: a
-                1940s Coca-Cola tray she&apos;d inherited from her brother, Tony.
+                At the age of ten, his grandmother gave him a gift that would inspire his love
+                for the hunt forever: a 1940s Coca-Cola tray that she&apos;d inherited from her
+                brother, Tony.
               </p>
               <p>
-                From that day on, his appetite for collecting never ceased. Eventually, this
-                passion drove him to open a shop of his own in the neighborhood where it all began.
+                From that day on, his appetite for collecting never ceased. It grew into more
+                than just a passion, and in 2001 he opened a store of his own in the neighborhood
+                where it all began.
               </p>
             </div>
           </div>
@@ -169,7 +171,7 @@ export default function About() {
               The Ferraioli Family
             </span>
             <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
-              Meet our Family
+              Meet our family
             </h2>
             <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#FFCCCC" }}>
               Today, the shop is still entirely family-owned and operated — same neighborhood,
