@@ -73,7 +73,7 @@ export default function AboutSection() {
           aria-hidden="true"
           className="w-[130px] md:w-[158px] absolute bottom-0 md:-bottom-px right-10 md:right-28"
           style={{
-            zIndex: 10,
+            zIndex: 1,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,
             transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
