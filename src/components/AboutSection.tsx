@@ -7,6 +7,7 @@ export default function AboutSection() {
   const ref = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   const [fired, setFired] = useState(false);
+  const [textVisible, setTextVisible] = useState(false);
 
   useEffect(() => {
     let observer: IntersectionObserver;
@@ -16,6 +17,23 @@ export default function AboutSection() {
         { threshold: 0 }
       );
       if (buttonRef.current) observer.observe(buttonRef.current);
+    });
+    return () => {
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
+  }, []);
+
+  // Fires as soon as the section itself enters view — earlier than the
+  // button-triggered illustration animation — so the text fade finishes first
+  useEffect(() => {
+    let observer: IntersectionObserver;
+    const raf = requestAnimationFrame(() => {
+      observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setTextVisible(true); },
+        { threshold: 0 }
+      );
+      if (ref.current) observer.observe(ref.current);
     });
     return () => {
       cancelAnimationFrame(raf);
@@ -61,26 +79,35 @@ export default function AboutSection() {
             transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
           }}
         />
-        <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
-          Our Story
-        </span>
-        <h2 className="font-serif text-[1.6rem] md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
-          A family business.<br />
-          <em style={{ color: "#971B2E" }}>A Brooklyn institution.</em>
-        </h2>
-        <div className="flex flex-col font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
-          <p>
-            In 2001, our family opened Yesterday&apos;s&nbsp;News with a small van<br />
-            and a love for vintage treasures.
-          </p>
-          <p className="max-w-[175px] md:max-w-none">
-            Twenty-five years later, we&apos;re still here, now
-          </p>
-          <p>
-            with a truck, a larger<br />
-            space, and the next gen<br />
-            behind the counter.
-          </p>
+        <div
+          className="flex flex-col gap-6"
+          style={{
+            opacity: textVisible ? 1 : 0,
+            transform: textVisible ? "translateY(0)" : "translateY(12px)",
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+          }}
+        >
+          <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
+            Our Story
+          </span>
+          <h2 className="font-serif text-[1.6rem] md:text-5xl leading-tight" style={{ color: "#1a0a0e" }}>
+            A family business.<br />
+            <em style={{ color: "#971B2E" }}>A Brooklyn institution.</em>
+          </h2>
+          <div className="flex flex-col font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
+            <p>
+              In 2001, our family opened Yesterday&apos;s&nbsp;News with a small van<br />
+              and a love for vintage treasures.
+            </p>
+            <p className="max-w-[175px] md:max-w-none">
+              Twenty-five years later, we&apos;re still here, now
+            </p>
+            <p>
+              with a truck, a larger<br />
+              space, and the next gen<br />
+              behind the counter.
+            </p>
+          </div>
         </div>
         <div ref={buttonRef}>
           <a
