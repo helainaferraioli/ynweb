@@ -25,7 +25,7 @@ export default function AboutSection() {
 
   return (
     <section ref={ref} className="flex flex-col md:flex-row md:min-h-[580px] overflow-visible">
-      <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px" }}>
+      <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px", zIndex: 5 }}>
         <Image
           src="/family-photo-2.jpg"
           alt="The Ferraioli family outside Yesterday's News"
@@ -55,7 +55,7 @@ export default function AboutSection() {
           aria-hidden="true"
           className="w-[130px] md:w-[158px] absolute bottom-0 md:-bottom-px right-10 md:right-28"
           style={{
-            zIndex: 10,
+            zIndex: 1,
             transform: fired ? "translateY(0) scale(1)" : "translateY(115%) scale(0.85)",
             opacity: fired ? 1 : 0,
             transition: "transform 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s, opacity 0.25s ease 0.15s",
@@ -70,12 +70,16 @@ export default function AboutSection() {
         </h2>
         <div className="flex flex-col font-serif text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "#3a2010" }}>
           <p>
-            In 2001, our family opened Yesterday&apos;s News with a small van and a love
-            for vintage treasures. Twenty-five years
+            In 2001, our family opened Yesterday&apos;s&nbsp;News with a small van<br />
+            and a love for vintage treasures.
           </p>
           <p className="max-w-[175px] md:max-w-none">
-            later, we&apos;re still here, now with a truck, a larger space, and a second
-            generation behind the counter.
+            Twenty-five years later, we&apos;re still here, now
+          </p>
+          <p>
+            with a truck, a larger<br />
+            space, and the next gen<br />
+            behind the counter.
           </p>
         </div>
         <div ref={buttonRef}>
