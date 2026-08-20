@@ -130,7 +130,7 @@ export default function Footer() {
 
         {/* Bottom — seal + copyright */}
         <div className="flex flex-col items-center gap-4 pt-6">
-          <Image src="/yn-short.png" alt="YN" width={60} height={60} />
+          <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
           <p className="text-xs tracking-widest uppercase text-center" style={{ color: "#FFCCCC" }}>
             © Yesterday&apos;s News 2026. All Rights Reserved.
           </p>
