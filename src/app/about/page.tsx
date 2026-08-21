@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 import FadeIn from "@/components/FadeIn";
 import Footer from "@/components/Footer";
 import AboutTeamSection from "@/components/AboutTeamSection";
+import EphemeraBurst from "@/components/EphemeraBurst";
 import AboutSlideshow from "@/components/AboutSlideshow";
 import JPSlideshow from "@/components/JPSlideshow";
 import InstagramFeed from "@/components/InstagramFeed";
@@ -45,9 +46,10 @@ export default function About() {
 
       {/* ── Intro ── */}
       <FadeIn>
-        <section className="py-10 md:py-20 px-10" style={{ backgroundColor: "#f6e6c9" }}>
+        <section className="relative py-16 md:py-28 px-10" style={{ backgroundColor: "#f6e6c9" }}>
+          <EphemeraBurst />
           <p
-            className="font-serif text-sm md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
+            className="relative z-10 font-serif text-sm md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
             style={{ color: "#3a2010" }}
           >
             Yesterday&apos;s News is a family-owned vintage shop, now in our 25th year as
