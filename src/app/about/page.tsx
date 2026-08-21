@@ -46,7 +46,7 @@ export default function About() {
 
       {/* ── Intro ── */}
       <FadeIn>
-        <section className="relative py-16 md:py-28 px-10" style={{ backgroundColor: "#f6e6c9" }}>
+        <section className="relative py-10 md:py-28 px-10" style={{ backgroundColor: "#f6e6c9" }}>
           <EphemeraBurst />
           <p
             className="relative z-10 font-serif text-sm md:text-xl leading-relaxed max-w-2xl mx-auto text-center"
