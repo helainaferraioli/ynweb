@@ -54,20 +54,41 @@ export default function About() {
           >
             Yesterday&apos;s News is a family-owned vintage shop, now in our 25th year as
             one of NYC&apos;s longest-standing stores of its kind. Our story begins right here
-            in the heart of Carroll Gardens, Brooklyn, where my dad began collecting pieces of
-            that past at just ten years old as the city around him kept changing.
+            in the heart of Carroll Gardens, Brooklyn, where my dad began building his{" "}
+            <span
+              className="jp-collection-word group relative inline-block cursor-pointer"
+              style={{
+                textDecorationLine: "underline",
+                textDecorationStyle: "wavy",
+                textDecorationColor: "#FFB81C",
+                textDecorationThickness: "2px",
+                textUnderlineOffset: "4px",
+              }}
+            >
+              vintage collection
+              <span
+                className="pointer-events-none absolute left-1/2 top-full mt-3 w-max max-w-[240px] -translate-x-1/4 rounded px-3 py-2 font-serif text-xs normal-case tracking-normal opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                style={{ backgroundColor: "#1a0a0e", color: "#f6e6c9", zIndex: 50 }}
+              >
+                <span
+                  className="absolute left-4 -top-1.5 h-3 w-3 rotate-45"
+                  style={{ backgroundColor: "#1a0a0e", zIndex: -1 }}
+                />
+                click on a piece of dad&apos;s collection to learn more!
+              </span>
+            </span>{" "}
+            at just ten years old as the city around him kept changing.
           </p>
         </section>
       </FadeIn>
 
       {/* ── JP Story ── */}
       <FadeIn>
-        <section className="flex flex-col lg:flex-row">
+        <section className="flex flex-col lg:flex-row lg:px-16" style={{ backgroundColor: "#971B2E" }}>
 
           {/* Text LEFT on red */}
           <div
-            className="flex flex-col lg:justify-center lg:gap-5 lg:px-10 lg:py-20 lg:w-[55%]"
-            style={{ backgroundColor: "#971B2E" }}
+            className="flex flex-col lg:justify-center lg:gap-5 lg:px-10 lg:pt-28 lg:pb-20 lg:w-[55%]"
           >
             {/* Label + heading */}
             <div className="flex flex-col gap-5 px-10 pt-10 pb-4 lg:p-0">
@@ -89,19 +110,13 @@ export default function About() {
             >
               <p>
                 In the 1970s, Carroll Gardens looked a little different. My dad, JP Ferraioli,
-                grew up on President Street in what was then a working-class Italian-American
-                neighborhood where the streets were his playground and family-run mom-and-pop
-                shops acted as the backdrop to his earliest memories.
+                grew up on President Street in a working-class Italian-American neighborhood
+                where the streets were his playground and mom-and-pop shops lined the sidewalks.
               </p>
               <p>
-                At the age of ten, his grandmother gave him a gift that would inspire his love
-                for the hunt forever: a 1940s Coca-Cola tray that she&apos;d inherited from her
-                brother, Tony.
-              </p>
-              <p>
-                From that day on, his appetite for collecting never ceased. It grew into more
-                than just a passion, and in 2001 he opened a store of his own in the neighborhood
-                where it all began.
+                At the age of 10, his grandmother gave him a 1940s Coca-Cola tray, igniting a
+                passion that would grow for over two decades, until he and my mom opened a store
+                of their own in the neighborhood where it all began.
               </p>
             </div>
           </div>
