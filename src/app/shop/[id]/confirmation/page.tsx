@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 
@@ -58,6 +59,7 @@ export default async function ConfirmationPage({
 
   return (
     <main style={{ backgroundColor: "#f6e6c9", marginTop: "130px" }}>
+      <FadeIn>
       <section className="px-8 md:px-14 py-20 max-w-2xl">
         <span
           className="text-xs font-bold tracking-[0.2em] uppercase"
@@ -180,6 +182,7 @@ export default async function ConfirmationPage({
           Back to shop →
         </Link>
       </section>
+      </FadeIn>
       <Footer />
     </main>
   );

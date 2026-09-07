@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const criteria = [
   "You have a home full of vintage items, 50 years or older",
@@ -13,9 +13,22 @@ const criteria = [
 export default function WeBuyQualify() {
   const [checked, setChecked] = useState<boolean[]>(new Array(criteria.length).fill(false));
   const allChecked = checked.every(Boolean);
+  const truckWrapRef = useRef<HTMLDivElement>(null);
+  const [truckArrived, setTruckArrived] = useState(false);
 
   const toggle = (i: number) =>
     setChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
+
+  useEffect(() => {
+    const el = truckWrapRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setTruckArrived(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="qualify" className="flex flex-col md:flex-row">
@@ -34,7 +47,8 @@ export default function WeBuyQualify() {
 
       {/* Checklist RIGHT */}
       <div
-        className="flex flex-col justify-center gap-8 px-6 md:px-14 py-10 md:py-16 md:w-1/2"
+        ref={truckWrapRef}
+        className="relative flex flex-col justify-center gap-8 px-6 md:px-14 py-10 md:py-16 md:w-1/2 overflow-hidden"
         style={{ backgroundColor: "#971B2E" }}
       >
         <div className="flex flex-col gap-3">
@@ -42,7 +56,7 @@ export default function WeBuyQualify() {
             Do You Qualify?
           </span>
           <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
-            We&apos;d love to buy from you.
+            We&apos;d love to buy from&nbsp;you.
           </h2>
           <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#FFCCCC" }}>
             Here&apos;s how to know if we&apos;re the right fit.
@@ -98,6 +112,22 @@ export default function WeBuyQualify() {
             ↓
           </a>
         </div>
+
+        {/* Truck — drives in from off-screen right, mobile only */}
+        <Image
+          src="/images/we%20buy/Yesterdays-News-Illustration-Truck%404x%20copy.png"
+          alt=""
+          aria-hidden="true"
+          width={200}
+          height={97}
+          className="pointer-events-none absolute md:hidden w-[175px] h-auto bottom-4 right-4"
+          style={{
+            filter: "drop-shadow(0 8px 12px rgba(0,0,0,0.4))",
+            opacity: truckArrived ? 1 : 0,
+            transform: truckArrived ? "translateX(0)" : "translateX(220px)",
+            transition: "transform 0.9s cubic-bezier(0.3, 1.4, 0.5, 1), opacity 0.4s ease",
+          }}
+        />
       </div>
 
     </section>

@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 import { sanityClient } from "@/lib/sanity";
 import { stripe } from "@/lib/stripe";
 import ScheduleClient from "@/components/ScheduleClient";
@@ -38,6 +39,7 @@ export default async function SchedulePage({
 
   return (
     <main style={{ backgroundColor: "#f6e6c9", marginTop: "130px" }}>
+      <FadeIn>
       <section className="px-8 md:px-14 py-14">
         <span
           className="text-xs font-bold tracking-[0.2em] uppercase"
@@ -66,6 +68,7 @@ export default async function SchedulePage({
           paymentIntentId={payment_intent}
         />
       </section>
+      </FadeIn>
       <Footer />
     </main>
   );

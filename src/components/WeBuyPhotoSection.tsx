@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const WE_BUY_CATEGORIES = [
   { label: "Furniture",                      src: "/images/we%20buy/categories/Furniture.jpeg"  },
@@ -23,7 +23,20 @@ const ALL_ITEMS = [...WE_BUY_CATEGORIES, ...WE_BUY_CATEGORIES];
 
 export default function WeBuyPhotoSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const truckWrapRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number | null>(null);
+  const [truckArrived, setTruckArrived] = useState(false);
+
+  useEffect(() => {
+    const el = truckWrapRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setTruckArrived(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -95,21 +108,37 @@ export default function WeBuyPhotoSection() {
   }, []);
 
   return (
-    <section id="what-we-buy" className="py-10 md:py-20" style={{ backgroundColor: "#f6e6c9" }}>
+    <section id="what-we-buy" className="py-10 md:py-20 bg-[#f6e6c9] md:bg-black">
 
       {/* Header + intro */}
-      <div className="flex flex-col gap-4 px-10 md:px-16 max-w-5xl mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl leading-tight text-left" style={{ color: "#1a0a0e" }}>
+      <div className="flex flex-col gap-4 max-w-5xl px-10 md:px-16 mb-12">
+        <h2 className="font-serif text-4xl md:text-5xl leading-tight text-left text-[#1a0a0e] md:text-[#FFB81C]">
           What We Buy
         </h2>
-        <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl text-left" style={{ color: "#3a2010" }}>
+        <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl text-left text-[#3a2010] md:text-white">
           We buy a wide range of vintage — and we buy a lot of it. We&apos;re interested in it
           all — furniture, decor, and everything in between, including:
         </p>
       </div>
 
       {/* Scroll strip */}
-      <div className="relative">
+      <div ref={truckWrapRef} className="relative">
+        {/* Truck — drives in from off-screen right and "parks" on top of the gallery */}
+        <Image
+          src="/images/we%20buy/Yesterdays-News-Illustration-Truck%404x%20copy.png"
+          alt=""
+          aria-hidden="true"
+          width={280}
+          height={135}
+          className="pointer-events-none absolute hidden md:block w-[280px] h-auto top-[-150px] right-16"
+          style={{
+            zIndex: 20,
+            filter: "drop-shadow(0 10px 16px rgba(0,0,0,0.5))",
+            opacity: truckArrived ? 1 : 0,
+            transform: truckArrived ? "translateX(0)" : "translateX(220px)",
+            transition: "transform 0.9s cubic-bezier(0.3, 1.4, 0.5, 1), opacity 0.4s ease",
+          }}
+        />
         <div
           ref={scrollRef}
           className="flex gap-3 overflow-x-scroll px-4 md:px-16 pb-2"

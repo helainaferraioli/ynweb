@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import CheckoutClient from "@/components/CheckoutClient";
 
@@ -50,10 +51,12 @@ export default async function CheckoutPage({
 
   return (
     <main style={{ backgroundColor: "#f6e6c9", marginTop: "130px" }}>
-      <CheckoutClient
-        product={{ _id: product._id, title: product.title, price: product.price, photoUrl }}
-        qty={qty}
-      />
+      <FadeIn>
+        <CheckoutClient
+          product={{ _id: product._id, title: product.title, price: product.price, photoUrl }}
+          qty={qty}
+        />
+      </FadeIn>
       <Footer />
     </main>
   );

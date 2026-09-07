@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
   title: "Policies",
@@ -10,6 +11,7 @@ export default function Policies() {
   return (
     <main className="flex flex-col">
 
+      <FadeIn>
       <section
         className="flex flex-col gap-12 px-6 md:px-20 py-24 md:py-32 max-w-3xl mx-auto w-full"
         style={{ marginTop: "100px" }}
@@ -101,6 +103,7 @@ export default function Policies() {
         </div>
 
       </section>
+      </FadeIn>
 
       <Footer />
     </main>
