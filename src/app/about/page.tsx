@@ -31,7 +31,7 @@ export default function About() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center md:pt-[120px]">
           <h1
-            className="font-serif text-2xl md:text-7xl text-white text-center"
+            className="font-serif text-4xl md:text-7xl text-white text-center"
             style={{
               animation: "fadeIn 1.4s ease forwards",
               opacity: 0,
