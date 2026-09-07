@@ -48,9 +48,9 @@ export default function JPSlideshow() {
       <style>{`
         .jp-next-arrow { color: #f6e6c9; transition: color 0.2s ease; }
         .jp-next-arrow:hover { color: #FFB81C; }
-        .jp-slideshow-root { --jp-shift: 0px; }
+        .jp-slideshow-root { --jp-shift: 0px; --jp-arrow-right: -4px; --jp-arrow-left: -4px; }
         @media (min-width: 1024px) {
-          .jp-slideshow-root { --jp-shift: -92px; }
+          .jp-slideshow-root { --jp-shift: -92px; --jp-arrow-right: -88px; --jp-arrow-left: -52px; }
         }
       `}</style>
       {photos.map(({ src, position, rotate, scale, caption }, i) => {
@@ -119,8 +119,8 @@ export default function JPSlideshow() {
         type="button"
         onClick={() => goTo(active + 1)}
         aria-label="Next photo"
-        className="jp-next-arrow absolute right-0 top-1/2 z-30 w-14 h-14 hidden lg:flex items-center justify-center text-5xl"
-        style={{ transform: "translateY(-50%) translateX(-88px)" }}
+        className="jp-next-arrow absolute right-0 top-1/2 z-30 w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center text-3xl lg:text-5xl"
+        style={{ transform: "translateY(-50%) translateX(var(--jp-arrow-right))" }}
       >
         ›
       </button>
@@ -128,8 +128,8 @@ export default function JPSlideshow() {
         type="button"
         onClick={() => goTo(active - 1)}
         aria-label="Previous photo"
-        className="jp-next-arrow absolute left-0 top-1/2 z-30 w-14 h-14 hidden lg:flex items-center justify-center text-5xl"
-        style={{ transform: "translateY(-50%) translateX(-52px)" }}
+        className="jp-next-arrow absolute left-0 top-1/2 z-30 w-10 h-10 lg:w-14 lg:h-14 flex items-center justify-center text-3xl lg:text-5xl"
+        style={{ transform: "translateY(-50%) translateX(var(--jp-arrow-left))" }}
       >
         ‹
       </button>

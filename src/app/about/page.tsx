@@ -100,7 +100,7 @@ export default function About() {
               </h2>
             </div>
             {/* Slideshow — full width below heading on mobile/tablet */}
-            <div className="relative lg:hidden" style={{ height: "260px" }}>
+            <div className="relative lg:hidden" style={{ height: "390px" }}>
               <JPSlideshow />
             </div>
             {/* Paragraphs */}
@@ -130,10 +130,10 @@ export default function About() {
 
       {/* ── The Shop ── */}
       <FadeIn>
-        <section id="the-shop" className="flex flex-col md:flex-row" style={{ minHeight: "680px" }}>
+        <section id="the-shop" className="flex flex-col md:flex-row min-h-[510px] md:min-h-[680px]">
 
           {/* Slideshow LEFT */}
-          <div className="relative overflow-hidden md:w-1/2" style={{ minHeight: "680px", backgroundColor: "#f6e6c9" }}>
+          <div className="relative overflow-hidden md:w-1/2 min-h-[510px] md:min-h-[680px]" style={{ backgroundColor: "#f6e6c9" }}>
             <AboutSlideshow />
           </div>
 
