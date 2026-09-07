@@ -19,17 +19,16 @@ export default function About() {
     <main className="flex flex-col">
 
       {/* ── Hero ── */}
-      <section id="brooklyn-story" className="relative w-full aspect-[16/9] mt-[100px] md:mt-0 md:h-[72vh] md:aspect-auto overflow-hidden">
+      <section id="brooklyn-story" className="relative w-full aspect-[16/7.65] mt-[100px] md:mt-0 md:aspect-[2160/961] overflow-hidden">
         <Image
-          src="/images/Hero%20Image.webp"
-          alt="Yesterday's News"
+          src="/About%20Header%20Final%202.JPG"
+          alt="The Ferraioli family outside Yesterday's News"
           fill
-          className="object-cover scale-125 md:scale-100"
-          style={{ objectPosition: "center 10%" }}
+          className="object-cover scale-125 md:scale-100 object-center md:object-[center_38%]"
           priority
         />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center md:pt-[120px]">
+        <div className="absolute inset-0 flex items-center justify-center md:pt-[70px]">
           <h1
             className="font-serif text-4xl md:text-7xl text-white text-center"
             style={{
@@ -56,13 +55,9 @@ export default function About() {
             one of NYC&apos;s longest-standing stores of its kind. Our story begins right here
             in the heart of Carroll Gardens, Brooklyn, where my dad began building his{" "}
             <span
-              className="jp-collection-word group relative inline-block cursor-pointer"
+              className="jp-collection-word group relative inline-block cursor-pointer md:underline md:decoration-wavy md:decoration-2 md:underline-offset-4"
               style={{
-                textDecorationLine: "underline",
-                textDecorationStyle: "wavy",
                 textDecorationColor: "#FFB81C",
-                textDecorationThickness: "2px",
-                textUnderlineOffset: "4px",
               }}
             >
               vintage collection
@@ -91,7 +86,7 @@ export default function About() {
             className="flex flex-col lg:justify-center lg:gap-5 lg:px-10 lg:pt-28 lg:pb-20 lg:w-[55%]"
           >
             {/* Label + heading */}
-            <div className="flex flex-col gap-5 px-10 pt-10 pb-4 lg:p-0">
+            <div className="flex flex-col gap-5 px-10 pt-10 pb-2 lg:p-0">
               <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                 It Started in Brooklyn
               </span>

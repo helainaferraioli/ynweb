@@ -45,7 +45,7 @@ export default function AboutSection() {
     <section ref={ref} className="flex flex-col md:flex-row md:min-h-[580px] overflow-visible">
       <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px", zIndex: 5 }}>
         <Image
-          src="/family-photo-2.jpg"
+          src="/Header%20Image.jpg"
           alt="The Ferraioli family outside Yesterday's News"
           fill
           priority
