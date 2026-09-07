@@ -18,6 +18,7 @@ export default function WeBuy() {
     <main className="flex flex-col">
 
       {/* ── Hero ── */}
+      <FadeIn>
       <section
         className="flex flex-col md:flex-row mt-[100px] md:mt-[130px]"
         style={{ backgroundColor: "#f6e6c9" }}
@@ -77,6 +78,7 @@ export default function WeBuy() {
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* ── Is This a Good Fit? ── */}
       <FadeIn>
@@ -99,6 +101,7 @@ export default function WeBuy() {
       </FadeIn>
 
       {/* ── Bottom photo — mobile only ── */}
+      <FadeIn>
       <div className="relative md:hidden w-full" style={{ height: "90vw" }}>
         <Image
           src="/images/we%20buy/Checklist%20photo.jpg"
@@ -151,6 +154,7 @@ export default function WeBuy() {
           </div>
         </div>
       </div>
+      </FadeIn>
 
       {/* ── Footer ── */}
       <FadeIn>

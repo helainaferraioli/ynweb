@@ -177,7 +177,7 @@ export default function WeBuyContactForm() {
               <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                 Get in Touch
               </span>
-              <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
+              <h2 className="font-serif text-4xl leading-tight text-white">
                 Tell us what you have.
               </h2>
             </div>

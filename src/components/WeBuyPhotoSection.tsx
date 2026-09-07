@@ -112,7 +112,7 @@ export default function WeBuyPhotoSection() {
 
       {/* Header + intro */}
       <div className="flex flex-col gap-4 max-w-5xl px-10 md:px-16 mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl leading-tight text-left text-[#1a0a0e] md:text-[#FFB81C]">
+        <h2 className="font-serif text-4xl leading-tight text-left text-[#1a0a0e] md:text-[#FFB81C]">
           What We Buy
         </h2>
         <p className="font-serif text-base md:text-lg leading-relaxed max-w-2xl text-left text-[#3a2010] md:text-white">

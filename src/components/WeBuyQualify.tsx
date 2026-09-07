@@ -36,7 +36,7 @@ export default function WeBuyQualify() {
       {/* Photo LEFT — desktop only */}
       <div className="relative hidden md:block md:w-1/2 md:min-h-[520px]">
         <Image
-          src="/images/we%20buy/Checklist%20photo.jpg"
+          src="/images/we%20buy/We%20Buy%20Photo%202.jpg"
           alt="JP Ferraioli at work"
           fill
           className="object-cover"
@@ -55,11 +55,11 @@ export default function WeBuyQualify() {
           <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
             Do You Qualify?
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl leading-tight text-white">
+          <h2 className="font-serif text-4xl leading-tight text-white">
             We&apos;d love to buy from&nbsp;you.
           </h2>
-          <p className="font-serif text-base md:text-lg leading-relaxed" style={{ color: "#FFCCCC" }}>
-            Here&apos;s how to know if we&apos;re the right fit.
+          <p className="font-serif italic text-base md:text-2xl leading-relaxed md:-mt-2" style={{ color: "#FFCCCC" }}>
+            Here&apos;s how to know if we&apos;re the right fit:
           </p>
         </div>
 

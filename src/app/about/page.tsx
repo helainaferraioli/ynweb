@@ -19,29 +19,31 @@ export default function About() {
     <main className="flex flex-col">
 
       {/* ── Hero ── */}
-      <section id="brooklyn-story" className="relative w-full aspect-[16/7.65] mt-[100px] md:mt-0 md:aspect-[2160/961] overflow-hidden">
-        <Image
-          src="/About%20Header%20Final%202.JPG"
-          alt="The Ferraioli family outside Yesterday's News"
-          fill
-          className="object-cover scale-125 md:scale-100 object-center md:object-[center_38%]"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center md:pt-[70px]">
-          <h1
-            className="font-serif text-4xl md:text-7xl text-white text-center"
-            style={{
-              animation: "fadeIn 1.4s ease forwards",
-              opacity: 0,
-              animationDelay: "0.3s",
-              textShadow: "0 2px 30px rgba(0,0,0,0.55)",
-            }}
-          >
-            A Brooklyn Story
-          </h1>
-        </div>
-      </section>
+      <FadeIn>
+        <section id="brooklyn-story" className="relative w-full aspect-[16/7.65] mt-[100px] md:mt-0 md:aspect-[2160/961] overflow-hidden">
+          <Image
+            src="/About%20Header%20Final%202.JPG"
+            alt="The Ferraioli family outside Yesterday's News"
+            fill
+            className="object-cover scale-125 md:scale-100 object-center md:object-[center_38%]"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 flex items-center justify-center md:pt-[70px]">
+            <h1
+              className="font-serif text-4xl md:text-7xl text-white text-center"
+              style={{
+                animation: "fadeIn 1.4s ease forwards",
+                opacity: 0,
+                animationDelay: "0.3s",
+                textShadow: "0 2px 30px rgba(0,0,0,0.55)",
+              }}
+            >
+              A Brooklyn Story
+            </h1>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* ── Intro ── */}
       <FadeIn>

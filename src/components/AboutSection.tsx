@@ -43,7 +43,16 @@ export default function AboutSection() {
 
   return (
     <section ref={ref} className="flex flex-col md:flex-row md:min-h-[580px] overflow-visible">
-      <div className="about-image-wrapper relative md:w-1/2 order-last md:order-none" style={{ height: "320px", zIndex: 5 }}>
+      <div
+        className="about-image-wrapper relative md:w-1/2 order-last md:order-none"
+        style={{
+          height: "320px",
+          zIndex: 5,
+          opacity: textVisible ? 1 : 0,
+          transform: textVisible ? "translateY(0)" : "translateY(16px)",
+          transition: "opacity 0.6s ease, transform 0.6s ease",
+        }}
+      >
         <Image
           src="/Header%20Image.jpg"
           alt="The Ferraioli family outside Yesterday's News"

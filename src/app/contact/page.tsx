@@ -17,6 +17,7 @@ export default function Contact() {
     <main className="flex flex-col">
 
       {/* ── Hero ── */}
+      <FadeIn>
       <section
         className="flex flex-col md:flex-row mt-[100px] md:mt-[130px]"
         style={{ backgroundColor: "#f6e6c9" }}
@@ -58,6 +59,7 @@ export default function Contact() {
           </p>
         </div>
       </section>
+      </FadeIn>
 
       {/* ── Form + Map ── */}
       <FadeIn>
