@@ -24,7 +24,7 @@ export default function WeBuyQualify() {
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setTruckArrived(true); },
-      { threshold: 0.3 }
+      { threshold: 0.95 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -113,14 +113,14 @@ export default function WeBuyQualify() {
           </a>
         </div>
 
-        {/* Truck — drives in from off-screen right, mobile only */}
+        {/* Truck — drives in from off-screen right and parks in the corner */}
         <Image
           src="/images/we%20buy/Yesterdays-News-Illustration-Truck%404x%20copy.png"
           alt=""
           aria-hidden="true"
-          width={200}
-          height={97}
-          className="pointer-events-none absolute md:hidden w-[175px] h-auto bottom-4 right-4"
+          width={260}
+          height={126}
+          className="pointer-events-none absolute w-[175px] md:w-[240px] h-auto bottom-4 right-4 md:bottom-6 md:right-6"
           style={{
             filter: "drop-shadow(0 8px 12px rgba(0,0,0,0.4))",
             opacity: truckArrived ? 1 : 0,

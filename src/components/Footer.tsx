@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#971B2E" }} className="px-6 md:px-14 pt-16 pb-10">
+    <footer style={{ backgroundColor: "#971B2E" }} className="px-6 md:px-14 pt-16 pb-4">
       <div className="max-w-7xl mx-auto">
 
         {/* Columns */}
-        <div className="grid grid-cols-2 md:flex md:flex-row gap-y-8 gap-x-14 md:gap-14 justify-between mb-8">
+        <div className="grid grid-cols-2 md:flex md:flex-row gap-y-8 gap-x-14 md:gap-14 justify-between mb-4">
 
           {/* Col 1 — Visit Us */}
           <div className="flex flex-col gap-3">
@@ -129,7 +129,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom — seal + copyright */}
-        <div className="flex flex-col items-center gap-4 pt-6">
+        <div className="flex flex-col items-center gap-4 pt-3">
           <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
           <p className="text-xs tracking-widest uppercase text-center" style={{ color: "#FFCCCC" }}>
             © Yesterday&apos;s News 2026. All Rights Reserved.
