@@ -11,13 +11,13 @@
 }
 
 html {
-  background: #f6e6c9;
+  background: #971B2E;
   overflow-x: hidden;
   overscroll-behavior-x: none;
 }
 
 body {
-  background: #f6e6c9;
+  background: #971B2E;
   color: var(--foreground);
   overflow-x: hidden;
   overscroll-behavior-x: none;
