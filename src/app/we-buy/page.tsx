@@ -102,13 +102,13 @@ export default function WeBuy() {
 
       {/* ── Bottom photo — mobile only ── */}
       <FadeIn>
-      <div className="relative md:hidden w-full" style={{ height: "90vw" }}>
+      <div className="relative md:hidden w-full" style={{ height: "78vw" }}>
         <Image
-          src="/images/we%20buy/checklist%20photo%202.jpg"
+          src="/images/we%20buy/Checklist%20photo.jpg"
           alt="JP Ferraioli at work"
           fill
           className="object-cover"
-          style={{ objectPosition: "center 20%" }}
+          style={{ objectPosition: "center 30%" }}
           sizes="100vw"
         />
         {/* Bottom vignette */}
@@ -117,7 +117,7 @@ export default function WeBuy() {
           style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)" }}
         />
         {/* Overlay text + buttons */}
-        <div className="absolute inset-x-0 bottom-0 px-6 pb-8 z-10 flex flex-col items-center gap-4">
+        <div className="absolute inset-0 px-6 pb-10 z-10 flex flex-col items-center justify-end gap-4">
           <div className="flex flex-col items-center gap-1">
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">Prefer to Talk?</span>
             <p className="font-serif text-xl text-white leading-snug">Call or text us directly.</p>
