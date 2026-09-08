@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const photos = Array.from({ length: 12 }, (_, i) =>
-  `/images/Slideshow%20Photo%20${i + 1}.webp`
+const photos = [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
+  (n) => `/images/about/Slideshow%20Photo%20${n}.webp`
 );
 
 export default function AboutSlideshow() {
