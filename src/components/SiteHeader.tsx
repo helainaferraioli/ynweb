@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const aboutLinks = [
-  { label: "A Brooklyn Story", href: "/about#brooklyn-story" },
+  { label: "A Brooklyn Story", href: "/about" },
   { label: "Our Family",       href: "/about#our-family" },
   { label: "The Shop",         href: "/about#the-shop" },
 ];

@@ -131,7 +131,9 @@ export default function Footer() {
 
         {/* Bottom — seal + copyright */}
         <div className="flex flex-col items-center gap-4 pt-3">
-          <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
+          </Link>
           <p className="text-xs tracking-[0.2em] uppercase text-center" style={{ color: "#FFCCCC" }}>
             © Yesterday&apos;s News 2026. All Rights Reserved.
           </p>

@@ -10,7 +10,6 @@ const typewriter = Special_Elite({ weight: "400", subsets: ["latin"] });
 const photos = [
   { src: "/images/about/1970s%20Prospect%20Park.png",    position: "center 80%",  rotate: -4, caption: "JP + Craig, Prospect Park little league (1970s)" },
   { src: "/images/about/1983%20President%20Street.png",  position: "center 40%",  rotate: 3,  caption: "A summer day on President Street (1983)" },
-  { src: "/images/about/Dad%20Carroll%20Park.jpg",        position: "center 35%",  rotate: -2, caption: "Carroll Park bocci courts (1985)" },
   { src: "/images/about/1990s%20Collection%20Room.png",   position: "center 100%", rotate: -3, caption: "Reading yesterday's news (1993)" },
   { src: "/images/about/Dad%20Collection%20Room%202.png", position: "center 100%", rotate: 4,  caption: "The Coca-Cola collection room (1996)" },
   { src: "/images/about/Dad%20%26%20Craig.png",           position: "center 30%",  rotate: -5, caption: "JP and Craig catch a game (1996)" },
