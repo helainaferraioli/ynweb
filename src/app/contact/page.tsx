@@ -128,7 +128,7 @@ export default function Contact() {
               <div className="flex items-center gap-5">
                 <a
                   href="mailto:yesterdaysnews1@gmail.com"
-                  className="font-serif text-sm font-bold tracking-widest uppercase px-6 py-3 border-2 transition-colors hover:bg-[#971B2E] hover:text-white hover:border-[#971B2E]"
+                  className="text-sm font-bold tracking-widest uppercase px-6 py-3 border-2 transition-colors hover:bg-[#971B2E] hover:text-white hover:border-[#971B2E]"
                   style={{ color: "#971B2E", borderColor: "#971B2E" }}
                 >
                   Email Us

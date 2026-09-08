@@ -88,7 +88,7 @@ export default async function ConfirmationPage({
             style={{ backgroundColor: "#eddcb8" }}
           >
             <p
-              className="text-xs font-bold tracking-widest uppercase"
+              className="text-xs font-bold tracking-[0.2em] uppercase"
               style={{ color: "#971B2E" }}
             >
               Your order
@@ -109,7 +109,7 @@ export default async function ConfirmationPage({
             </div>
             <div className="flex justify-between items-baseline">
               <span
-                className="text-xs font-bold tracking-widest uppercase"
+                className="text-xs font-bold tracking-[0.2em] uppercase"
                 style={{ color: "#3a2010" }}
               >
                 Total paid
@@ -127,7 +127,7 @@ export default async function ConfirmationPage({
           style={{ borderColor: "#FFB81C", backgroundColor: "#eddcb8" }}
         >
           <p
-            className="text-xs font-bold tracking-widest uppercase mb-2"
+            className="text-xs font-bold tracking-[0.2em] uppercase mb-2"
             style={{ color: "#971B2E" }}
           >
             {order?.pickup_type === "scheduled" ? "Your pickup time" : "Your pickup window"}
@@ -176,7 +176,7 @@ export default async function ConfirmationPage({
 
         <Link
           href="/shop"
-          className="inline-block text-xs font-bold tracking-widest uppercase pb-1 border-b-2 hover:opacity-60 transition-opacity"
+          className="inline-block text-xs font-bold tracking-[0.2em] uppercase pb-1 border-b-2 hover:opacity-60 transition-opacity"
           style={{ color: "#971B2E", borderColor: "#971B2E" }}
         >
           Back to shop →

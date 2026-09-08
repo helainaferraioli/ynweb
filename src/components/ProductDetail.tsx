@@ -42,7 +42,7 @@ export default function ProductDetail({
       {/* Back link */}
       <Link
         href="/shop"
-        className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mb-10 hover:opacity-60 transition-opacity"
+        className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase mb-10 hover:opacity-60 transition-opacity"
         style={{ color: "#971B2E" }}
       >
         ← Back to shop
@@ -132,7 +132,7 @@ export default function ProductDetail({
               {product.dimensions && (
                 <div className="flex justify-between py-3">
                   <span
-                    className="text-xs font-bold tracking-widest uppercase"
+                    className="text-xs font-bold tracking-[0.2em] uppercase"
                     style={{ color: "#971B2E" }}
                   >
                     Dimensions
@@ -145,7 +145,7 @@ export default function ProductDetail({
               {product.materials && (
                 <div className="flex justify-between py-3">
                   <span
-                    className="text-xs font-bold tracking-widest uppercase"
+                    className="text-xs font-bold tracking-[0.2em] uppercase"
                     style={{ color: "#971B2E" }}
                   >
                     Materials
@@ -158,7 +158,7 @@ export default function ProductDetail({
               {product.condition && (
                 <div className="flex justify-between py-3">
                   <span
-                    className="text-xs font-bold tracking-widest uppercase"
+                    className="text-xs font-bold tracking-[0.2em] uppercase"
                     style={{ color: "#971B2E" }}
                   >
                     Condition
@@ -175,7 +175,7 @@ export default function ProductDetail({
           {multiQty && !soldOut && (
             <div className="flex items-center gap-4">
               <span
-                className="text-xs font-bold tracking-widest uppercase"
+                className="text-xs font-bold tracking-[0.2em] uppercase"
                 style={{ color: "#1a0a0e" }}
               >
                 Qty
@@ -211,7 +211,7 @@ export default function ProductDetail({
           {soldOut ? (
             <button
               disabled
-              className="w-full py-4 font-serif text-sm font-bold tracking-widest uppercase opacity-40 cursor-not-allowed"
+              className="w-full py-4 text-sm font-bold tracking-widest uppercase opacity-40 cursor-not-allowed"
               style={{ backgroundColor: "#c4a882", color: "#fff" }}
             >
               Sold Out
@@ -219,7 +219,7 @@ export default function ProductDetail({
           ) : (
             <Link
               href={`/shop/${product._id}/checkout${qty > 1 ? `?qty=${qty}` : ""}`}
-              className="block w-full py-4 text-center font-serif text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-80"
+              className="block w-full py-4 text-center text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-80"
               style={{ backgroundColor: "#971B2E", color: "#fff" }}
             >
               Reserve & Pay
@@ -232,7 +232,7 @@ export default function ProductDetail({
             style={{ borderColor: "#FFB81C", backgroundColor: "#eddcb8" }}
           >
             <p
-              className="text-xs font-bold tracking-widest uppercase"
+              className="text-xs font-bold tracking-[0.2em] uppercase"
               style={{ color: "#971B2E" }}
             >
               Pickup only — no shipping

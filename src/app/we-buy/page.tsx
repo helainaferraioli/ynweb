@@ -50,8 +50,8 @@ export default function WeBuy() {
 
         {/* Copy — cream background below photo on mobile, left column on desktop */}
         <div
-          className="order-last md:order-first flex flex-col justify-center gap-6 px-6 md:px-14 py-8 md:w-1/2"
-          style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s" }}
+          className="order-last md:order-first flex flex-col justify-center gap-6 px-6 md:px-14 py-8 md:w-1/2 relative"
+          style={{ animation: "fadeIn 1.2s ease forwards", opacity: 0, animationDelay: "0.2s", zIndex: 20 }}
         >
           <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#971B2E" }}>
             We Buy Vintage

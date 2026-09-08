@@ -29,7 +29,7 @@ export default function NotFound() {
         </div>
         <Link
           href="/"
-          className="font-serif text-sm font-bold tracking-widest uppercase px-8 py-3 text-white transition-opacity hover:opacity-85"
+          className="text-sm font-bold tracking-widest uppercase px-8 py-3 text-white transition-opacity hover:opacity-85"
           style={{ backgroundColor: "#971B2E" }}
         >
           Back to the shop

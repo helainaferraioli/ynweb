@@ -11,7 +11,7 @@ export default function Footer() {
 
           {/* Col 1 — Visit Us */}
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#FFB81C" }}>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
               Visit Us
             </span>
             <div className="flex flex-col gap-1 text-sm leading-relaxed" style={{ color: "#FFCCCC" }}>
@@ -34,7 +34,7 @@ export default function Footer() {
 
           {/* Col 2 — Yesterday's News nav */}
           <div className="flex flex-col gap-3 items-end md:items-start pr-6 md:pr-0">
-            <span className="text-xs font-bold tracking-widest uppercase whitespace-nowrap" style={{ color: "#FFB81C" }}>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase whitespace-nowrap" style={{ color: "#FFB81C" }}>
               Yesterday&apos;s News
             </span>
             {[
@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Col 3 — Have Something to Sell + Social */}
           <div className="hidden md:flex flex-col gap-10 max-w-[200px]">
             <div className="flex flex-col gap-3">
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#FFB81C" }}>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                 Have Something to Sell?
               </span>
               <p className="text-sm leading-relaxed" style={{ color: "#FFCCCC" }}>
@@ -60,14 +60,14 @@ export default function Footer() {
               </p>
               <Link
                 href="/we-buy"
-                className="inline-block text-xs font-bold tracking-widest uppercase pb-1 border-b hover:opacity-70 transition-opacity w-fit"
+                className="inline-block text-xs font-bold tracking-[0.2em] uppercase pb-1 border-b hover:opacity-70 transition-opacity w-fit"
                 style={{ color: "#FFB81C", borderColor: "#FFB81C" }}
               >
                 Learn more →
               </Link>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#FFB81C" }}>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase" style={{ color: "#FFB81C" }}>
                 Social
               </span>
               <a
@@ -131,10 +131,10 @@ export default function Footer() {
         {/* Bottom — seal + copyright */}
         <div className="flex flex-col items-center gap-4 pt-3">
           <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
-          <p className="text-xs tracking-widest uppercase text-center" style={{ color: "#FFCCCC" }}>
+          <p className="text-xs tracking-[0.2em] uppercase text-center" style={{ color: "#FFCCCC" }}>
             © Yesterday&apos;s News 2026. All Rights Reserved.
           </p>
-          <Link href="/policies" className="text-xs tracking-widest uppercase hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
+          <Link href="/policies" className="text-xs tracking-[0.2em] uppercase hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
             Returns &amp; Privacy
           </Link>
         </div>

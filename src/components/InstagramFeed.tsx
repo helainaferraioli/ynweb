@@ -191,7 +191,7 @@ export default function InstagramFeed({ hideHeader, dark }: { hideHeader?: boole
           href="https://instagram.com/yesterdaysnewsbk"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs font-bold tracking-widest uppercase pb-1 border-b-2 hover:opacity-70 transition-opacity"
+          className="text-xs font-bold tracking-[0.2em] uppercase pb-1 border-b-2 hover:opacity-70 transition-opacity"
           style={{ color: "#f6e6c9", borderColor: "#f6e6c9" }}
         >
           Follow @yesterdaysnewsbk

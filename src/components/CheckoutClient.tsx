@@ -216,7 +216,7 @@ export default function CheckoutClient({
     <section className="px-8 md:px-14 py-14">
       <Link
         href={`/shop/${product._id}`}
-        className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mb-10 hover:opacity-60 transition-opacity"
+        className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase mb-10 hover:opacity-60 transition-opacity"
         style={{ color: "#971B2E" }}
       >
         ← Back
@@ -310,7 +310,7 @@ export default function CheckoutClient({
               style={{ borderColor: "#c4a882" }}
             >
               <span
-                className="text-xs font-bold tracking-widest uppercase"
+                className="text-xs font-bold tracking-[0.2em] uppercase"
                 style={{ color: "#3a2010" }}
               >
                 Total
@@ -325,7 +325,7 @@ export default function CheckoutClient({
               style={{ borderColor: "#FFB81C", backgroundColor: "#f6e6c9" }}
             >
               <p
-                className="text-xs font-bold tracking-widest uppercase mb-1"
+                className="text-xs font-bold tracking-[0.2em] uppercase mb-1"
                 style={{ color: "#971B2E" }}
               >
                 Pickup only
