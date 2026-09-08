@@ -36,11 +36,11 @@ export default function WeBuyQualify() {
       {/* Photo LEFT — desktop only */}
       <div className="relative hidden md:block md:w-1/2 md:min-h-[520px]">
         <Image
-          src="/images/we%20buy/We%20Buy%20Photo%202.jpg"
+          src="/images/we%20buy/checklist%20photo%202.jpg"
           alt="JP Ferraioli at work"
           fill
           className="object-cover"
-          style={{ objectPosition: "center 28%" }}
+          style={{ objectPosition: "center 45%" }}
           sizes="50vw"
         />
       </div>

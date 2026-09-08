@@ -104,7 +104,7 @@ export default function WeBuy() {
       <FadeIn>
       <div className="relative md:hidden w-full" style={{ height: "90vw" }}>
         <Image
-          src="/images/we%20buy/Checklist%20photo.jpg"
+          src="/images/we%20buy/checklist%20photo%202.jpg"
           alt="JP Ferraioli at work"
           fill
           className="object-cover"

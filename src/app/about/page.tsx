@@ -20,12 +20,12 @@ export default function About() {
 
       {/* ── Hero ── */}
       <FadeIn>
-        <section id="brooklyn-story" className="relative w-full aspect-[16/7.65] mt-[100px] md:mt-0 md:aspect-[2160/961] overflow-hidden">
+        <section id="brooklyn-story" className="relative w-full aspect-[16/6.885] mt-[100px] md:mt-0 md:aspect-[2160/865] overflow-hidden">
           <Image
-            src="/About%20Header%20Final%202.JPG"
+            src="/images/about/Header%20Photo%203.jpg"
             alt="The Ferraioli family outside Yesterday's News"
             fill
-            className="object-cover scale-125 md:scale-100 object-center md:object-[center_38%]"
+            className="object-cover scale-[1.35] md:scale-100 object-[center_19%] md:object-[center_14%]"
             priority
           />
           <div className="absolute inset-0 bg-black/40" />
