@@ -107,10 +107,12 @@ export default function WeBuyQualify() {
             pointerEvents: allChecked ? "auto" : "none",
           }}
         >
-          <em>Sounds like this might be a good fit</em>
-          <a href="#how-it-works" className="text-2xl leading-none hover:opacity-70 transition-opacity" aria-label="Read more">
-            ↓
-          </a>
+          <em>
+            Sounds like this might<br className="md:hidden" /> be a good fit{" "}
+            <a href="#how-it-works" className="text-2xl leading-none not-italic hover:opacity-70 transition-opacity" aria-label="Read more">
+              ↓
+            </a>
+          </em>
         </div>
 
         {/* Truck — drives in from off-screen right and parks in the corner */}
