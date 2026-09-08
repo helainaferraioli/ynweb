@@ -42,6 +42,7 @@ export default function Footer() {
               { label: "Shop", href: "/shop" },
               { label: "We Buy", href: "/we-buy" },
               { label: "Contact", href: "/contact" },
+              { label: "FAQ", href: "/faq" },
             ].map((l) => (
               <Link key={l.href} href={l.href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#FFCCCC" }}>
                 {l.label}

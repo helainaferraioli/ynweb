@@ -270,7 +270,7 @@ export default function WeBuyContactForm() {
               <button
                 type="submit"
                 disabled={status === "submitting" || photos.some((p) => p.status === "uploading")}
-                className="self-start text-sm font-bold tracking-widest uppercase px-8 py-4 transition-opacity hover:opacity-80 disabled:opacity-50 mt-2"
+                className="self-start text-sm font-bold tracking-widest uppercase px-6 py-3 transition-opacity hover:opacity-80 disabled:opacity-50 mt-2"
                 style={{ backgroundColor: "#FFB81C", color: "#1a0a0e" }}
               >
                 {status === "submitting" ? "Sending…" : "Send My Info"}
