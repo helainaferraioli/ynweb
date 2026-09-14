@@ -1,0 +1,596 @@
+<!doctype html>
+<title>Yesterday's News Manual</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&family=Special+Elite&display=swap');
+
+  :root{
+    --cream:#f6e6c9;
+    --paper:#fdf6e8;
+    --ink:#241812;
+    --ink-soft:#5b4632;
+    --red:#971b2e;
+    --red-deep:#6f1220;
+    --gold:#a97c2f;
+    --rule: rgba(36,24,18,.20);
+    --rule-strong: rgba(36,24,18,.42);
+    --shadow: rgba(36,24,18,.12);
+    --tag-bg: rgba(36,24,18,.05);
+    --focus: #1a0a0e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#1a0a0e;
+      --paper:#241016;
+      --ink:#f2e2c8;
+      --ink-soft:#c9a980;
+      --red:#e05b6c;
+      --red-deep:#f2879a;
+      --gold:#d4a94f;
+      --rule: rgba(242,226,200,.20);
+      --rule-strong: rgba(242,226,200,.38);
+      --shadow: rgba(0,0,0,.5);
+      --tag-bg: rgba(242,226,200,.07);
+      --focus: #f2e2c8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#1a0a0e;
+    --paper:#241016;
+    --ink:#f2e2c8;
+    --ink-soft:#c9a980;
+    --red:#e05b6c;
+    --red-deep:#f2879a;
+    --gold:#d4a94f;
+    --rule: rgba(242,226,200,.20);
+    --rule-strong: rgba(242,226,200,.38);
+    --shadow: rgba(0,0,0,.5);
+    --tag-bg: rgba(242,226,200,.07);
+    --focus: #f2e2c8;
+  }
+
+  *{ box-sizing:border-box; }
+  ::selection{ background: var(--red); color: var(--paper); }
+
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.6;
+    padding-inline: 20px;
+  }
+
+  a{ color: var(--red-deep); }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  h1,h2,h3{ font-family:"Playfair Display", Georgia, serif; text-wrap: balance; margin:0; }
+
+  .kicker{
+    font-family:"Special Elite","IBM Plex Mono",monospace;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  code, .tag, .path{
+    font-family:"IBM Plex Mono",monospace;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    max-width: 1180px;
+    margin: 28px auto 0;
+    padding-bottom: 18px;
+    border-bottom: 4px double var(--rule-strong);
+    text-align:center;
+  }
+  .masthead .eyebrow{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:"Special Elite","IBM Plex Mono",monospace;
+    font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+    color: var(--ink-soft);
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding: 6px 2px; margin-bottom:18px; gap: 8px; flex-wrap: wrap;
+  }
+  .masthead h1{
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight:900;
+    letter-spacing: .01em;
+    line-height: 1;
+  }
+  .masthead .sub{
+    margin-top:10px;
+    font-family:"Special Elite","IBM Plex Mono",monospace;
+    font-size:.85rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color: var(--ink-soft);
+  }
+  .masthead .dek{
+    max-width: 62ch;
+    margin: 16px auto 0;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Digest box (front-page summary) ---------- */
+  .digest{
+    max-width:1180px; margin: 26px auto 0;
+    display:grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--rule-strong);
+    background: var(--paper);
+    box-shadow: 0 2px 0 var(--shadow);
+  }
+  .digest > div{
+    padding: 16px 18px;
+    border-left: 1px solid var(--rule);
+  }
+  .digest > div:first-child{ border-left:none; }
+  .digest dt{ font-family:"Special Elite","IBM Plex Mono",monospace; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;}
+  .digest dd{ margin:0; font-size:.98rem; }
+  .digest a{ text-decoration-thickness: 1px; }
+
+  /* ---------- Layout: index rail + content ---------- */
+  .layout{
+    max-width: 1180px; margin: 34px auto 80px;
+    display:grid; grid-template-columns: 210px minmax(0,1fr); gap: 40px;
+  }
+  nav.index{ position: sticky; top: 20px; align-self:start; }
+  nav.index .label{ font-family:"Special Elite","IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; display:block;}
+  nav.index ol{ list-style:none; margin:0; padding:0; border-top:1px solid var(--rule); }
+  nav.index li{ border-bottom:1px solid var(--rule); }
+  nav.index a{
+    display:flex; gap:10px; align-items:baseline;
+    padding: 9px 2px; text-decoration:none; color:var(--ink);
+    font-size:.92rem;
+  }
+  nav.index a .l{ font-family:"Playfair Display",serif; font-weight:700; color:var(--red-deep); width:1.1em; }
+  nav.index a[aria-current="true"]{ color:var(--red-deep); font-weight:600; }
+  nav.index a:hover{ color:var(--red-deep); }
+
+  main{ min-width:0; }
+
+  section.chapter{ margin-bottom: 56px; scroll-margin-top: 18px; }
+  section.chapter:first-of-type{ margin-top:0; }
+
+  .chapter-head{ display:flex; gap:18px; align-items:flex-start; margin-bottom:22px; }
+  .letter-badge{
+    flex: none;
+    width:52px; height:52px;
+    border: 2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Playfair Display",serif; font-weight:900; font-size:1.6rem;
+    transform: rotate(-1.5deg);
+  }
+  .chapter-head h2{ font-size: clamp(1.5rem, 3vw, 2.05rem); }
+  .chapter-head .kicker{ display:block; margin-bottom:4px; }
+
+  .prose{ max-width: 66ch; }
+  .prose p{ margin: 0 0 14px; }
+  .prose ul, .prose ol{ margin: 0 0 14px; padding-left: 1.3em; }
+  .prose li{ margin-bottom:6px; }
+  .prose h3{ font-size:1.15rem; margin: 22px 0 10px; }
+  strong{ color: var(--red-deep); }
+
+  .callout{
+    max-width: 66ch;
+    border: 1px solid var(--rule-strong);
+    background: var(--tag-bg);
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .callout .kicker{ margin-bottom:6px; }
+  .callout.warn{ border-left: 4px solid var(--red-deep); }
+
+  /* file tree */
+  .tree{ max-width: 66ch; border:1px solid var(--rule-strong); background:var(--paper); padding: 16px 18px; margin: 10px 0 20px; }
+  .tree .path{ font-size:.86rem; }
+  .tree ul{ list-style:none; margin:0; padding-left: 1.2em; border-left:1px dashed var(--rule); }
+  .tree > ul{ padding-left:0; border-left:none; }
+  .tree li{ margin: 5px 0; }
+  .tree .note{ color: var(--ink-soft); font-family:"Source Serif 4",serif; font-size:.86rem; }
+
+  .archive-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    margin: 10px 0 20px; max-width: 66ch;
+  }
+  .archive-grid .card{
+    border:1px solid var(--rule-strong); background:var(--paper);
+    padding: 12px 14px;
+  }
+  .archive-grid .card .path{ font-size:.82rem; display:block; margin-bottom:4px; }
+  .archive-grid .card p{ margin:0; font-size:.85rem; color:var(--ink-soft); }
+
+  table.spec{ width:100%; border-collapse:collapse; max-width:66ch; margin: 8px 0 20px; font-size:.94rem; }
+  table.spec th, table.spec td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.spec th{ font-family:"Special Elite","IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:400; }
+  table.spec td .path{ font-size:.86rem; }
+
+  .steps{ counter-reset: step; list-style:none; padding:0; max-width:66ch; }
+  .steps li{ counter-increment: step; position:relative; padding-left: 2.4em; margin-bottom: 14px; }
+  .steps li::before{
+    content: counter(step);
+    position:absolute; left:0; top:0;
+    width:1.7em; height:1.7em; border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"IBM Plex Mono",monospace; font-size:.8rem;
+  }
+
+  .palette{ display:grid; grid-template-columns: repeat(5,1fr); gap:12px; max-width: 66ch; margin: 10px 0 20px; }
+  .swatch{ border:1px solid var(--rule-strong); }
+  .swatch .fill{ height:56px; }
+  .swatch .cap{ padding:8px 8px; background:var(--paper); }
+  .swatch .cap b{ display:block; font-size:.8rem; }
+  .swatch .cap span{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  dl.glossary{ max-width: 66ch; }
+  dl.glossary div{ display:grid; grid-template-columns: 148px 1fr; gap: 14px; padding: 11px 0; border-bottom:1px solid var(--rule); }
+  dl.glossary dt{ font-family:"IBM Plex Mono",monospace; font-size:.86rem; color:var(--red-deep); }
+  dl.glossary dd{ margin:0; font-size:.94rem; }
+
+  .keyring{ list-style:none; margin:0; padding:0; max-width:66ch; border-top:1px solid var(--rule); }
+  .keyring li{ border-bottom:1px solid var(--rule); padding:10px 0; display:grid; grid-template-columns: minmax(0,220px) 1fr; gap:14px; }
+  .keyring .path{ font-size:.82rem; }
+  .keyring p{ margin:0; font-size:.9rem; color:var(--ink-soft); }
+
+  footer.colophon{
+    max-width:1180px; margin: 0 auto 40px; padding-top:18px;
+    border-top: 4px double var(--rule-strong);
+    text-align:center; color:var(--ink-soft); font-size:.85rem;
+  }
+
+  .mobile-nav-toggle{ display:none; }
+
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; gap: 20px; }
+    nav.index{
+      position: static;
+      border:1px solid var(--rule-strong); background:var(--paper);
+      padding: 10px 14px 4px;
+    }
+    nav.index ol{ display:flex; flex-wrap:wrap; gap: 0 16px; border-top:none; }
+    nav.index li{ border-bottom:none; }
+    .digest{ grid-template-columns: 1fr 1fr; }
+    .digest > div:nth-child(3){ border-left:none; }
+    .archive-grid, .palette{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px){
+    .digest{ grid-template-columns: 1fr; }
+    .digest > div{ border-left:none; border-top:1px solid var(--rule); }
+    .digest > div:first-child{ border-top:none; }
+    .archive-grid, .palette{ grid-template-columns: 1fr; }
+    dl.glossary div, .keyring li{ grid-template-columns: 1fr; gap:4px; }
+    .masthead .eyebrow{ justify-content:center; text-align:center; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    html{ scroll-behavior:smooth; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="eyebrow">
+    <span>Vol. I · No. 1</span>
+    <span>428 Court Street, Carroll Gardens, Brooklyn</span>
+    <span>Est. 2001</span>
+  </div>
+  <h1>Yesterday's News</h1>
+  <div class="sub">Site &amp; Shop Operator's Manual</div>
+  <p class="dek">A working guide to the yesterdaysnewsbk.com site — where its files live, how to change what it says and shows, and how to get new pieces into the shop. Written for family and staff, not developers.</p>
+</header>
+
+<dl class="digest">
+  <div>
+    <dt>The live site</dt>
+    <dd><a href="https://www.yesterdaysnewsbk.com" target="_blank" rel="noopener">yesterdaysnewsbk.com</a></dd>
+  </div>
+  <div>
+    <dt>Add / edit products</dt>
+    <dd><span class="path">/studio</span> (password-protected)</dd>
+  </div>
+  <div>
+    <dt>The project's files</dt>
+    <dd><span class="path">Desktop &rsaquo; YN Site</span></dd>
+  </div>
+  <div>
+    <dt>Everything else</dt>
+    <dd><span class="path">Desktop &rsaquo; Yesterday's News Archive</span></dd>
+  </div>
+</dl>
+
+<div class="layout">
+  <nav class="index" aria-label="Sections">
+    <span class="label">Inside this edition</span>
+    <ol id="toc">
+      <li><a href="#lay-of-land"><span class="l">A</span> Where Everything Lives</a></li>
+      <li><a href="#making-a-change"><span class="l">B</span> Making a Change</a></li>
+      <li><a href="#running-shop"><span class="l">C</span> Running the Shop</a></li>
+      <li><a href="#mail-messages"><span class="l">D</span> Mail &amp; Messages</a></li>
+      <li><a href="#publishing-day"><span class="l">E</span> Publishing Day</a></li>
+      <li><a href="#the-vault"><span class="l">F</span> The Vault</a></li>
+      <li><a href="#house-style"><span class="l">G</span> House Style</a></li>
+      <li><a href="#glossary"><span class="l">H</span> Plain-English Glossary</a></li>
+      <li><a href="#if-broken"><span class="l">I</span> If Something Breaks</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section class="chapter" id="lay-of-land">
+      <div class="chapter-head">
+        <div class="letter-badge">A</div>
+        <div>
+          <span class="kicker">Section A · Filing System</span>
+          <h2>Where everything lives</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>As of this cleanup (Sept 13, 2026), there are exactly two places to look. If it's not one of these two, it isn't part of the site.</p>
+        <h3>1. The project itself — everything currently live or about to be</h3>
+        <p><span class="path">Desktop &rsaquo; YN Site</span> is the actual project: a Git repository that Vercel builds and publishes as yesterdaysnewsbk.com. Nothing outside this folder affects the live site.</p>
+      </div>
+      <div class="tree">
+        <ul>
+          <li><span class="path">public/</span> — <span class="note">every photo, video, and icon the site can show, exactly as filed. If it's in here, it's live or about to be.</span>
+            <ul>
+              <li><span class="path">images/about/</span>, <span class="path">images/we buy/</span>, <span class="path">images/ephemera/</span> <span class="note">— photos grouped by the page that uses them</span></li>
+            </ul>
+          </li>
+          <li><span class="path">src/app/</span> — <span class="note">one folder per page</span>
+            <ul>
+              <li><span class="path">page.tsx</span> <span class="note">— Home</span></li>
+              <li><span class="path">about/</span>, <span class="path">shop/</span>, <span class="path">contact/</span>, <span class="path">we-buy/</span>, <span class="path">faq/</span>, <span class="path">policies/</span></li>
+              <li><span class="path">api/</span> <span class="note">— the plumbing: email, payments, photo uploads</span></li>
+              <li><span class="path">studio/</span> <span class="note">— hosts the Sanity product database at /studio</span></li>
+            </ul>
+          </li>
+          <li><span class="path">src/components/</span> — <span class="note">reusable pieces pages are built from (Navbar, Footer, AboutSlideshow, WeBuyQualify, …)</span></li>
+          <li><span class="path">sanity/schemas/</span> — <span class="note"><span class="path">product.ts</span> and <span class="path">order.ts</span>, the shop's data model</span></li>
+          <li><span class="path">docs/</span> — <span class="note">two living planning documents, plus this manual</span>
+            <ul>
+              <li><span class="path">yn-site-edits.md</span> <span class="note">— the running punch-list of copy/photo changes</span></li>
+              <li><span class="path">yn-site-pickup-shop-spec.md</span> <span class="note">— how the pickup-only shop is meant to work</span></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <h3>2. The archive — everything else, organized</h3>
+        <p><span class="path">Desktop &rsaquo; Yesterday's News Archive</span> is new: a single home for every loose photo, old draft, and export that was scattered across the Desktop and Downloads. Nothing was deleted — items were moved and sorted, so near-duplicate folders (like the two "YN Website Assets" folders) sit side by side rather than being merged.</p>
+      </div>
+      <div class="archive-grid">
+        <div class="card"><span class="path">Website Repo Assets (unused)</span><p>Draft photos/videos that used to sit in <span class="path">public/</span> but were never actually used on any page.</p></div>
+        <div class="card"><span class="path">Desktop Loose Files</span><p>Individual shop/family photos that were loose directly on the Desktop.</p></div>
+        <div class="card"><span class="path">Photoshoots &amp; Raw Photos</span><p>Full photoshoot exports — About Photos (raw/compressed), YN Film Pics, YN Squad Pics.</p></div>
+        <div class="card"><span class="path">Website Assets &amp; Drafts</span><p>The big "YN Website Assets" folders and the general "Yesterday's News" working folder.</p></div>
+        <div class="card"><span class="path">Brand &amp; Graphics</span><p>Logo exports, the Nash brand kit, Josh Diaz illustrations, the SVG library.</p></div>
+        <div class="card"><span class="path">Merch Inspo</span><p>Screenshots gathered while thinking through merch ideas.</p></div>
+        <div class="card"><span class="path">Downloads Exports</span><p>Email-list CSVs, old homepage HTML drafts, and zipped photo exports pulled out of Downloads.</p></div>
+        <div class="card"><span class="path">Safe to Delete</span><p>An empty file, an old build folder, one exact-duplicate photo. Nothing here is used anywhere — empty this whenever you like.</p></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="making-a-change">
+      <div class="chapter-head">
+        <div class="letter-badge">B</div>
+        <div>
+          <span class="kicker">Section B · Copy &amp; Photos</span>
+          <h2>Making a change</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>This site is hand-built, not a drag-and-drop page builder — with one exception (the shop's products, see Section C). That means the wording you see on the page is typed directly into a file, and changing it means editing that file and republishing. It's quick, but it does need to go through code.</p>
+        <p>The easiest way to do this: describe the change to Claude Code in plain language ("change the opening line on the About page to...") and let it find the right file, make the edit, and check it before it goes live.</p>
+        <h3>The routine</h3>
+      </div>
+      <ol class="steps">
+        <li><strong>Say what you want changed, and where.</strong> Either ask directly, or add it to the running list at <span class="path">docs/yn-site-edits.md</span> — that file already exists for exactly this, tagged by page and type (Copy, Sizing, Graphic/Photo, Bug).</li>
+        <li><strong>The file gets edited.</strong> Wording lives in the page file (<span class="path">src/app/about/page.tsx</span>, for example) or a shared component (<span class="path">src/components/</span>). Swapping a photo means dropping the new file into the matching <span class="path">public/images/…</span> folder and pointing the page at its filename.</li>
+        <li><strong>Preview it.</strong> Running <span class="path">npm run dev</span> opens a local copy at <span class="path">localhost:3000</span> that reflects the change instantly, before anyone else sees it.</li>
+        <li><strong>Publish it.</strong> Once it looks right, the change is committed and pushed to <span class="path">main</span> — see Section E, Publishing Day. That's the only step that makes it visible to customers.</li>
+      </ol>
+      <div class="callout">
+        <span class="kicker">Good to know</span>
+        Prices, hours, and copy that mention "25 years" or specific ages are typed as plain text, not calculated automatically — they'll need a manual touch-up each year rather than updating themselves.
+      </div>
+    </section>
+
+    <section class="chapter" id="running-shop">
+      <div class="chapter-head">
+        <div class="letter-badge">C</div>
+        <div>
+          <span class="kicker">Section C · Inventory</span>
+          <h2>Running the shop</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>Products are the one part of the site that <em>doesn't</em> require touching code. They live in Sanity, a small database with its own editing screen built right into the site.</p>
+        <p>Open <span class="path">yesterdaysnewsbk.com/studio</span> (or <span class="path">localhost:3000/studio</span> while testing locally) and sign in with the studio username and password — see Section F, The Vault, for where those are kept.</p>
+        <h3>Adding a piece</h3>
+        <p>Inside Studio, choose <strong>Product &rsaquo; Create new</strong> and fill in:</p>
+      </div>
+      <table class="spec">
+        <tr><th>Field</th><th>What it's for</th></tr>
+        <tr><td>Title, Description</td><td>What shows on the product page.</td></tr>
+        <tr><td>Price</td><td>In dollars — this is what Stripe charges at checkout.</td></tr>
+        <tr><td>Photos</td><td>At least one required; the first is used as the cover image.</td></tr>
+        <tr><td>Dimensions, Materials, Condition</td><td>Shown in the item's details table (e.g. "Excellent" / "Good" / "Fair").</td></tr>
+        <tr><td>Quantity Total / Available</td><td>Available drives the "Last one" and "Sold out" badges automatically.</td></tr>
+        <tr><td>Status</td><td>Draft &rarr; Scheduled &rarr; <strong>Live</strong> &rarr; Sold Out &rarr; Archived. Set to <strong>Live</strong> when it's ready to sell.</td></tr>
+        <tr><td>Posted At</td><td>Drives the "New" badge for the first ~7 days.</td></tr>
+      </table>
+      <div class="callout warn">
+        <span class="kicker">Current limitation</span>
+        The public Shop page (<span class="path">/shop</span>) still shows a "New items dropping soon" placeholder — it isn't wired up yet to display a browsable grid of live products. A product's own page (<span class="path">/shop/&lt;product-id&gt;</span>) already works completely — photos, price, checkout, and pickup scheduling all function — it just isn't linked from anywhere public yet, so today it can only be shared as a direct link. Building that grid is the next piece of shop work.
+      </div>
+      <div class="prose">
+        <p>The intended shop rules — pickup only, no shipping, pickup hours, and the no-show/forfeiture policy — are written out in full in <span class="path">docs/yn-site-pickup-shop-spec.md</span>.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="mail-messages">
+      <div class="chapter-head">
+        <div class="letter-badge">D</div>
+        <div>
+          <span class="kicker">Section D · What Happens Behind the Counter</span>
+          <h2>Mail &amp; messages</h2>
+        </div>
+      </div>
+      <ul class="keyring">
+        <li><span class="path">Contact form</span><p>Submissions on the Contact page are sent by <strong>Resend</strong> straight to the shop's inbox.</p></li>
+        <li><span class="path">We Buy lead form</span><p>Captures sell-your-stuff inquiries; a photo-upload field (powered by <strong>Uploadthing</strong>) lets sellers attach pictures of what they're offering.</p></li>
+        <li><span class="path">Instagram feed</span><p>The homepage feed pulls recent posts from <strong>@yesterdaysnewsbk</strong> using an access token that periodically expires and needs refreshing — a maintenance task, not a one-time setup.</p></li>
+        <li><span class="path">Map</span><p>The embed on the Contact page runs on a Google Maps key — no action needed unless it stops rendering.</p></li>
+      </ul>
+    </section>
+
+    <section class="chapter" id="publishing-day">
+      <div class="chapter-head">
+        <div class="letter-badge">E</div>
+        <div>
+          <span class="kicker">Section E · Going to Press</span>
+          <h2>Publishing day</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>There's no separate "publish" button to remember — the site deploys itself the moment code changes reach the right place.</p>
+      </div>
+      <table class="spec">
+        <tr><th>To…</th><th>Do this</th></tr>
+        <tr><td>Preview a change privately</td><td><span class="path">npm run dev</span>, then open <span class="path">localhost:3000</span></td></tr>
+        <tr><td>Check it compiles cleanly</td><td><span class="path">npm run build</span> — worth running before a bigger change</td></tr>
+        <tr><td>Make it live for customers</td><td>Push the change to <span class="path">main</span> — Vercel (project <span class="path">ynweb</span>) builds and deploys automatically, usually within a couple of minutes</td></tr>
+      </table>
+      <div class="callout">
+        <span class="kicker">Safety net</span>
+        If a pushed change fails to build, Vercel keeps the last working version live rather than replacing it with a broken one — the site won't go down from a bad push.
+      </div>
+    </section>
+
+    <section class="chapter" id="the-vault">
+      <div class="chapter-head">
+        <div class="letter-badge">F</div>
+        <div>
+          <span class="kicker">Section F · Keys &amp; Combinations</span>
+          <h2>The vault</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p>The site talks to several outside services (payments, email, uploads), and each one hands it a private key to prove who's asking. Locally those keys sit in <span class="path">.env.local</span> — a file that is deliberately never saved to Git, so it never leaves your computer by accident. In production, the same keys are set separately inside the Vercel dashboard for the <span class="path">ynweb</span> project (Settings &rsaquo; Environment Variables).</p>
+      </div>
+      <ul class="keyring">
+        <li><span class="path">RESEND_API_KEY</span><p>Sends contact-form emails.</p></li>
+        <li><span class="path">UPLOADTHING_SECRET / UPLOADTHING_APP_ID</span><p>Runs the We Buy photo upload.</p></li>
+        <li><span class="path">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</span><p>Draws the map on the Contact page.</p></li>
+        <li><span class="path">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY / STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET</span><p>Runs shop checkout and confirms payment.</p></li>
+        <li><span class="path">SANITY_API_TOKEN</span><p>Lets the site read and write product &amp; order data.</p></li>
+        <li><span class="path">STUDIO_USERNAME / STUDIO_PASSWORD</span><p>The password gate on <span class="path">/studio</span>.</p></li>
+        <li><span class="path">INSTAGRAM_ACCESS_TOKEN</span><p>Powers the homepage Instagram feed.</p></li>
+      </ul>
+      <div class="callout warn">
+        <span class="kicker">House rule</span>
+        Never paste a key into an email, text, or chat, and never commit <span class="path">.env.local</span>. Ask before regenerating any key — rotating one breaks whatever uses the old value until it's updated in <em>both</em> places, locally and in Vercel.
+      </div>
+    </section>
+
+    <section class="chapter" id="house-style">
+      <div class="chapter-head">
+        <div class="letter-badge">G</div>
+        <div>
+          <span class="kicker">Section G · Tone &amp; Trim</span>
+          <h2>House style</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <p><strong>Voice:</strong> warm, direct, nostalgic, story-driven. Never clever for its own sake — if a line calls attention to itself instead of the shop, cut it.</p>
+        <p><strong>Palette:</strong> the exact colors already built into the site.</p>
+      </div>
+      <div class="palette">
+        <div class="swatch"><div class="fill" style="background:#f6e6c9"></div><div class="cap"><b>Cream</b><span>#f6e6c9</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#971b2e"></div><div class="cap"><b>Red</b><span>#971b2e</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#1a0a0e"></div><div class="cap"><b>Deep ink</b><span>#1a0a0e</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#3a2010"></div><div class="cap"><b>Brown</b><span>#3a2010</span></div></div>
+        <div class="swatch"><div class="fill" style="background:#282828"></div><div class="cap"><b>Charcoal</b><span>#282828</span></div></div>
+      </div>
+      <div class="prose">
+        <p>Styling is currently a mix of Tailwind CSS and older styled-components code — both still work, but Tailwind is the direction for anything new.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="glossary">
+      <div class="chapter-head">
+        <div class="letter-badge">H</div>
+        <div>
+          <span class="kicker">Section H · For the Uninitiated</span>
+          <h2>Plain-English glossary</h2>
+        </div>
+      </div>
+      <dl class="glossary">
+        <div><dt>Repo</dt><dd>The project folder itself — tracked by Git, so every change has a history.</dd></div>
+        <div><dt>Commit / push</dt><dd>Saving a change (commit), then sending it to GitHub (push) — the trigger that starts a deploy.</dd></div>
+        <div><dt>Deploy</dt><dd>Publishing the current code so it's what visitors actually see.</dd></div>
+        <div><dt>Vercel</dt><dd>The hosting service that builds the site and serves it at yesterdaysnewsbk.com.</dd></div>
+        <div><dt>Sanity / Studio</dt><dd>The shop's product database, and its editing screen at <span class="path">/studio</span>.</dd></div>
+        <div><dt>Stripe</dt><dd>Processes the actual card payment at checkout.</dd></div>
+        <div><dt>Resend</dt><dd>Delivers the contact form's emails.</dd></div>
+        <div><dt>Uploadthing</dt><dd>Handles photo uploads from the We Buy form.</dd></div>
+        <div><dt>API key</dt><dd>A private password that lets the site talk to an outside service without that secret appearing in the code.</dd></div>
+        <div><dt>.env.local</dt><dd>The file holding those keys on your computer — never shared, never committed.</dd></div>
+      </dl>
+    </section>
+
+    <section class="chapter" id="if-broken">
+      <div class="chapter-head">
+        <div class="letter-badge">I</div>
+        <div>
+          <span class="kicker">Section I · Corrections</span>
+          <h2>If something breaks</h2>
+        </div>
+      </div>
+      <div class="prose">
+        <h3>Quick checks</h3>
+        <ul>
+          <li><strong>Site looks wrong after a push</strong> — check the deployment log for the <span class="path">ynweb</span> project in the Vercel dashboard; a failed build leaves the previous working version live.</li>
+          <li><strong>Can't log into /studio</strong> — confirm <span class="path">STUDIO_USERNAME</span>/<span class="path">STUDIO_PASSWORD</span> match what's set in Vercel, not just <span class="path">.env.local</span>.</li>
+          <li><strong>A form isn't arriving</strong> — check the Resend or Uploadthing dashboard for a failed send before assuming the form itself is broken.</li>
+        </ul>
+        <h3>Known open items, as of this cleanup (Sept 13, 2026)</h3>
+        <ul>
+          <li>The Family section is set to show a photo called <span class="path">helainaphoto.jpeg</span> that no longer exists in <span class="path">public/</span> — it's currently a broken image on the live site and needs a replacement wired into <span class="path">src/components/FamilySection.tsx</span>.</li>
+          <li>The Shop grid (Section C) still needs to be connected to live Sanity products.</li>
+          <li>A couple of large files removed during this cleanup still exist in Git's history from before — harmless day to day, but worth a history cleanup later if the repo ever feels slow to clone.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="colophon">
+  Yesterday's News — 428 Court Street, Carroll Gardens, Brooklyn — est. 2001<br>
+  This manual lives at <span class="path">docs/site-manual.html</span>. Update it the same way you'd update anything else.
+</footer>
+
+<script>
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.index a'));
+    var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx = sections.indexOf(entry.target);
+        if (idx === -1) return;
+        if (entry.isIntersecting){
+          links.forEach(function(l){ l.removeAttribute('aria-current'); });
+          links[idx].setAttribute('aria-current','true');
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+    sections.forEach(function(s){ if (s) io.observe(s); });
+  })();
+</script>
