@@ -7,7 +7,7 @@ const team = [
   { src: "/images/Dad%20Team%20Photo%201.webp", name: "JP Ferraioli",      role: "Owner", scale: 1.3, objectPosition: "center 82%" },
   { src: "/images/Colleen%202.jpg",             name: "Colleen Ferraioli", role: "Owner" },
   { src: "/images/Helaina%20Team%20Photo.webp", name: "Helaina Ferraioli", role: "Marketing Lead" },
-  { src: "/images/Craig%20Team%20Photo.webp",   name: "Craig Scotti",      role: "General Manager", scale: 1.2, objectPosition: "center 100%", vignette: true, shiftY: "-4%" },
+  { src: "/images/Craig%20Team%20Photo.webp",   name: "Craig Scotti",      role: "General Manager", vignette: true },
 ];
 
 function TeamCard({
