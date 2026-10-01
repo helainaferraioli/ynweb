@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react"; // useState kept for fade-in visibility
 
 const team = [
-  { src: "/images/Dad%20Team%20Photo%201.webp", name: "JP Ferraioli",      role: "Owner", scale: 1.3, objectPosition: "center 82%" },
+  { src: "/images/Dad%20Team%20Photo%201.webp", name: "JP Ferraioli",      role: "Owner", scale: 1.5, objectPosition: "center 82%" },
   { src: "/images/Colleen%202.jpg",             name: "Colleen Ferraioli", role: "Owner" },
   { src: "/images/Helaina%20Team%20Photo.webp", name: "Helaina Ferraioli", role: "Marketing Lead" },
-  { src: "/images/Craig%20Team%20Photo.webp",   name: "Craig Scotti",      role: "General Manager", vignette: true },
+  { src: "/images/Craig%20Team%20Photo.webp",   name: "Craig Scotti",      role: "General Manager" },
 ];
 
 function TeamCard({
