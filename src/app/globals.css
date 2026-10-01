@@ -29,8 +29,8 @@ body {
 
 @media (min-width: 768px) {
   .about-image-wrapper {
-    height: 523px !important;
-    align-self: flex-end;
+    height: auto;
+    align-self: stretch;
   }
 }
 
