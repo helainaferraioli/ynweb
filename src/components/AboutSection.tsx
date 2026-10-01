@@ -46,7 +46,6 @@ export default function AboutSection() {
       <div
         className="about-image-wrapper relative md:w-1/2 order-last md:order-none"
         style={{
-          height: "320px",
           zIndex: 5,
           opacity: textVisible ? 1 : 0,
           transform: textVisible ? "translateY(0)" : "translateY(16px)",
