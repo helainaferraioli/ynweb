@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <footer style={{ backgroundColor: "#971B2E" }} className="px-6 md:px-14 pt-16 pb-4">
       <div className="max-w-7xl mx-auto">
@@ -131,7 +137,16 @@ export default function Footer() {
 
         {/* Bottom — seal + copyright */}
         <div className="flex flex-col items-center gap-4 pt-3">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Link
+            href="/"
+            className="hover:opacity-80 transition-opacity"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <Image src="/illustration-newspaper-black.png" alt="Yesterday's News" width={130} height={101} />
           </Link>
           <p className="text-xs tracking-[0.2em] uppercase text-center" style={{ color: "#FFCCCC" }}>
